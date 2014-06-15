@@ -43,7 +43,7 @@ function wetkit_bootstrap_item_list($variables) {
     }
   }
 
-  $output = '';
+  $output = '<div class="item-list">';
   if ($items) {
     $output .= '<' . $type . drupal_attributes($list_attributes) . '>';
     foreach ($items as $key => $item) {
@@ -95,5 +95,6 @@ function wetkit_bootstrap_item_list($variables) {
     $output = $heading . $output;
   }
 
+  $output .= '</div>';
   return $output;
 }

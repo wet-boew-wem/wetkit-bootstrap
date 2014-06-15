@@ -21,11 +21,13 @@ function wetkit_bootstrap_preprocess_region(&$variables) {
     case 'navigation':
       $attributes['class'][] = 'navbar';
       $content_attributes['class'][] = 'container';
+      $variables['attributes_array']['role'] = 'banner';
+
       if (theme_get_setting('bootstrap_navbar_position') !== '') {
         $attributes['class'][] = 'navbar-' . theme_get_setting('bootstrap_navbar_position');
       }
       else {
-        $attributes['class'][] = 'container';
+        //$attributes['class'][] = 'container';
       }
       if (theme_get_setting('bootstrap_navbar_inverse')) {
         $attributes['class'][] = 'navbar-inverse';
@@ -133,4 +135,60 @@ function wetkit_bootstrap_preprocess_region(&$variables) {
   if ($region_columns[$region]) {
     $attributes['class'][] = (theme_get_setting('bootstrap_grid_class_prefix') ? : 'col-sm') . '-' . $region_columns[$region];
   }
+
+  // Internationalization Settings.
+  $is_multilingual = 0;
+  if (module_exists('i18n_menu') && drupal_multilingual()) {
+    $is_multilingual = 1;
+  }
+
+  // WxT Settings.
+  $theme_prefix = 'wb';
+  $theme_menu_prefix = 'wet-fullhd';
+
+  // Header Navigation + Language Switcher.
+  $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-header') : menu_navigation_links('menu-wet-header');
+  $nav_bar_markup = theme('links__menu_menu_wet_header', array(
+    'links' => $menu,
+    'attributes' => array(
+      'id' => 'menu',
+      'class' => array('links', 'clearfix'),
+    ),
+    'heading' => array(
+      'text' => 'Language Selection',
+      'level' => 'h2',
+    ),
+  ));
+  $nav_bar_markup = strip_tags($nav_bar_markup, '<h2><li><a>');
+
+  if (module_exists('wetkit_language')) {
+    $language_link_markup = '<li class="curr" id="' . $theme_menu_prefix . '-lang">' . strip_tags($variables['menu_lang_bar'], '<a><span>') . '</li>';
+    if (module_exists('edit')) {
+      $quick_edit = edit_trigger_link();
+      $variables['menu_bar'] = '<ul class="text-right">' . $nav_bar_markup . $language_link_markup . '<li>' . drupal_render($quick_edit) . '</li>' . '</ul>';
+    }
+    else {
+      $variables['menu_bar'] = '<ul class="text-right">' . $nav_bar_markup . $language_link_markup . '</ul>';
+    }
+  }
+  else {
+    $variables['menu_bar'] = '<ul class="text-right">' . $nav_bar_markup . '</ul>';
+  }
+
+  // Search Region.
+  if (module_exists('custom_search')) {
+    // Custom Search.
+    $variables['custom_search'] = drupal_get_form('custom_search_blocks_form_1');
+    $variables['custom_search']['#id'] = 'search-form';
+    $variables['custom_search']['custom_search_blocks_form_1']['#id'] = $theme_prefix . '-srch-q';
+    $variables['custom_search']['actions']['submit']['#id'] = $theme_prefix . '-srch-submit';
+    $variables['custom_search']['actions']['submit']['#attributes']['data-icon'] = 'search';
+    $variables['custom_search']['actions']['submit']['#attributes']['value'] = t('search');
+    $variables['custom_search']['#attributes']['class'][] = 'form-inline';
+    $variables['custom_search']['actions']['#theme_wrappers'] = NULL;
+
+    $variables['search_box'] = render($variables['custom_search']);
+    $variables['search_box'] = str_replace('type="text"', 'type="search"', $variables['search_box']);
+  }
+
 }

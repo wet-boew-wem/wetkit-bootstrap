@@ -27,9 +27,14 @@
  */
 ?>
 <?php if ($content): ?>
-  <footer<?php print $attributes; ?>>
-    <?php if ($content_attributes): ?><div<?php print $content_attributes; ?>><?php endif; ?>
-    <?php print $content; ?>
-    <?php if ($content_attributes): ?></div><?php endif; ?>
+  <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
+      <div class="container">
+        <nav role="navigation" class="row">
+        <h2>Site information</h2>
+        <?php if ($content_attributes): ?><div<?php print $content_attributes; ?>><?php endif; ?>
+        <?php print render($page['footer']); ?>
+        <?php if ($content_attributes): ?></div><?php endif; ?>
+        </nav>
+      </div>
   </footer>
 <?php endif; ?>
