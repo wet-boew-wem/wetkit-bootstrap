@@ -13,6 +13,12 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
   global $theme_key;
   global $language;
 
+  // WxT Settings.
+  $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
+  $library_path = libraries_get_path($wxt_active, TRUE);
+  $wxt_active = str_replace('-', '_', $wxt_active);
+  $wxt_active = str_replace('wet_boew_', '', $wxt_active);
+
   // Return early, so the maintenance page does not call any of the code below.
   if ($hook != 'html') {
     return;
@@ -33,7 +39,6 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
   }
 
   // Modify html attributes.
-  $variables['html_attributes_array']['class'][] = 'no-js lt-ie9';
   $variables['html_attributes_array']['lang'][] = $language->language;
 
   // Add the default body id needed
@@ -64,6 +69,19 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
     case 'static-top':
       $variables['classes_array'][] = 'navbar-is-static-top';
       break;
+  }
+
+  // Splash Page.
+  if (current_path() == 'splashify-splash') {
+    if ($wxt_active == 'gcweb') {
+    $variables['classes_array'][] = 'splash';
+    }
+    else {
+    $variables['classes_array'][] = 'wb-sppe';
+    }
+  }
+  if ($wxt_active == 'gcweb') {
+    $variables['classes_array'][] = 'home';
   }
 }
 

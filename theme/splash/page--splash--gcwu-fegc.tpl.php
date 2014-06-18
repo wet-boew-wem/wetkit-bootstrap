@@ -73,29 +73,28 @@
  * @ingroup themeable
  */
 ?>
-<?php /* region--navigation.tpl.php */ ?>
-<?php if ($page['navigation']): ?>
-  <?php print render($page['navigation']); ?>
-<?php endif; ?>
-
-<div class="main-container container">
-
-  <?php /* region--header.tpl.php */ ?>
-  <?php print render($page['header']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_first']): ?>
-    <?php print render($page['sidebar_first']); ?>
-  <?php endif; ?>
-
-  <?php /* region--content.tpl.php */ ?>
-  <?php print render($page['content']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_second']): ?>
-    <?php print render($page['sidebar_second']); ?>
-  <?php endif; ?>
-
-</div>
-<?php /* region--footer.tpl.php */ ?>
-<?php print render($page['footer']); ?>
+<header role="banner">
+  <div id="wb-bnr" class="container">
+    <object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/sig-alt-en.svg" aria-label="<?php print t('Government of Canada'); ?>"></object>
+  </div>
+</header>
+<main role="main" property="mainContentOfPage" class="container">
+  <div class="col-md-12">
+    <h1>Welcome /
+      <span lang="fr">Bienvenue</span>
+    </h1>
+    <section class="col-md-6">
+      <h2><?php print t('Web Experience Toolkit'); ?></h2>
+      <a class="btn btn-lg btn-primary btn-block" href="/en"><?php print t('English'); ?></a>
+      <a class="btn btn-lg btn-default btn-block" href="../../License-en.html" rel="license"><?php print t('Terms and conditions of use'); ?></a>
+    </section>
+    <section class="col-md-6" lang="fr">
+      <h2><?php print t('Boîte à outils de l’expérience Web'); ?></h2>
+      <a class="btn btn-lg btn-primary btn-block" href="/fr"><?php print t('Français'); ?></a>
+      <a class="btn btn-lg btn-default btn-block" href="../../Licence-fr.html" rel="license"><?php print t('Conditions régissant l\'utilisation'); ?></a>
+    </section>
+  </div>
+</main>
+<footer role="contentinfo" class="container">
+    <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/wmms-alt.svg" aria-label="<?php print t('Symbol of the Government of Canada'); ?>"></object>
+</footer>

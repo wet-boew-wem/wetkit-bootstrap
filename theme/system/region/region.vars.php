@@ -10,131 +10,11 @@
 function wetkit_bootstrap_preprocess_region(&$variables) {
   $region = $variables['region'];
   $regions = system_region_list($GLOBALS['theme_key']);
-  $variables['page'] = &drupal_static('bootstrap_process_page');
+  $variables['page'] = &drupal_static('wetkit_bootstrap_process_page');
 
   $attributes = &$variables['attributes_array'];
   $attributes['class'] = $variables['classes_array'];
   $content_attributes = &$variables['content_attributes_array'];
-
-  // Handle regions.
-  switch ($region) {
-    case 'navigation':
-      $attributes['class'][] = 'navbar';
-      $content_attributes['class'][] = 'container';
-      $variables['attributes_array']['role'] = 'banner';
-
-      if (theme_get_setting('bootstrap_navbar_position') !== '') {
-        $attributes['class'][] = 'navbar-' . theme_get_setting('bootstrap_navbar_position');
-      }
-      else {
-        //$attributes['class'][] = 'container';
-      }
-      if (theme_get_setting('bootstrap_navbar_inverse')) {
-        $attributes['class'][] = 'navbar-inverse';
-      }
-      else {
-        $attributes['class'][] = 'navbar-default';
-      }
-      break;
-
-    case 'highlighted':
-      $attributes['class'][] = 'highlighted';
-      $attributes['class'][] = 'jumbotron';
-      break;
-
-    case 'header':
-      $variables['attributes_array']['id'] = 'page-header';
-      $variables['attributes_array']['role'] = 'banner';
-      break;
-
-    case 'sidebar_first':
-    case 'sidebar_second':
-      $variables['attributes_array']['role'] = 'complementary';
-      $variables['theme_hook_suggestions'] = array(
-        'region__sidebar',
-        'region__' . $region,
-      );
-      break;
-
-    case 'help':
-      if (!empty($variables['content'])) {
-        $variables['content'] = _bootstrap_icon('question-sign') . $variables['content'];
-        $attributes['class'][] = 'alert';
-        $attributes['class'][] = 'alert-info';
-        $attributes['class'][] = 'messages';
-        $attributes['class'][] = 'info';
-      }
-      break;
-
-    case 'footer':
-      $attributes['class'][] = 'container';
-      break;
-  }
-
-  // Provide a "front" page suggestion for regions.
-  if (drupal_is_front_page()) {
-    foreach ($variables['theme_hook_suggestions'] as $suggestion) {
-      $variables['theme_hook_suggestions'][] = $suggestion . '__front';
-    }
-  }
-
-  // Provide entity based suggestions for regions.
-  static $entities;
-  if (!isset($entities)) {
-    $entities = entity_get_info();
-  }
-  foreach ($entities as $entity_type => $entity_info) {
-    if ($entity = menu_get_object($entity_type)) {
-      $id = $entity_info['entity keys']['id'];
-      $bundle = $entity_info['entity keys']['bundle'];
-      foreach ($variables['theme_hook_suggestions'] as $suggestion) {
-        $variables['theme_hook_suggestions'][] = $suggestion . '__' . $entity_type;
-        if ($bundle) {
-          $variables['theme_hook_suggestions'][] = $suggestion . '__' . $entity_type . '__' . $entity->{$bundle};
-        }
-        if ($id) {
-          $variables['theme_hook_suggestions'][] = $suggestion . '__' . $entity_type . '__' . $entity->{$id};
-        }
-      }
-      break;
-    }
-  }
-
-  // Add "well" classes to the region content wrapper.
-  static $wells;
-  if (!isset($wells)) {
-    foreach ($regions as $name => $title) {
-      $wells[$name] = theme_get_setting('bootstrap_region_well-' . $name) ? : FALSE;
-    }
-  }
-  if ($wells[$region]) {
-    $content_attributes['class'][] = $wells[$region];
-  }
-
-  // Add "column" classes to regions.
-  static $region_columns;
-  if (!isset($region_columns)) {
-    foreach ($regions as $name => $title) {
-      $region_columns[$name] = theme_get_setting('bootstrap_region_grid-' . $name) ? : 0;
-    }
-    $columns = theme_get_setting('bootstrap_grid_columns') ? : 12;
-    foreach ($regions as $name => $title) {
-      if ($dynamic_regions = theme_get_setting('bootstrap_region_grid_dynamic-' . $name) ? : array()) {
-        // Enforce the region to have the maximum number of columns.
-        $column = $columns;
-        foreach ($dynamic_regions as $dynamic_region) {
-          if (is_array($variables['page']['page'][$dynamic_region]) &&
-              element_children($variables['page']['page'][$dynamic_region])) {
-            $column -= $region_columns[$dynamic_region];
-          }
-        }
-        $region_columns[$name] = $column;
-      }
-    }
-  }
-  if ($region_columns[$region]) {
-    $attributes['class'][] = (theme_get_setting('bootstrap_grid_class_prefix') ? : 'col-sm') . '-' . $region_columns[$region];
-  }
 
   // Internationalization Settings.
   $is_multilingual = 0;
@@ -145,6 +25,80 @@ function wetkit_bootstrap_preprocess_region(&$variables) {
   // WxT Settings.
   $theme_prefix = 'wb';
   $theme_menu_prefix = 'wet-fullhd';
+
+  $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
+  $library_path = libraries_get_path($wxt_active, TRUE);
+  $wxt_active = str_replace('-', '_', $wxt_active);
+  $wxt_active = str_replace('wet_boew_', '', $wxt_active);
+
+  // Handle regions.
+  switch ($region) {
+    case 'navigation':
+      //$attributes['class'][] = 'navbar';
+      $content_attributes['class'][] = 'container';
+      $variables['attributes_array']['role'] = 'banner';
+
+      if (theme_get_setting('bootstrap_navbar_position') !== '') {
+        $attributes['class'][] = 'navbar-' . theme_get_setting('bootstrap_navbar_position');
+      }
+      else {
+        //$attributes['class'][] = 'container';
+      }
+      if (theme_get_setting('bootstrap_navbar_inverse')) {
+        //$attributes['class'][] = 'navbar-inverse';
+      }
+      else {
+        //$attributes['class'][] = 'navbar-default';
+      }
+      $variables['theme_hook_suggestions'][] = 'region__navigation__' . $wxt_active;
+      break;
+
+    case 'highlighted':
+      $attributes['class'][] = 'highlighted';
+      $attributes['class'][] = 'jumbotron';
+      $variables['theme_hook_suggestions'][] = 'region__highlighted__' . $wxt_active;
+      break;
+
+    case 'header':
+      $variables['attributes_array']['id'] = 'page-header';
+      $variables['attributes_array']['role'] = 'banner';
+      $variables['theme_hook_suggestions'][] = 'region__header__' . $wxt_active;
+      break;
+
+    case 'sidebar_first':
+      $variables['attributes_array']['role'] = 'complementary';
+      $variables['theme_hook_suggestions'] = array(
+        'region__sidebar',
+        'region__' . $region,
+      );
+      $variables['theme_hook_suggestions'][] = 'region__sidebar__' . $wxt_active;
+      break;
+
+    case 'sidebar_second':
+      $variables['attributes_array']['role'] = 'complementary';
+      $variables['theme_hook_suggestions'] = array(
+        'region__sidebar',
+        'region__' . $region,
+      );
+      $variables['theme_hook_suggestions'][] = 'region__sidebar__' . $wxt_active;
+      break;
+
+    case 'help':
+      if (!empty($variables['content'])) {
+        $variables['content'] = _bootstrap_icon('question-sign') . $variables['content'];
+        $attributes['class'][] = 'alert';
+        $attributes['class'][] = 'alert-info';
+        $attributes['class'][] = 'messages';
+        $attributes['class'][] = 'info';
+        $variables['theme_hook_suggestions'][] = 'region__help__' . $wxt_active;
+      }
+      break;
+
+    case 'footer':
+      $attributes['class'][] = 'container';
+      $variables['theme_hook_suggestions'][] = 'region__footer__' . $wxt_active;
+      break;
+  }
 
   // Header Navigation + Language Switcher.
   $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-header') : menu_navigation_links('menu-wet-header');
@@ -163,9 +117,14 @@ function wetkit_bootstrap_preprocess_region(&$variables) {
 
   if (module_exists('wetkit_language')) {
     $language_link_markup = '<li class="curr" id="' . $theme_menu_prefix . '-lang">' . strip_tags($variables['menu_lang_bar'], '<a><span>') . '</li>';
-    if (module_exists('edit')) {
-      $quick_edit = edit_trigger_link();
-      $variables['menu_bar'] = '<ul class="text-right">' . $nav_bar_markup . $language_link_markup . '<li>' . drupal_render($quick_edit) . '</li>' . '</ul>';
+    if ($wxt_active == 'gcweb') {
+      $variables['menu_bar'] = '<ul class="list-inline margin-bottom-none">' . $language_link_markup . '</ul>';
+    }
+    else if ($wxt_active == 'gcwu_fegc') {
+      $variables['menu_bar'] = '<ul id="gc-bar" class="list-inline">' . preg_replace("/<h([1-6]{1})>.*?<\/h\\1>/si", '', $nav_bar_markup) . $language_link_markup . '</ul>';
+    }
+    else if ($wxt_active == 'gc_intranet') {
+      $variables['menu_bar'] = '<ul id="gc-bar" class="list-inline">' . $language_link_markup . '</ul>';
     }
     else {
       $variables['menu_bar'] = '<ul class="text-right">' . $nav_bar_markup . $language_link_markup . '</ul>';
@@ -175,20 +134,54 @@ function wetkit_bootstrap_preprocess_region(&$variables) {
     $variables['menu_bar'] = '<ul class="text-right">' . $nav_bar_markup . '</ul>';
   }
 
-  // Search Region.
+  // Custom Search Box.
   if (module_exists('custom_search')) {
     // Custom Search.
     $variables['custom_search'] = drupal_get_form('custom_search_blocks_form_1');
     $variables['custom_search']['#id'] = 'search-form';
     $variables['custom_search']['custom_search_blocks_form_1']['#id'] = $theme_prefix . '-srch-q';
-    $variables['custom_search']['actions']['submit']['#id'] = $theme_prefix . '-srch-submit';
+    $variables['custom_search']['actions']['submit']['#id'] = 'wb-srch-sub';
     $variables['custom_search']['actions']['submit']['#attributes']['data-icon'] = 'search';
     $variables['custom_search']['actions']['submit']['#attributes']['value'] = t('search');
     $variables['custom_search']['#attributes']['class'][] = 'form-inline';
+    $variables['custom_search']['#attributes']['role'] = 'search';
     $variables['custom_search']['actions']['#theme_wrappers'] = NULL;
+    //unset($variables['custom_search']['#theme_wrappers']);
+
+    if ($wxt_active == 'gcweb') {
+      $variables['custom_search']['#attributes']['name'] = 'cse-search-box';
+      $variables['custom_search']['actions']['submit']['#attributes']['name'] = 'wb-srch-sub';
+      $variables['custom_search']['actions']['submit']['#value'] = '<span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span>';
+      $variables['custom_search']['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Drupal WxT');
+    }
 
     $variables['search_box'] = render($variables['custom_search']);
     $variables['search_box'] = str_replace('type="text"', 'type="search"', $variables['search_box']);
   }
 
+  // Terms Navigation.
+  $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-terms') : menu_navigation_links('menu-wet-terms');
+  $class = ($wxt_active == 'gcwu_fegc' || $wxt_active == 'gc_intranet') ? array('list-inline') : array('links', 'clearfix');
+  $terms_bar_markup = theme('links__menu_menu_wet_terms', array(
+    'links' => $menu,
+    'attributes' => array(
+      'id' => 'gc-tctr',
+      'class' => $class,
+    ),
+    'heading' => array(),
+  ));
+  $variables['menu_terms_bar'] = $terms_bar_markup;
+
+  // Footer Navigation.
+  $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-footer') : menu_navigation_links('menu-wet-footer');
+  $class = ($wxt_active == 'gcwu_fegc' || $wxt_active == 'gc_intranet') ? array('list-inline') : array('links', 'clearfix');
+  $footer_bar_markup = theme('links__menu_menu_wet_footer', array(
+    'links' => $menu,
+    'attributes' => array(
+      'id' => 'menu',
+      'class' => $class,
+    ),
+    'heading' => array(),
+  ));
+  $variables['menu_footer_bar'] = $footer_bar_markup;
 }

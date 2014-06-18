@@ -78,24 +78,8 @@
   <?php print render($page['navigation']); ?>
 <?php endif; ?>
 
-<div class="main-container container">
+<?php /* region--content.tpl.php */ ?>
+<?php print render($page['content']); ?>
 
-  <?php /* region--header.tpl.php */ ?>
-  <?php print render($page['header']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_first']): ?>
-    <?php print render($page['sidebar_first']); ?>
-  <?php endif; ?>
-
-  <?php /* region--content.tpl.php */ ?>
-  <?php print render($page['content']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_second']): ?>
-    <?php print render($page['sidebar_second']); ?>
-  <?php endif; ?>
-
-</div>
 <?php /* region--footer.tpl.php */ ?>
 <?php print render($page['footer']); ?>

@@ -12,6 +12,27 @@ function wetkit_bootstrap_menu_tree(&$variables) {
 }
 
 /**
+ * Overrides theme_menu_tree().
+ */
+function wetkit_bootstrap_menu_tree__menu_block__main_menu(&$variables) {
+  return '<ul class="list-inline menu" role="menubar">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Overrides theme_menu_tree().
+ */
+function wetkit_bootstrap_menu_tree__menu_block__sidebar(&$variables) {
+  return '<ul class="list-group menu list-unstyled" role="menubar">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Overrides theme_menu_tree().
+ */
+function wetkit_bootstrap_menu_tree__menu_block__mid_footer_menu(&$variables) {
+  return $variables['tree'];
+}
+
+/**
  * Bootstrap theme wrapper function for the primary menu links.
  */
 function wetkit_bootstrap_menu_tree__primary(&$variables) {

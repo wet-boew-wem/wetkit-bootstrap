@@ -43,6 +43,68 @@ function wetkit_bootstrap_menu_link(array $variables) {
 }
 
 /**
+ * Overrides theme_menu_tree().
+ */
+function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
+      // Add our own wrapper.
+      unset($element['#below']['#theme_wrappers']);
+      $sub_menu = '<ul class="sm list-unstyled">' . drupal_render($element['#below']) . '</ul>';
+      // Generate as standard dropdown.
+      $element['#title'] .= ' <span class="expicon glyphicon glyphicon-chevron-down"></span>';
+      $element['#attributes']['class'][] = 'dropdown';
+      $element['#localized_options']['html'] = TRUE;
+
+      // Set dropdown trigger element to # to prevent inadvertant page loading
+      // when a submenu link is clicked.
+      $element['#localized_options']['attributes']['data-target'] = '#';
+      $element['#localized_options']['attributes']['class'][] = 'item';
+      $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
+    }
+  }
+  // On primary navigation menu, class 'active' is not set on active menu item.
+  // @see https://drupal.org/node/1896674
+  if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
+    $element['#attributes']['class'][] = 'active';
+  }
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/**
+ * Overrides theme_menu_tree().
+ */
+function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
+      $sub_menu = '<ul class="list-unstyled">' . drupal_render($element['#below']) . '</ul>';
+    }
+  }
+
+  // On primary navigation menu, class 'active' is not set on active menu item.
+  // @see https://drupal.org/node/1896674
+  if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
+    $element['#attributes']['class'][] = 'active';
+  }
+
+  if ($element['#original_link']['depth'] == 1) {
+    $output = '<h3>' . l($element['#title'], $element['#href'], $element['#localized_options']) . '</h3>';
+    return '<section class="col-sm-3">' . $output . $sub_menu . '</section>';
+  }
+  else {
+    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+    return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+  }
+}
+
+/**
  * Overrides theme_menu_link() for book module.
  */
 function wetkit_bootstrap_menu_link__book_toc(array $variables) {

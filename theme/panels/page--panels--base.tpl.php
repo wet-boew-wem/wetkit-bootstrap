@@ -78,24 +78,13 @@
   <?php print render($page['navigation']); ?>
 <?php endif; ?>
 
-<div class="main-container container">
+<main role="main" class="container">
 
-  <?php /* region--header.tpl.php */ ?>
-  <?php print render($page['header']); ?>
+    <div class="row">
+    <?php /* region--content.tpl.php */ ?>
+    <?php print render($page['content']); ?>
+    </div>
 
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_first']): ?>
-    <?php print render($page['sidebar_first']); ?>
-  <?php endif; ?>
-
-  <?php /* region--content.tpl.php */ ?>
-  <?php print render($page['content']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_second']): ?>
-    <?php print render($page['sidebar_second']); ?>
-  <?php endif; ?>
-
-</div>
+</main>
 <?php /* region--footer.tpl.php */ ?>
 <?php print render($page['footer']); ?>

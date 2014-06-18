@@ -73,29 +73,30 @@
  * @ingroup themeable
  */
 ?>
-<?php /* region--navigation.tpl.php */ ?>
-<?php if ($page['navigation']): ?>
-  <?php print render($page['navigation']); ?>
-<?php endif; ?>
-
-<div class="main-container container">
-
-  <?php /* region--header.tpl.php */ ?>
-  <?php print render($page['header']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_first']): ?>
-    <?php print render($page['sidebar_first']); ?>
-  <?php endif; ?>
-
-  <?php /* region--content.tpl.php */ ?>
-  <?php print render($page['content']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_second']): ?>
-    <?php print render($page['sidebar_second']); ?>
-  <?php endif; ?>
-
-</div>
-<?php /* region--footer.tpl.php */ ?>
-<?php print render($page['footer']); ?>
+<header role="banner">
+  <div id="wb-bnr">
+    <div class="container">
+      <div class="row mrgn-tp-lg mrgn-bttm-lg">
+        <section class="col-md-8 col-md-offset-2">
+          <object type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-base/assets/logo.svg" aria-label="<?php print t('Web Experience Toolkit'); ?>"></object>
+        </section>
+      </div>
+    </div>
+  </div>
+</header>
+<main role="main" property="mainContentOfPage" class="container">
+  <div class="row mrgn-tp-lg">
+    <div class="col-md-12">
+      <section class="col-md-6">
+        <h2 class="h3 text-center"><?php print t('Web Experience Toolkit'); ?></h2>
+        <a class="btn btn-lg btn-primary btn-block" href="/en"><?php print t('English'); ?></a>
+        <a class="btn btn-lg btn-default btn-block" href="License-en.html" rel="license"><?php print t('Terms and conditions of use'); ?></a>
+      </section>
+      <section class="col-md-6" lang="fr">
+        <h2 class="h3 text-center"><?php print t('Boîte à outils de l’expérience Web'); ?></h2>
+        <a class="btn btn-lg btn-primary btn-block" href="/fr"><?php print t('Francais'); ?></a>
+        <a class="btn btn-lg btn-default btn-block" href="Licence-fr.html" rel="license"><?php print t('Conditions régissant l\'utilisation'); ?></a>
+      </section>
+    </div>
+  </div>
+</main>

@@ -31,7 +31,9 @@
       <div id="wb-bar">
         <div class="container">
           <div class="row">
-            <section id="wb-lng" class="visible-md visible-lg">
+            <object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gc-intranet/assets/sig-blk-en.svg" aria-label="Government of Canada"></object>
+            <section id ="wb-lng">
+              <h2><?php print t('Language selection'); ?></h2>
               <?php print $menu_bar; ?>
             </section>
             <section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
@@ -44,30 +46,22 @@
             </div>
           </div>
         </div>
+
         <div class="container">
           <div class="row">
-            <div id="wb-sttl" class="col-md-8">
+            <div id="wb-sttl" class="col-md-5">
               <?php if ($page['site_name'] || $page['site_slogan'] || $page['logo']): ?>
                 <a href="<?php print $page['site_name_url']; ?>">
-                  <?php if ($page['logo'] && $page['logo_svg']): ?>
-                    <object id="header-logo" data='<?php print $page['logo_svg']; ?>' role="img" tabindex="-1" type="image/svg+xml">
-                      <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $page['logo']; ?>"  />
-                    </object>
-                  <?php elseif ($page['logo']): ?>
-                    <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $page['logo']; ?>"  />
-                  <?php endif; ?>
-                  <span <?php print $page['logo_class']; ?>>
+                 <span <?php print $page['logo_class']; ?>>
                     <?php if ($page['site_name']): ?>
                       <?php print $page['site_name']; ?>
-                    <?php endif; ?>
-                    <?php if ($page['site_slogan']): ?>
-                      <small><?php print $page['site_slogan']; ?></small>
                     <?php endif; ?>
                   </span>
                 </a>
               <?php endif; ?>
             </div>
-            <section id="wb-srch" class="col-md-4 visible-md visible-lg">
+            <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gc-intranet/assets/wmms-intra.svg" aria-label="Symbol of the Government of Canada"></object>
+            <section id="wb-srch" class="visible-md visible-lg">
                 <h2><?php print t('Search'); ?></h2>
                 <?php if ($search_box): ?>
                   <?php print $search_box; ?>
@@ -75,17 +69,19 @@
             </section>
           </div>
         </div>
+
       </div>
+
       <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
         <div class="container nvbar">
           <h2>Site menu</h2>
           <div class="row">
             <?php print render($page['mega_menu']); ?>
             <?php print render($page['secondary_nav']); ?>
-            <?php print $content; ?>
           </div>
         </div>
       </nav>
+      <?php print $content; ?>
       <nav role="navigation" id="wb-bc" property="breadcrumb">
         <div class="container">
           <div class="row">

@@ -26,10 +26,9 @@
  */
 ?>
 <?php if ($content): ?>
-  <div<?php //print $attributes; ?>>
     <?php if ($content_attributes): ?><div<?php print $content_attributes; ?>><?php endif; ?>
 
-    <?php if (!empty($page['panels_layout']) && !$page['panels_layout']): ?>
+    <?php if (empty($page['panels_layout'])): ?>
         <?php print render($page['page']['highlighted']); ?>
 
         <a id="main-content"></a>
@@ -45,8 +44,14 @@
         <?php print render($page['action_links']); ?>
     <?php endif; ?>
 
-    <?php print render($page['messages']); ?>
+    <?php if (!empty($page['messages'])): ?>
+        <div class="container">
+            <div class="row">
+                <?php print render($page['messages']); ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <?php print $content; ?>
     <?php if ($content_attributes): ?></div><?php endif; ?>
-  </div>
 <?php endif; ?>

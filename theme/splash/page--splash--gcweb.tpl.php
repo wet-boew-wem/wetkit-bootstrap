@@ -73,29 +73,40 @@
  * @ingroup themeable
  */
 ?>
-<?php /* region--navigation.tpl.php */ ?>
-<?php if ($page['navigation']): ?>
-  <?php print render($page['navigation']); ?>
-<?php endif; ?>
-
-<div class="main-container container">
-
-  <?php /* region--header.tpl.php */ ?>
-  <?php print render($page['header']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_first']): ?>
-    <?php print render($page['sidebar_first']); ?>
-  <?php endif; ?>
-
-  <?php /* region--content.tpl.php */ ?>
-  <?php print render($page['content']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_second']): ?>
-    <?php print render($page['sidebar_second']); ?>
-  <?php endif; ?>
-
+<div id="bg">
+  <img src="<?php print $variables['background']; ?>" alt="" />
 </div>
-<?php /* region--footer.tpl.php */ ?>
-<?php print render($page['footer']); ?>
+<main role="main">
+  <div class="sp-hb">
+    <div class="sp-bx col-xs-12">
+      <h1 property="name" class="wb-inv"><?php print t('Drupal WxT'); ?></h1>
+      <div class="row">
+        <div class="col-xs-11 col-md-8">
+          <object type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcweb/assets/sig-spl.svg" aria-label="<?php print t('Government of Canada / Gouvernement du Canada'); ?>"></object>
+        </div>
+      </div>
+      <div class="row">
+        <section class="col-xs-6 text-right">
+          <h2 class="wb-inv"><?php print t('Government of Canada'); ?></h2>
+          <p><a href="/en" class="btn btn-primary"><?php print t('English'); ?></a></p>
+        </section>
+        <section class="col-xs-6" lang="fr">
+          <h2 class="wb-inv"><?php print t('Gouvernment du Canada'); ?></h2>
+          <p><a href="/fr" class="btn btn-primary"><?php print t('Francais'); ?></a></p>
+        </section>
+      </div>
+    </div>
+    <div class="sp-bx-bt col-xs-12">
+      <div class="row">
+        <div class="col-xs-7 col-md-8">
+          <a href="http://www.canada.ca/en/transparency/terms.html" class="sp-lk"><?php print t('Terms & conditions'); ?></a>
+          <span class="glyphicon glyphicon-asterisk"></span>
+          <a href="http://www.canada.ca/fr/transparence/avis.html" class="sp-lk" lang="fr"><?php print t('Avis'); ?></a>
+        </div>
+        <div class="col-xs-5 col-md-4 text-right mrgn-bttm-md">
+          <object type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcweb/assets/wmms-spl.svg" aria-label="<?php print t('Symbol of the Government of Canada / Symbole du gouvernement du Canada'); ?>"></object>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
