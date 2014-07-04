@@ -30,9 +30,9 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   // Logo settings.
   $variables['logo_class'] = '';
   $variables['logo_svg'] = '';
-  $toggle_logo = theme_get_setting('toggle_logo', 'wetkit_omega');
-  $default_logo = theme_get_setting('default_logo', 'wetkit_omega');
-  $default_svg_logo = theme_get_setting('wetkit_theme_svg_default_logo', 'wetkit_omega');
+  $toggle_logo = theme_get_setting('toggle_logo', 'wetkit_bootstrap');
+  $default_logo = theme_get_setting('default_logo', 'wetkit_bootstrap');
+  $default_svg_logo = theme_get_setting('wetkit_theme_svg_default_logo', 'wetkit_bootstrap');
 
   if (!empty($variables['site_name'])) {
     $variables['site_name_title'] = filter_xss(variable_get('site_name', 'Drupal'));
