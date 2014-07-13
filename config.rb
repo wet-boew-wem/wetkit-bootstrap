@@ -16,14 +16,17 @@ else
 end
 
 # Location of the theme's resources.
+http_path = "/"
 css_dir = "css"
 sass_dir = "sass"
 images_dir = "images"
+fonts_dir = "fonts"
 generated_images_dir = images_dir + "/generated"
 javascripts_dir = "js"
 
 # Require any additional compass plugins installed on your system.
 require 'compass-normalize'
+require 'modular-scale'
 require 'rgbapng'
 require 'toolkit'
 require 'sass-globbing'
