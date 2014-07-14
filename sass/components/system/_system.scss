@@ -17,3 +17,14 @@ p:last-child {
 .tabs--primary.nav-tabs {
   margin-bottom: 1.5em;
 }
+
+.node-form {
+  #node-edit {
+    .pane-form {
+      .pane-content {
+        clear: both;
+        margin-top: 1.5em;
+      }
+    }
+  }
+}

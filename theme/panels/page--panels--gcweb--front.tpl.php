@@ -78,14 +78,8 @@
   <?php print render($page['navigation']); ?>
 <?php endif; ?>
 
-<main role="main" class="container">
-
-    <div class="row">
-    <?php /* region--content.tpl.php */ ?>
-    <?php print render($page['content']); ?>
-    </div>
-
-</main>
+<?php /* region--content.tpl.php */ ?>
+<?php print render($page['content']); ?>
 
 <?php /* region--footer.tpl.php */ ?>
 <?php print render($page['footer']); ?>

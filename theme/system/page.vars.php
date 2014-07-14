@@ -128,7 +128,13 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     // Page template suggestions for Panels pages.
     $panel_page = page_manager_get_current_page();
     if (!empty($panel_page)) {
+      // Add the active WxT theme machine name to the template suggestions.
       $suggestions[] = 'page__panels__' . $wxt_active;
+
+      if (drupal_is_front_page()) {
+        $suggestions[] = 'page__panels__' . $wxt_active . '__front';
+      }
+
       // Add the panel page machine name to the template suggestions.
       $suggestions[] = 'page__' . $panel_page['name'];
       // Merge the suggestions in to the existing suggestions

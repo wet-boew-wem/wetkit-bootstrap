@@ -14,9 +14,9 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
   global $language;
 
   // WxT Settings.
-  $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
-  $library_path = libraries_get_path($wxt_active, TRUE);
-  $wxt_active = str_replace('-', '_', $wxt_active);
+  $wxt_active_orig = variable_get('wetkit_wetboew_theme', 'wet-boew');
+  $library_path = libraries_get_path($wxt_active_orig, TRUE);
+  $wxt_active = str_replace('-', '_', $wxt_active_orig);
   $wxt_active = str_replace('wet_boew_', '', $wxt_active);
 
   // Return early, so the maintenance page does not call any of the code below.
@@ -49,6 +49,9 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
 
   // Add a body class for the active theme name.
   $variables['classes_array'][] = drupal_html_class($theme_key);
+
+  // Add the active WxT theme into body class.
+  $variables['classes_array'][] = drupal_html_class($wxt_active_orig);
 
   // Assign skip link variables.
   $variables['wetkit_skip_link_id_1'] = theme_get_setting('wetkit_skip_link_id_1');
