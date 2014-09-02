@@ -26,9 +26,9 @@ javascripts_dir = "js"
 
 # Require any additional compass plugins installed on your system.
 require 'compass-normalize'
-require 'modular-scale'
 require 'rgbapng'
 require 'toolkit'
+require 'breakpoint'
 require 'sass-globbing'
 
 # You can select your preferred output style here (:expanded, :nested, :compact

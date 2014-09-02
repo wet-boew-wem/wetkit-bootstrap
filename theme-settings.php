@@ -112,4 +112,16 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
     '#description' => t('Custom Markup to wrap around content to assist in indexing.'),
   );
 
+  // Search.
+  $form['wetkit_search'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Search'),
+    '#group' => 'wetkit_bootstrap',
+  );
+  $form['wetkit_search']['wetkit_search_box'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Search box visibility'),
+    '#default_value' => theme_get_setting('wetkit_search_box'),
+    '#description' => t("Specify pages to exclude by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are blog for the blog page and blog/* for every personal blog. <front> is the front page."),
+  );
 }

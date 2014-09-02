@@ -155,8 +155,28 @@ function wetkit_bootstrap_preprocess_region(&$variables) {
       $variables['custom_search']['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Drupal WxT');
     }
 
-    $variables['search_box'] = render($variables['custom_search']);
-    $variables['search_box'] = str_replace('type="text"', 'type="search"', $variables['search_box']);
+    // Visibility settings.
+    $pages = drupal_strtolower(theme_get_setting('wetkit_search_box'));
+    // Convert the Drupal path to lowercase.
+    $path = drupal_strtolower(drupal_get_path_alias($_GET['q']));
+    // Compare the lowercase internal and lowercase path alias (if any).
+    $page_match = drupal_match_path($path, $pages);
+    if ($path != $_GET['q']) {
+      $page_match = $page_match || drupal_match_path($_GET['q'], $pages);
+    }
+    // When $visibility has a value of 0 (VISIBILITY_NOTLISTED),
+    // the block is displayed on all pages except those listed in $pages.
+    // When set to 1 (VISIBILITY_LISTED), it is displayed only on those
+    // pages listed in $pages.
+    $visibility = 0;
+    $page_match = !(0 xor $page_match);
+    if ($page_match) {
+      $variables['search_box'] = render($variables['custom_search']);
+      $variables['search_box'] = str_replace('type="text"', 'type="search"', $variables['search_box']);
+    }
+    else {
+      $variables['search_box'] = '';
+    }
   }
 
   // Terms Navigation.
