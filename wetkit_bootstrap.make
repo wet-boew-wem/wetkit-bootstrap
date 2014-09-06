@@ -5,9 +5,6 @@ api = 2
 
 ; Theme(s)
 
-projects[bootstrap][version] = 1.x-dev
+projects[bootstrap][version] = 3.1-beta2
 projects[bootstrap][type] = theme
-projects[bootstrap][download][type] = git
-projects[bootstrap][download][revision] = cdd042b
-projects[bootstrap][download][branch] = 7.x-1.x
-projects[bootstrap][patch][2311463] = http://drupal.org/files/issues/patch_bootstrap_wetkit-2311463-02.patch
+projects[bootstrap][patch][2311463] = http://drupal.org/files/issues/patch_bootstrap_wetkit-2311463-03.patch
