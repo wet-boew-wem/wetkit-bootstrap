@@ -7,7 +7,7 @@
 /**
  * Overrides theme_mark().
  */
-function bootstrap_mark($variables) {
+function wetkit_bootstrap_mark($variables) {
   global $user;
   if ($user->uid) {
     if ($variables['type'] == MARK_NEW) {
