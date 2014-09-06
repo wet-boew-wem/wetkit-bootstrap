@@ -73,18 +73,113 @@
  * @ingroup themeable
  */
 ?>
-<?php /* region--navigation.tpl.php */ ?>
-<?php if ($page['navigation']): ?>
-  <?php print render($page['navigation']); ?>
-<?php endif; ?>
-
-<main role="main" class="container">
-
-    <div class="row">
-    <?php /* region--content.tpl.php */ ?>
-    <?php print render($page['content']); ?>
+<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
+  <div id="wb-bnr">
+    <div id="wb-bar">
+      <div class="container">
+        <div class="row">
+          <object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/sig-en.svg" aria-label="Government of Canada"></object>
+          <?php print $menu_bar; ?>
+          <section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
+            <h2>Menu</h2>
+            <ul class="pnl-btn list-inline text-right">
+              <li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+            </ul>
+            <div id="mb-pnl"></div>
+          </section>
+        </div>
+      </div>
     </div>
-
+    <div class="container">
+      <div class="row">
+        <div id="wb-sttl" class="col-md-5">
+          <?php if ($site_name || $site_slogan || $logo): ?>
+            <a href="<?php print $site_name_url; ?>">
+              <span <?php print $logo_class; ?>>
+                <?php if ($site_name): ?>
+                  <?php print $site_name; ?>
+                <?php endif; ?>
+              </span>
+            </a>
+          <?php endif; ?>
+        </div>
+        <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
+        <section id="wb-srch" class="visible-md visible-lg">
+          <h2><?php print t('Search'); ?></h2>
+          <?php if ($search_box): ?>
+            <?php print $search_box; ?>
+          <?php endif; ?>
+        </section>
+      </div>
+    </div>
+  </div>
+  <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
+    <div class="container nvbar">
+      <h2>Site menu</h2>
+      <div class="row">
+        <?php print render($page['mega_menu']); ?>
+        <?php print render($page['secondary_nav']); ?>
+      </div>
+    </div>
+  </nav>
+  <?php print render($page['header']); ?>
+  <nav role="navigation" id="wb-bc" property="breadcrumb">
+    <div class="container">
+      <div class="row">
+        <?php print render($breadcrumb); ?>
+      </div>
+    </div>
+  </nav>
+</header>
+<main role="main" class="container">
+  <div class="row">
+    <section<?php print $content_column_class; ?>>
+      <?php if (empty($panels_layout)): ?>
+        <?php if (!empty($page['highlighted'])): ?>
+          <?php print render($page['highlighted']); ?>
+        <?php endif; ?>
+        <a id="main-content"></a>
+        <?php print render($title_prefix); ?>
+        <?php if (!empty($title)): ?>
+          <h1 class="page-header"><?php print $title; ?></h1>
+        <?php endif; ?>
+        <?php print render($title_suffix); ?>
+        <?php if (!empty($tabs)): ?>
+          <?php print render($tabs); ?>
+        <?php endif; ?>
+        <?php if (!empty($page['help'])): ?>
+          <?php print render($page['help']); ?>
+        <?php endif; ?>
+        <?php if (!empty($action_links)): ?>
+          <ul class="action-links"><?php print render($action_links); ?></ul>
+        <?php endif; ?>
+      <?php endif; ?>
+      <?php if (!empty($messages)): ?>
+        <div class="container">
+          <div class="row">
+            <?php print render($messages); ?>
+          </div>
+        </div>
+      <?php endif; ?>
+      <?php print render($page['content']); ?>
+    </section>
+  </div>
 </main>
-<?php /* region--footer.tpl.php */ ?>
-<?php print render($page['footer']); ?>
+<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
+  <div class="container">
+    <nav role="navigation">
+      <h2>Site information</h2>
+      <?php print $page['menu_terms_bar']; ?>
+      <div class="row">
+      <?php print render($page['footer']); ?>
+      </div>
+    </nav>
+  </div>
+  <div id="gc-info">
+    <div class="container">
+      <nav role="navigation">
+        <?php print $page['menu_footer_bar']; ?>
+      </nav>
+    </div>
+  </div>
+</footer>

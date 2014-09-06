@@ -18,6 +18,10 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $is_multilingual = 1;
   }
 
+  // WxT Settings.
+  $theme_prefix = 'wb';
+  $theme_menu_prefix = 'wet-fullhd';
+
   // Remove html_tag__site_slogan.
   unset($variables['page']['header'][0]);
 
@@ -62,16 +66,19 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $variables['logo_class'] = drupal_attributes(array('class' => 'no-logo'));
   }
 
-  // Ensure each region has the correct theme wrappers.
-  foreach (system_region_list($GLOBALS['theme_key']) as $name => $title) {
-    if (!$variables['page'][$name]) {
-      $variables['page'][$name]['#theme_wrappers'] = array('region');
-      $variables['page'][$name]['#region'] = $name;
-    }
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    //$variables['content_column_class'] = ' class="col-sm-6"';
+  }
+  elseif (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_second'])) {
+    //$variables['content_column_class'] = ' class="col-sm-9"';
+  }
+  else {
+    $variables['content_column_class'] = '';
   }
 
   // Primary menu.
-  $variables['primary_nav'] = array();
+  $variables['primary_nav'] = FALSE;
   if ($variables['main_menu']) {
     // Build links.
     $variables['primary_nav'] = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
@@ -80,12 +87,27 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   }
 
   // Secondary nav.
-  $variables['secondary_nav'] = array();
+  $variables['secondary_nav'] = FALSE;
   if ($variables['secondary_menu']) {
     // Build links.
     $variables['secondary_nav'] = menu_tree(variable_get('menu_secondary_links_source', 'user-menu'));
     // Provide default theme wrapper function.
     $variables['secondary_nav']['#theme_wrappers'] = array('menu_tree__secondary');
+  }
+
+  $variables['navbar_classes_array'] = array('navbar');
+
+  if (theme_get_setting('bootstrap_navbar_position') !== '') {
+    $variables['navbar_classes_array'][] = 'navbar-' . theme_get_setting('bootstrap_navbar_position');
+  }
+  else {
+    //$variables['navbar_classes_array'][] = 'container';
+  }
+  if (theme_get_setting('bootstrap_navbar_inverse')) {
+    //$variables['navbar_classes_array'][] = 'navbar-inverse';
+  }
+  else {
+    //$variables['navbar_classes_array'][] = 'navbar-default';
   }
 
   // Mega Menu Region.
@@ -98,21 +120,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
       'expire' => CACHE_TEMPORARY,
       'granularity' => DRUPAL_CACHE_PER_PAGE, // unset this to cache globally
     );
-    $variables['mega_menu'] = $data['content'];
-  }
-
-  // Mid Footer Region.
-  if (module_exists('menu_block')) {
-    $config = menu_block_get_config('mid_footer_menu');
-    $data = menu_tree_build($config);
-
-    $data['content']['#cache'] = array(
-      'keys' => array('wetkit_mid_footer_region_content'),
-      'expire' => CACHE_TEMPORARY,
-      'granularity' => DRUPAL_CACHE_PER_PAGE, // unset this to cache globally
-    );
-
-    $variables['footer'] = $data['content'];
+    $variables['page']['mega_menu'] = $data['content'];
   }
 
   // Splash Page.
@@ -156,6 +164,135 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
       $variables['theme_hook_suggestions'] = array_merge($variables['theme_hook_suggestions'], $suggestions);
     }
   }
+
+
+
+
+
+
+
+  // Header Navigation + Language Switcher.
+  $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-header') : menu_navigation_links('menu-wet-header');
+  $nav_bar_markup = theme('links__menu_menu_wet_header', array(
+    'links' => $menu,
+    'attributes' => array(
+      'id' => 'menu',
+      'class' => array('links', 'clearfix'),
+    ),
+    'heading' => array(
+      'text' => 'Language Selection',
+      'level' => 'h2',
+    ),
+  ));
+  $nav_bar_markup = strip_tags($nav_bar_markup, '<h2><li><a>');
+
+  if (module_exists('wetkit_language')) {
+    $language_link_markup = '<li class="curr" id="' . $theme_menu_prefix . '-lang">' . strip_tags($variables['menu_lang_bar'], '<a><span>') . '</li>';
+    if ($wxt_active == 'gcweb') {
+      $variables['menu_bar'] = '<ul class="list-inline margin-bottom-none">' . $language_link_markup . '</ul>';
+    }
+    else if ($wxt_active == 'gcwu_fegc') {
+      $variables['menu_bar'] = '<ul id="gc-bar" class="list-inline">' . preg_replace("/<h([1-6]{1})>.*?<\/h\\1>/si", '', $nav_bar_markup) . $language_link_markup . '</ul>';
+    }
+    else if ($wxt_active == 'gc_intranet') {
+      $variables['menu_bar'] = '<ul id="gc-bar" class="list-inline">' . $language_link_markup . '</ul>';
+    }
+    else {
+      $variables['menu_bar'] = '<ul class="text-right">' . $nav_bar_markup . $language_link_markup . '</ul>';
+    }
+  }
+  else {
+    $variables['menu_bar'] = '<ul class="text-right">' . $nav_bar_markup . '</ul>';
+  }
+
+  // Custom Search Box.
+  if (module_exists('custom_search')) {
+    // Custom Search.
+    $variables['custom_search'] = drupal_get_form('custom_search_blocks_form_1');
+    $variables['custom_search']['#id'] = 'search-form';
+    $variables['custom_search']['custom_search_blocks_form_1']['#id'] = $theme_prefix . '-srch-q';
+    $variables['custom_search']['actions']['submit']['#id'] = 'wb-srch-sub';
+    $variables['custom_search']['actions']['submit']['#attributes']['data-icon'] = 'search';
+    $variables['custom_search']['actions']['submit']['#attributes']['value'] = t('search');
+    $variables['custom_search']['#attributes']['class'][] = 'form-inline';
+    $variables['custom_search']['#attributes']['role'] = 'search';
+    $variables['custom_search']['actions']['#theme_wrappers'] = NULL;
+    //unset($variables['custom_search']['#theme_wrappers']);
+
+    if ($wxt_active == 'gcweb') {
+      $variables['custom_search']['#attributes']['name'] = 'cse-search-box';
+      $variables['custom_search']['actions']['submit']['#attributes']['name'] = 'wb-srch-sub';
+      $variables['custom_search']['actions']['submit']['#value'] = '<span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span>';
+      $variables['custom_search']['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Drupal WxT');
+    }
+
+    // Visibility settings.
+    $pages = drupal_strtolower(theme_get_setting('wetkit_search_box'));
+    // Convert the Drupal path to lowercase.
+    $path = drupal_strtolower(drupal_get_path_alias($_GET['q']));
+    // Compare the lowercase internal and lowercase path alias (if any).
+    $page_match = drupal_match_path($path, $pages);
+    if ($path != $_GET['q']) {
+      $page_match = $page_match || drupal_match_path($_GET['q'], $pages);
+    }
+    // When $visibility has a value of 0 (VISIBILITY_NOTLISTED),
+    // the block is displayed on all pages except those listed in $pages.
+    // When set to 1 (VISIBILITY_LISTED), it is displayed only on those
+    // pages listed in $pages.
+    $visibility = 0;
+    $page_match = !(0 xor $page_match);
+    if ($page_match) {
+      $variables['search_box'] = render($variables['custom_search']);
+      $variables['search_box'] = str_replace('type="text"', 'type="search"', $variables['search_box']);
+    }
+    else {
+      $variables['search_box'] = '';
+    }
+  }
+
+
+
+
+  // Terms Navigation.
+  $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-terms') : menu_navigation_links('menu-wet-terms');
+  $class = ($wxt_active == 'gcwu_fegc' || $wxt_active == 'gc_intranet') ? array('list-inline') : array('links', 'clearfix');
+  $terms_bar_markup = theme('links__menu_menu_wet_terms', array(
+    'links' => $menu,
+    'attributes' => array(
+      'id' => 'gc-tctr',
+      'class' => $class,
+    ),
+    'heading' => array(),
+  ));
+  $variables['page']['menu_terms_bar'] = $terms_bar_markup;
+
+  // Mid Footer Region.
+  if (module_exists('menu_block')) {
+    $config = menu_block_get_config('mid_footer_menu');
+    $data = menu_tree_build($config);
+
+    $data['content']['#cache'] = array(
+      'keys' => array('wetkit_mid_footer_region_content'),
+      'expire' => CACHE_TEMPORARY,
+      'granularity' => DRUPAL_CACHE_PER_PAGE, // unset this to cache globally
+    );
+
+    unset($variables['page']['footer']['system_powered-by']);
+    $variables['page']['footer']['minipanel'] = $data['content'];
+  }
+
+  // Footer Navigation.
+  $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-footer') : menu_navigation_links('menu-wet-footer');
+  $class = ($wxt_active == 'gcwu_fegc' || $wxt_active == 'gc_intranet') ? array('list-inline') : array('links', 'clearfix');
+  $footer_bar_markup = theme('links__menu_menu_wet_footer', array(
+    'links' => $menu,
+    'attributes' => array(
+      'id' => 'menu',
+      'class' => $class,
+    ),
+    'heading' => array(),
+  ));
+  $variables['page']['menu_footer_bar'] = $footer_bar_markup;
 }
 
 /**
@@ -166,8 +303,5 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 function wetkit_bootstrap_process_page(&$variables) {
   // Store the page variables in cache so it can be used in region
   // preprocessing.
-  $page = &drupal_static(__FUNCTION__);
-  if (!isset($page)) {
-    $page = $variables;
-  }
+  $variables['navbar_classes'] = implode(' ', $variables['navbar_classes_array']);
 }

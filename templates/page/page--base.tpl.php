@@ -73,29 +73,121 @@
  * @ingroup themeable
  */
 ?>
-<?php /* region--navigation.tpl.php */ ?>
-<?php if ($page['navigation']): ?>
-  <?php print render($page['navigation']); ?>
-<?php endif; ?>
-
+<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
+  <div id="wb-bnr">
+    <div id="wb-bar">
+      <div class="container">
+        <div class="row">
+          <section id="wb-lng" class="visible-md visible-lg">
+            <?php print $menu_bar; ?>
+          </section>
+          <section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
+            <h2>Menu</h2>
+            <ul class="pnl-btn list-inline text-right">
+              <li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+            </ul>
+            <div id="mb-pnl"></div>
+          </section>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div id="wb-sttl" class="col-md-8">
+            <?php if ($site_name || $site_slogan || $logo): ?>
+              <a href="<?php print $site_name_url; ?>">
+                <span <?php print $logo_class; ?>>
+                  <?php if ($site_name): ?>
+                    <?php print $site_name; ?>
+                  <?php endif; ?>
+                  <?php if ($site_slogan): ?>
+                    <small><?php print $site_slogan; ?></small>
+                  <?php endif; ?>
+                </span>
+              </a>
+            <?php endif; ?>
+          </div>
+          <section id="wb-srch" class="col-md-4 visible-md visible-lg">
+              <h2><?php print t('Search'); ?></h2>
+              <?php if ($search_box): ?>
+                <?php print $search_box; ?>
+              <?php endif; ?>
+          </section>
+        </div>
+      </div>
+    </div>
+    <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
+      <div class="pnl-strt container visible-md visible-lg nvbar">
+        <h2>Site menu</h2>
+        <div class="row">
+          <?php print render($page['mega_menu']); ?>
+          <?php print render($page['secondary_nav']); ?>
+        </div>
+      </div>
+    </nav>
+    <?php print render($page['header']); ?>
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+      <div class="container">
+        <div class="row">
+          <?php print render($breadcrumb); ?>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
 <div class="main-container container">
-
-  <?php /* region--header.tpl.php */ ?>
-  <?php print render($page['header']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_first']): ?>
-    <?php print render($page['sidebar_first']); ?>
+  <header role="banner" id="page-header">
+    <?php if (!empty($site_slogan)): ?>
+      <p class="lead"><?php print $site_slogan; ?></p>
+    <?php endif; ?>
+    <?php print render($page['header']); ?>
+  </header> <!-- /#page-header -->
+  <?php if (!empty($page['sidebar_first'])): ?>
+    <aside class="col-sm-3" role="complementary">
+      <?php print render($page['sidebar_first']); ?>
+    </aside>  <!-- /#sidebar-first -->
   <?php endif; ?>
-
-  <?php /* region--content.tpl.php */ ?>
-  <?php print render($page['content']); ?>
-
-  <?php /* region--sidebar.tpl.php */ ?>
-  <?php if ($page['sidebar_second']): ?>
-    <?php print render($page['sidebar_second']); ?>
+  <section<?php print $content_column_class; ?>>
+    <?php if (empty($panels_layout)): ?>
+      <?php if (!empty($page['highlighted'])): ?>
+        <?php print render($page['highlighted']); ?>
+      <?php endif; ?>
+      <a id="main-content"></a>
+      <?php print render($title_prefix); ?>
+      <?php if (!empty($title)): ?>
+        <h1 class="page-header"><?php print $title; ?></h1>
+      <?php endif; ?>
+      <?php print render($title_suffix); ?>
+      <?php if (!empty($tabs)): ?>
+        <?php print render($tabs); ?>
+      <?php endif; ?>
+      <?php if (!empty($page['help'])): ?>
+        <?php print render($page['help']); ?>
+      <?php endif; ?>
+      <?php if (!empty($action_links)): ?>
+        <ul class="action-links"><?php print render($action_links); ?></ul>
+      <?php endif; ?>
+    <?php endif; ?>
+    <?php if (!empty($messages)): ?>
+      <div class="container">
+        <div class="row">
+          <?php print render($messages); ?>
+        </div>
+      </div>
+    <?php endif; ?>
+    <?php print render($page['content']); ?>
+  </section>
+  <?php if (!empty($page['sidebar_second'])): ?>
+    <aside class="col-sm-3" role="complementary">
+      <?php print render($page['sidebar_second']); ?>
+    </aside>  <!-- /#sidebar-second -->
   <?php endif; ?>
-
 </div>
-<?php /* region--footer.tpl.php */ ?>
-<?php print render($page['footer']); ?>
+<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
+    <div class="container">
+      <nav role="navigation" class="row">
+      <h2>Site information</h2>
+      <?php print render($page['footer']); ?>
+      </nav>
+    </div>
+</footer>
