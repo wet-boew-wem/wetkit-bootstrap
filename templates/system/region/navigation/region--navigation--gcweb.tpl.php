@@ -87,6 +87,5 @@
         </div>
       </div>
     </nav>
-    </div>
   </header>
 <?php endif; ?>

@@ -31,10 +31,8 @@
       <div id="wb-bar">
         <div class="container">
           <div class="row">
-
-              <object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/sig-en.svg" aria-label="Government of Canada"></object>
-              <?php print $menu_bar; ?>
-
+            <object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/sig-en.svg" aria-label="Government of Canada"></object>
+            <?php print $menu_bar; ?>
             <section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
               <h2>Menu</h2>
               <ul class="pnl-btn list-inline text-right">
@@ -42,52 +40,48 @@
               </ul>
               <div id="mb-pnl"></div>
             </section>
-            </div>
           </div>
         </div>
-
-        <div class="container">
-          <div class="row">
-            <div id="wb-sttl" class="col-md-5">
-              <?php if ($page['site_name'] || $page['site_slogan'] || $page['logo']): ?>
-                <a href="<?php print $page['site_name_url']; ?>">
-                 <span <?php print $page['logo_class']; ?>>
-                    <?php if ($page['site_name']): ?>
-                      <?php print $page['site_name']; ?>
-                    <?php endif; ?>
-                  </span>
-                </a>
-              <?php endif; ?>
-            </div>
-            <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
-            <section id="wb-srch" class="visible-md visible-lg">
-                <h2><?php print t('Search'); ?></h2>
-                <?php if ($search_box): ?>
-                  <?php print $search_box; ?>
-                <?php endif; ?>
-            </section>
-          </div>
-        </div>
-
       </div>
-
-      <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
-        <div class="container nvbar">
-          <h2>Site menu</h2>
-          <div class="row">
-            <?php print render($page['mega_menu']); ?>
-            <?php print render($page['secondary_nav']); ?>
+      <div class="container">
+        <div class="row">
+          <div id="wb-sttl" class="col-md-5">
+            <?php if ($page['site_name'] || $page['site_slogan'] || $page['logo']): ?>
+              <a href="<?php print $page['site_name_url']; ?>">
+                <span <?php print $page['logo_class']; ?>>
+                  <?php if ($page['site_name']): ?>
+                    <?php print $page['site_name']; ?>
+                  <?php endif; ?>
+                </span>
+              </a>
+            <?php endif; ?>
           </div>
+          <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
+          <section id="wb-srch" class="visible-md visible-lg">
+            <h2><?php print t('Search'); ?></h2>
+            <?php if ($search_box): ?>
+              <?php print $search_box; ?>
+            <?php endif; ?>
+          </section>
         </div>
-      </nav>
-      <?php print $content; ?>
-      <nav role="navigation" id="wb-bc" property="breadcrumb">
-        <div class="container">
-          <div class="row">
-            <?php print render($page['breadcrumb']); ?>
-          </div>
-        </div>
-      </nav>
+      </div>
     </div>
+    <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
+      <div class="container nvbar">
+        <h2>Site menu</h2>
+        <div class="row">
+          <?php print render($page['mega_menu']); ?>
+          <?php print render($page['secondary_nav']); ?>
+        </div>
+      </div>
+    </nav>
+    <?php print $content; ?>
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+      <div class="container">
+        <div class="row">
+          <?php print render($page['breadcrumb']); ?>
+        </div>
+      </div>
+    </nav>
   </header>
 <?php endif; ?>

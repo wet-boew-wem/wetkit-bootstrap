@@ -41,58 +41,57 @@
               </ul>
               <div id="mb-pnl"></div>
             </section>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div id="wb-sttl" class="col-md-8">
-              <?php if ($page['site_name'] || $page['site_slogan'] || $page['logo']): ?>
-                <a href="<?php print $page['site_name_url']; ?>">
-                  <?php if ($page['logo'] && $page['logo_svg']): ?>
-                    <object id="header-logo" data='<?php print $page['logo_svg']; ?>' role="img" tabindex="-1" type="image/svg+xml">
-                      <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $page['logo']; ?>"  />
-                    </object>
-                  <?php elseif ($page['logo']): ?>
-                    <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $page['logo']; ?>"  />
-                  <?php endif; ?>
-                  <span <?php print $page['logo_class']; ?>>
-                    <?php if ($page['site_name']): ?>
-                      <?php print $page['site_name']; ?>
-                    <?php endif; ?>
-                    <?php if ($page['site_slogan']): ?>
-                      <small><?php print $page['site_slogan']; ?></small>
-                    <?php endif; ?>
-                  </span>
-                </a>
-              <?php endif; ?>
-            </div>
-            <section id="wb-srch" class="col-md-4 visible-md visible-lg">
-                <h2><?php print t('Search'); ?></h2>
-                <?php if ($search_box): ?>
-                  <?php print $search_box; ?>
-                <?php endif; ?>
-            </section>
           </div>
         </div>
       </div>
-      <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
-        <div class="pnl-strt container visible-md visible-lg nvbar">
-          <h2>Site menu</h2>
-          <div class="row">
-            <?php print render($page['mega_menu']); ?>
-            <?php print render($page['secondary_nav']); ?>
+      <div class="container">
+        <div class="row">
+          <div id="wb-sttl" class="col-md-8">
+            <?php if ($page['site_name'] || $page['site_slogan'] || $page['logo']): ?>
+              <a href="<?php print $page['site_name_url']; ?>">
+                <?php if ($page['logo'] && $page['logo_svg']): ?>
+                  <object id="header-logo" data='<?php print $page['logo_svg']; ?>' role="img" tabindex="-1" type="image/svg+xml">
+                    <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $page['logo']; ?>"  />
+                  </object>
+                <?php elseif ($page['logo']): ?>
+                  <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $page['logo']; ?>"  />
+                <?php endif; ?>
+                <span <?php print $page['logo_class']; ?>>
+                  <?php if ($page['site_name']): ?>
+                    <?php print $page['site_name']; ?>
+                  <?php endif; ?>
+                  <?php if ($page['site_slogan']): ?>
+                    <small><?php print $page['site_slogan']; ?></small>
+                  <?php endif; ?>
+                </span>
+              </a>
+            <?php endif; ?>
           </div>
+          <section id="wb-srch" class="col-md-4 visible-md visible-lg">
+            <h2><?php print t('Search'); ?></h2>
+            <?php if ($search_box): ?>
+              <?php print $search_box; ?>
+            <?php endif; ?>
+          </section>
         </div>
-      </nav>
-      <?php print $content; ?>
-      <nav role="navigation" id="wb-bc" property="breadcrumb">
-        <div class="container">
-          <div class="row">
-            <?php print render($page['breadcrumb']); ?>
-          </div>
-        </div>
-      </nav>
+      </div>
     </div>
+    <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
+      <div class="pnl-strt container visible-md visible-lg nvbar">
+        <h2>Site menu</h2>
+        <div class="row">
+          <?php print render($page['mega_menu']); ?>
+          <?php print render($page['secondary_nav']); ?>
+        </div>
+      </div>
+    </nav>
+    <?php print $content; ?>
+    <nav role="navigation" id="wb-bc" property="breadcrumb">
+      <div class="container">
+        <div class="row">
+          <?php print render($page['breadcrumb']); ?>
+        </div>
+      </div>
+    </nav>
   </header>
 <?php endif; ?>
