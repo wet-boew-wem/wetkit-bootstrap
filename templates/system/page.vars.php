@@ -21,15 +21,18 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   // WxT Settings.
   $theme_prefix = 'wb';
   $theme_menu_prefix = 'wet-fullhd';
-
-  // Remove html_tag__site_slogan.
-  unset($variables['page']['header'][0]);
-
-  // WxT Settings.
   $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
   $library_path = libraries_get_path($wxt_active, TRUE);
   $wxt_active = str_replace('-', '_', $wxt_active);
   $wxt_active = str_replace('wet_boew_', '', $wxt_active);
+
+  // Site Name.
+  if (!empty($variables['site_name'])) {
+    $variables['site_name_title'] = filter_xss(variable_get('site_name', 'Drupal'));
+    $variables['site_name_unlinked'] = $variables['site_name_title'];
+    $variables['site_name_url'] = url(variable_get('site_frontpage', 'node'));
+    $variables['site_name'] = trim($variables['site_name_title']);
+  }
 
   // Logo settings.
   $variables['logo_class'] = '';
@@ -37,13 +40,6 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   $toggle_logo = theme_get_setting('toggle_logo', 'wetkit_bootstrap');
   $default_logo = theme_get_setting('default_logo', 'wetkit_bootstrap');
   $default_svg_logo = theme_get_setting('wetkit_theme_svg_default_logo', 'wetkit_bootstrap');
-
-  if (!empty($variables['site_name'])) {
-    $variables['site_name_title'] = filter_xss(variable_get('site_name', 'Drupal'));
-    $variables['site_name_unlinked'] = $variables['site_name_title'];
-    $variables['site_name_url'] = url(variable_get('site_frontpage', 'node'));
-    $variables['site_name'] = trim($variables['site_name_title']);
-  }
 
   // Default Logo logic.
   if (($default_logo == 0) && ($default_svg_logo == 1)) {
@@ -68,10 +64,10 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
   // Add information about the number of sidebars.
   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
-    //$variables['content_column_class'] = ' class="col-sm-6"';
+    $variables['content_column_class'] = ' class="col-sm-6"';
   }
   elseif (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_second'])) {
-    //$variables['content_column_class'] = ' class="col-sm-9"';
+    $variables['content_column_class'] = ' class="col-sm-9"';
   }
   else {
     $variables['content_column_class'] = '';
@@ -95,19 +91,13 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $variables['secondary_nav']['#theme_wrappers'] = array('menu_tree__secondary');
   }
 
-  $variables['navbar_classes_array'] = array('navbar');
-
+  // Navbar.
+  $variables['navbar_classes_array'] = array('');
   if (theme_get_setting('bootstrap_navbar_position') !== '') {
     $variables['navbar_classes_array'][] = 'navbar-' . theme_get_setting('bootstrap_navbar_position');
   }
   else {
-    //$variables['navbar_classes_array'][] = 'container';
-  }
-  if (theme_get_setting('bootstrap_navbar_inverse')) {
-    //$variables['navbar_classes_array'][] = 'navbar-inverse';
-  }
-  else {
-    //$variables['navbar_classes_array'][] = 'navbar-default';
+    $variables['navbar_classes_array'][] = '';
   }
 
   // Mega Menu Region.
@@ -165,12 +155,6 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     }
   }
 
-
-
-
-
-
-
   // Header Navigation + Language Switcher.
   $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-header') : menu_navigation_links('menu-wet-header');
   $nav_bar_markup = theme('links__menu_menu_wet_header', array(
@@ -217,7 +201,6 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $variables['custom_search']['#attributes']['class'][] = 'form-inline';
     $variables['custom_search']['#attributes']['role'] = 'search';
     $variables['custom_search']['actions']['#theme_wrappers'] = NULL;
-    //unset($variables['custom_search']['#theme_wrappers']);
 
     if ($wxt_active == 'gcweb') {
       $variables['custom_search']['#attributes']['name'] = 'cse-search-box';
@@ -249,9 +232,6 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
       $variables['search_box'] = '';
     }
   }
-
-
-
 
   // Terms Navigation.
   $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-terms') : menu_navigation_links('menu-wet-terms');

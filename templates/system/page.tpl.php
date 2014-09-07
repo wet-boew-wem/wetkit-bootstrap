@@ -128,7 +128,7 @@
         <h2>Site menu</h2>
         <div class="row">
           <?php print render($page['mega_menu']); ?>
-          <?php print render($page['secondary_nav']); ?>
+          <?php print render($secondary_nav); ?>
         </div>
       </div>
     </nav>
