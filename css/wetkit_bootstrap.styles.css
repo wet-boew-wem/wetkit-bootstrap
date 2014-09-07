@@ -196,3 +196,6 @@ p:last-child {
   position: inherit;
   margin-left: 0px;
 }
+.admin-views-view .form-item .input-group-addon {
+  width: inherit;
+}

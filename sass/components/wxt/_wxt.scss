@@ -15,7 +15,12 @@
   }
 }
 
-.admin-views-view .views-table .checkbox input[type=checkbox] {
-  position: inherit;
-  margin-left: 0px;
+.admin-views-view {
+  .views-table .checkbox input[type=checkbox] {
+    position: inherit;
+    margin-left: 0px;
+  }
+  .form-item .input-group-addon {
+    width: inherit;
+  }
 }
