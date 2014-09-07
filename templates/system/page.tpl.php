@@ -125,7 +125,7 @@
     </div>
     <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
       <div class="pnl-strt container visible-md visible-lg nvbar">
-        <h2>Site menu</h2>
+        <h2><?php print t('Topics menu'); ?></h2>
         <div class="row">
           <?php print render($page['mega_menu']); ?>
           <?php print render($secondary_nav); ?>
@@ -201,7 +201,7 @@
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
     <div class="container">
       <nav role="navigation" class="row">
-      <h2>Site information</h2>
+      <h2><?php print t('About this site'); ?></h2>
       <?php print render($page['footer']); ?>
       </nav>
     </div>

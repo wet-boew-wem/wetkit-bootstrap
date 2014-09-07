@@ -82,9 +82,17 @@
             <?php print $menu_bar; ?>
           </section>
           <section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
-            <h2>Menu</h2>
+            <h2><?php print t('Search and menus'); ?></h2>
             <ul class="pnl-btn list-inline text-right">
-              <li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+              <li>
+                <a href="#mb-pnl" title="<?php print t('Search and menus'); ?>" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button">
+                  <span class="glyphicon glyphicon-search">
+                    <span class="glyphicon glyphicon-th-list">
+                      <span class="wb-inv"><?php print t('Search and menus'); ?></span>
+                    </span>
+                  </span>
+                </a>
+              </li>
             </ul>
             <div id="mb-pnl"></div>
           </section>
@@ -125,7 +133,7 @@
   </div>
   <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
     <div class="pnl-strt container visible-md visible-lg nvbar">
-      <h2>Site menu</h2>
+      <h2><?php print t('Topics menu'); ?></h2>
       <div class="row">
         <?php print render($page['mega_menu']); ?>
         <?php print render($secondary_nav); ?>
@@ -178,7 +186,7 @@
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
   <div class="container">
     <nav role="navigation" class="row">
-    <h2>Site information</h2>
+    <h2><?php print t('About this site'); ?></h2>
     <?php print render($page['footer']); ?>
     </nav>
   </div>

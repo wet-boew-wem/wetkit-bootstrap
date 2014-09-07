@@ -98,12 +98,14 @@
         <?php endif; ?>
       </div>
       <section class="wb-mb-links col-xs-3 visible-sm visible-xs" id="wb-glb-mn">
-        <h2><?php print t('Menu'); ?></h2>
+        <h2><?php print t('Search and menus'); ?></h2>
         <ul class="list-inline text-right chvrn">
           <li>
-            <a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button">
-              <span class="glyphicon glyphicon-th-list">
-                <span class="wb-inv"><? print t('Menu'); ?></span>
+            <a href="#mb-pnl" title="<?php print t('Search and menus'); ?>" aria-controls="mb-pnl" class="overlay-lnk" role="button">
+              <span class="glyphicon glyphicon-search">
+                <span class="glyphicon glyphicon-th-list">
+                  <span class="wb-inv"><? print t('Search and menus'); ?></span>
+                </span>
               </span>
             </a>
           </li>
@@ -120,7 +122,7 @@
   </div>
   <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
     <div class="pnl-strt container nvbar">
-      <h2><?php print t('Site menu'); ?></h2>
+      <h2><?php print t('Topics menu'); ?></h2>
       <div class="row">
         <?php print render($page['mega_menu']); ?>
       </div>
@@ -135,8 +137,10 @@
     </div>
   </nav>
 </header>
+<?php if (!$is_front): ?>
 <main role="main" class="container">
   <div class="row">
+<?php endif; ?>
     <section<?php print $content_column_class; ?>>
       <?php if (empty($panels_layout)): ?>
         <?php if (!empty($page['highlighted'])): ?>
@@ -167,12 +171,14 @@
       <?php endif; ?>
       <?php print render($page['content']); ?>
     </section>
+<?php if (!$is_front): ?>
   </div>
 </main>
+<?php endif; ?>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
   <div class="container">
     <nav role="navigation" class="row">
-    <h2>Site information</h2>
+    <h2><?php print t('About this site'); ?></h2>
     <?php print render($page['footer']); ?>
     </nav>
   </div>
