@@ -138,7 +138,7 @@
   </nav>
 </header>
 <?php if (!$is_front): ?>
-<main role="main" class="container">
+<main role="main" class="container mrgn-tp-md">
   <div class="row">
 <?php endif; ?>
     <section<?php print $content_column_class; ?>>

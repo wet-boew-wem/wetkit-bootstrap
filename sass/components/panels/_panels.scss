@@ -130,6 +130,10 @@ dl.page-manager-wizards dd {
   float: none;
 }
 
+#panels-dnd-main .panel-region .label {
+  border-style: none;
+}
+
 body form#page-manager-list-pages-form, body form#ctools-export-ui-list-form {
   margin: 1em 0;
 }

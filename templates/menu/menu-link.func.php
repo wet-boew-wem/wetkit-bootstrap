@@ -55,7 +55,6 @@ function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
       unset($element['#below']['#theme_wrappers']);
       $sub_menu = '<ul class="sm list-unstyled">' . drupal_render($element['#below']) . '</ul>';
       // Generate as standard dropdown.
-      $element['#title'] .= ' <span class="expicon glyphicon glyphicon-chevron-down"></span>';
       $element['#attributes']['class'][] = 'dropdown';
       $element['#localized_options']['html'] = TRUE;
 

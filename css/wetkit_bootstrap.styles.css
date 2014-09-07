@@ -15,11 +15,6 @@
 /* =============================================================================
    Panels
    ========================================================================== */
-/* =============================================================================
-   Panels
-   ========================================================================== */
-
-
 #page-manager-edit .page-manager-edit-operations li.active {
   border-right: none !important;
 }
@@ -70,10 +65,11 @@ div.dashboard-block {
 }
 
 dl.page-manager-wizards {
-  background: url('../images/list-item.png?1402419892') no-repeat scroll 0 0 transparent;
+  background: url("../images/list-item.png?1402419892") no-repeat scroll 0 0 transparent;
   margin: 0 0 1em;
   padding: 0 0 0 2.5em;
 }
+
 dl.page-manager-wizards dt {
   font-size: 1em;
   font-weight: 500;
@@ -90,31 +86,38 @@ dl.page-manager-wizards dd {
   background-color: transparent;
   border: 0px solid transparent;
 }
+
 #page-manager-edit .page-manager-edit-operations .inside {
   border: 0px solid transparent;
 }
+
 #page-manager-edit .page-manager-edit-operations li {
   background: transparent;
   border: 0px solid transparent;
 }
+
 #page-manager-edit .page-manager-edit-operations li.changed,
 #page-manager-edit .page-manager-edit-operations li.changed-group .page-manager-group-title {
   background-color: transparent;
   border: 0px solid transparent;
 }
+
 #page-manager-edit table tr.even {
   background-color: transparent;
   border: 0px solid transparent;
 }
+
 #page-manager-edit .page-manager-ajax-pad {
   background: transparent;
   border-left: 1px solid #ddd;
 }
+
 #page-manager-edit .actions li a {
   color: inherit;
   background-color: transparent;
   border: 0px solid transparent;
 }
+
 #page-manager-edit .page-manager-changed {
   float: left;
   /* LTR */
@@ -133,6 +136,7 @@ dl.page-manager-wizards dd {
 #ctools-export-ui-list-form input {
   display: inline-block;
 }
+
 #page-manager-list-pages-form .form-item,
 #ctools-export-ui-list-form .form-item {
   padding-right: .25em;
@@ -145,6 +149,10 @@ dl.page-manager-wizards dd {
 #ctools-export-ui-list-form .form-submit {
   margin-top: 0;
   float: none;
+}
+
+#panels-dnd-main .panel-region .label {
+  border-style: none;
 }
 
 body form#page-manager-list-pages-form, body form#ctools-export-ui-list-form {
@@ -182,4 +190,9 @@ p:last-child {
   border-bottom: 1px solid #eee;
   margin-top: .45em;
   padding-bottom: 5px;
+}
+
+.admin-views-view .views-table .checkbox input[type=checkbox] {
+  position: inherit;
+  margin-left: 0px;
 }
