@@ -159,6 +159,10 @@ body form#page-manager-list-pages-form, body form#ctools-export-ui-list-form {
   margin: 1em 0;
 }
 
+.pane-bean-blog-stay-connected ul {
+  list-style: none;
+}
+
 /* =============================================================================
    System
    ========================================================================== */
@@ -186,16 +190,48 @@ p:last-child {
   background-color: #FFF;
 }
 
-.wet-boew-gcweb #wb-cont {
-  border-bottom: 1px solid #eee;
-  margin-top: .45em;
-  padding-bottom: 5px;
-}
-
+.admin-views-view .views-field-views-bulk-operations .checkbox input[type=checkbox],
 .admin-views-view .views-table .checkbox input[type=checkbox] {
   position: inherit;
   margin-left: 0px;
 }
 .admin-views-view .form-item .input-group-addon {
   width: inherit;
+}
+
+.table .checkbox input[type=checkbox] {
+  position: inherit;
+  margin-left: 0px;
+}
+
+.home .blog .row h2 a, .home .blog .row h3 a, .home .blog .row h4 a {
+  font-size: 29px;
+}
+
+.form-autocomplete .glyphicon {
+  min-height: inherit;
+  min-width: inherit;
+}
+
+ul.action-links .glyphicon {
+  min-height: inherit;
+  min-width: inherit;
+}
+
+#edit-actions .glyphicon {
+  min-height: inherit;
+  min-width: inherit;
+}
+
+.wet-boew-gcweb .panel-primary > .panel-heading {
+  background-color: #335075;
+  border-color: #335075;
+}
+
+.wet-boew-gcweb .panel-primary > .panel-heading a:visited {
+  color: #FFF;
+}
+
+.wet-boew-gcweb .panel-primary {
+  border-color: #335075;
 }

@@ -104,7 +104,7 @@
             <a href="#mb-pnl" title="<?php print t('Search and menus'); ?>" aria-controls="mb-pnl" class="overlay-lnk" role="button">
               <span class="glyphicon glyphicon-search">
                 <span class="glyphicon glyphicon-th-list">
-                  <span class="wb-inv"><? print t('Search and menus'); ?></span>
+                  <span class="wb-inv"><?php print t('Search and menus'); ?></span>
                 </span>
               </span>
             </a>
@@ -137,7 +137,7 @@
     </div>
   </nav>
 </header>
-<div class="main-container container mrgn-tp-md">
+<div class="main-container container mrgn-tp-md mrgn-bttm-md">
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
       <p class="lead"><?php print $site_slogan; ?></p>

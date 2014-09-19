@@ -104,7 +104,7 @@
             <a href="#mb-pnl" title="<?php print t('Search and menus'); ?>" aria-controls="mb-pnl" class="overlay-lnk" role="button">
               <span class="glyphicon glyphicon-search">
                 <span class="glyphicon glyphicon-th-list">
-                  <span class="wb-inv"><? print t('Search and menus'); ?></span>
+                  <span class="wb-inv"><?php print t('Search and menus'); ?></span>
                 </span>
               </span>
             </a>
@@ -138,7 +138,7 @@
   </nav>
 </header>
 <?php if (!$is_front): ?>
-<main role="main" class="container mrgn-tp-md">
+<main role="main" class="container mrgn-tp-md mrgn-bttm-md">
   <div class="row">
 <?php endif; ?>
     <section<?php print $content_column_class; ?>>

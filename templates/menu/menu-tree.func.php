@@ -28,6 +28,13 @@ function wetkit_bootstrap_menu_tree__menu_block__sidebar(&$variables) {
 /**
  * Overrides theme_menu_tree().
  */
+function wetkit_bootstrap_menu_tree__menu_block__section(&$variables) {
+  return '<ul class="list-group menu list-unstyled" role="menubar">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Overrides theme_menu_tree().
+ */
 function wetkit_bootstrap_menu_tree__menu_block__mid_footer_menu(&$variables) {
   return $variables['tree'];
 }

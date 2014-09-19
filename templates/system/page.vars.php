@@ -105,11 +105,11 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $config = menu_block_get_config('main_menu');
     $data = menu_tree_build($config);
 
-    $data['content']['#cache'] = array(
+   /* $data['content']['#cache'] = array(
       'keys' => array('wetkit_mega_menu_region_content'),
       'expire' => CACHE_TEMPORARY,
       'granularity' => DRUPAL_CACHE_PER_PAGE, // unset this to cache globally
-    );
+    );*/
     $variables['page']['mega_menu'] = $data['content'];
   }
 
@@ -206,7 +206,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
       $variables['custom_search']['#attributes']['name'] = 'cse-search-box';
       $variables['custom_search']['actions']['submit']['#attributes']['name'] = 'wb-srch-sub';
       $variables['custom_search']['actions']['submit']['#value'] = '<span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span>';
-      $variables['custom_search']['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Drupal WxT');
+      $variables['custom_search']['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Canada.ca');
     }
 
     // Visibility settings.
