@@ -183,7 +183,7 @@
       <div class="row">
       <?php print render($page['footer']); ?>
       </div>
-      <?php print $menu_terms_bar; ?>
+      <?php print $page['menu_terms_bar']; ?>
     </nav>
   </div>
 </footer>
