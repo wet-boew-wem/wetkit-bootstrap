@@ -13,14 +13,21 @@
 }
 
 /* =============================================================================
+   Fields
+   ========================================================================== */
+.field-name-field-slide-link a {
+  font-weight: bold;
+}
+
+.field-name-field-application-screenshots ul {
+  display: inline-block;
+}
+
+/* =============================================================================
    Panels
    ========================================================================== */
 #page-manager-edit .page-manager-edit-operations li.active {
   border-right: none !important;
-}
-
-#page-manager-edit .page-manager-edit-operations li.active a {
-  background: #CCC !important;
 }
 
 .dashboard-content {
@@ -31,10 +38,6 @@
   font-weight: 300;
   font-size: 2em;
   margin-bottom: .5em;
-}
-
-.container #page-manager-edit .page-manager-edit-operations li.active-group .page-manager-group-title {
-  background: #CCC;
 }
 
 .dashboard-entry .dashboard-link {
@@ -228,10 +231,10 @@ ul.action-links .glyphicon {
   border-color: #335075;
 }
 
-.wet-boew-gcweb .panel-primary > .panel-heading a:visited {
+.wet-boew-gcweb .panel-primary a:visited {
   color: #FFF;
 }
 
-.wet-boew-gcweb .panel-primary {
-  border-color: #335075;
+.pane-block .alert-info .btn {
+  color: #FFF;
 }
