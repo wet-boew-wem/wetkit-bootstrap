@@ -26,6 +26,8 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   $wxt_active = str_replace('-', '_', $wxt_active);
   $wxt_active = str_replace('wet_boew_', '', $wxt_active);
 
+  $variables['library_path'] = $library_path;
+
   // Site Name.
   if (!empty($variables['site_name'])) {
     $variables['site_name_title'] = filter_xss(variable_get('site_name', 'Drupal'));
@@ -110,6 +112,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
       'expire' => CACHE_TEMPORARY,
       'granularity' => DRUPAL_CACHE_PER_PAGE, // unset this to cache globally
     );*/
+
     $variables['page']['mega_menu'] = $data['content'];
   }
 
@@ -251,11 +254,11 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $config = menu_block_get_config('mid_footer_menu');
     $data = menu_tree_build($config);
 
-    $data['content']['#cache'] = array(
+    /* data['content']['#cache'] = array(
       'keys' => array('wetkit_mid_footer_region_content'),
       'expire' => CACHE_TEMPORARY,
       'granularity' => DRUPAL_CACHE_PER_PAGE, // unset this to cache globally
-    );
+    );*/
 
     unset($variables['page']['footer']['system_powered-by']);
     $variables['page']['footer']['minipanel'] = $data['content'];

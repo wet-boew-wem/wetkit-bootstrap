@@ -11,7 +11,5 @@
   <h3><?php print $title; ?></h3>
 <?php endif; ?>
 <?php foreach ($rows as $id => $row): ?>
-  <section class="brdr-tp">
-      <?php print $row; ?>
-  </section>
+  <?php print $row; ?>
 <?php endforeach; ?>

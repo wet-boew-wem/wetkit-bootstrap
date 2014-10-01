@@ -83,7 +83,7 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
     $variables['classes_array'][] = 'wb-sppe';
     }
   }
-  if ($wxt_active == 'gcweb') {
+  if ($wxt_active == 'gcweb' && drupal_is_front_page()) {
     $variables['classes_array'][] = 'home';
   }
 }
