@@ -48,12 +48,14 @@ function wetkit_bootstrap_menu_link(array $variables) {
 function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
   $element = $variables['element'];
   $sub_menu = '';
+  $mb_mainlink = '<li class="slflnk">' . l($element['#title'] . ' - ' . t('More'), $element['#href'], $element['#localized_options']) . '</li>';
+  $depth = $element['#original_link']['depth'];
 
   if ($element['#below']) {
     if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
       // Add our own wrapper.
       unset($element['#below']['#theme_wrappers']);
-      $sub_menu = '<ul class="sm list-unstyled">' . drupal_render($element['#below']) . '</ul>';
+      $sub_menu = '<ul class="sm list-unstyled">' . drupal_render($element['#below']) . $mb_mainlink . '</ul>';
       // Generate as standard dropdown.
       $element['#attributes']['class'][] = 'dropdown';
       $element['#localized_options']['html'] = TRUE;
@@ -70,7 +72,7 @@ function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
   if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
     $element['#attributes']['class'][] = 'active';
   }
-  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  $output = (in_array($element['#href'], array('<nolink>')) ? $element['#title'] : l($element['#title'], $element['#href'], $element['#localized_options']));
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
@@ -78,6 +80,9 @@ function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
  * Overrides theme_menu_tree().
  */
 function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
+  global $counter;
+  global $needs_closing;
+
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -94,11 +99,20 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
   }
 
   if ($element['#original_link']['depth'] == 1) {
-    $output = '<h3>' . l($element['#title'], $element['#href'], $element['#localized_options']) . '</h3>';
-    return '<section class="col-sm-3">' . $output . $sub_menu . '</section>';
+    $counter = $counter + 1;
+    $output = '<h3>' . (in_array($element['#href'], array('<nolink>')) ? $element['#title'] : l($element['#title'], $element['#href'], $element['#localized_options'])) . '</h3>';
+    if ($counter < 3) {
+      return '<section class="col-sm-3">' . $output . $sub_menu . '</section>';
+    }
+    elseif ($counter % 2 != 0) {
+      return '<div class="col-sm-3 brdr-lft"><section>' . $output . $sub_menu . '</section>';
+    }
+    elseif ($counter % 2 == 0) {
+      return '<section>' . $output . $sub_menu . '</section></div>';
+    }
   }
   else {
-    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+    $output = (in_array($element['#href'], array('<nolink>')) ? $element['#title'] : l($element['#title'], $element['#href'], $element['#localized_options']));
     return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
   }
 }
