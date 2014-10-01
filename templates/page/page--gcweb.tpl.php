@@ -185,11 +185,32 @@
     </aside>  <!-- /#sidebar-second -->
   <?php endif; ?>
 </div>
+<?php if (!empty($page['featured'])): ?>
+  <aside class="features">
+    <div class="container">
+      <?php print render($page['featured']); ?>
+    </div>
+  </aside>
+<?php endif; ?>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
   <div class="container">
     <nav role="navigation" class="row">
     <h2><?php print t('About this site'); ?></h2>
     <?php print render($page['footer']); ?>
+    <div class="col-sm-3 col-lg-3 brdr-lft">
+      <section>
+        <h3><?php print t('Feedback'); ?></h3>
+        <p><a href="http://www.canada.ca/en/contact/feedback.html" class="gl-footer"><img src="<?php print $library_path; ?>/assets/feedback.png" class="img-responsive" alt="Feedback about this Web site"></a></p>
+      </section>
+      <section>
+        <h3><?php print t('Social Media'); ?></h3>
+        <p><a href="http://www.canada.ca/en/social/index.html" class="gl-footer"><img src="<?php print $library_path; ?>/assets/social.png" alt="Social media" class="img-responsive"></a></p>
+      </section>
+      <section>
+        <h3><?php print t('Mobile Centre'); ?></h3>
+        <p><a href="http://www.canada.ca/en/mobile/index.html" class="gl-footer"><img src="<?php print $library_path; ?>/assets/mobile.png" alt="Mobile centre" class="img-responsive"></a></p>
+      </section>
+    </div>
     </nav>
   </div>
   <div class="brand">
