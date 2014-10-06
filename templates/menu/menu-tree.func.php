@@ -35,6 +35,13 @@ function wetkit_bootstrap_menu_tree__menu_block__section(&$variables) {
 /**
  * Overrides theme_menu_tree().
  */
+function wetkit_bootstrap_menu_tree__shortcut_set_1($variables) {
+  return '<ul class="menu">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Overrides theme_menu_tree().
+ */
 function wetkit_bootstrap_menu_tree__menu_block__mid_footer_menu(&$variables) {
   return $variables['tree'];
 }
