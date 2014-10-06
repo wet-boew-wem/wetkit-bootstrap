@@ -22,7 +22,8 @@ function wetkit_bootstrap_preprocess_region(&$variables) {
 
   // Help region.
   elseif ($region === 'help' && !empty($variables['content'])) {
-    $variables['content'] = _bootstrap_icon('question-sign') . $variables['content'];
+    //$variables['content'] = _bootstrap_icon('question-sign') . $variables['content'];
+    $variables['content'] = str_replace('<span class="icon glyphicon glyphicon-question-sign" aria-hidden="true"></span>', '', $variables['content']);
     $classes[] = 'alert';
     $classes[] = 'alert-info';
     $classes[] = 'messages';
