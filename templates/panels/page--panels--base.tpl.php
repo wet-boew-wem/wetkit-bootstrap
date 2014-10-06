@@ -144,37 +144,33 @@
   </div>
 </header>
 <main role="main" class="container">
-    <div class="row">
-      <section<?php print $content_column_class; ?>>
-        <?php if (empty($panels_layout)): ?>
-          <?php if (!empty($page['highlighted'])): ?>
-            <?php print render($page['highlighted']); ?>
-          <?php endif; ?>
-          <a id="main-content"></a>
-          <?php print render($title_prefix); ?>
-          <?php if (!empty($title)): ?>
-            <h1 class="page-header"><?php print $title; ?></h1>
-          <?php endif; ?>
-          <?php print render($title_suffix); ?>
-          <?php if (!empty($tabs)): ?>
-            <?php print render($tabs); ?>
-          <?php endif; ?>
-          <?php if (!empty($page['help'])): ?>
-            <?php print render($page['help']); ?>
-          <?php endif; ?>
-          <?php if (!empty($action_links)): ?>
-            <ul class="action-links"><?php print render($action_links); ?></ul>
-          <?php endif; ?>
+  <div class="row">
+    <section<?php print $content_column_class; ?>>
+      <?php if (empty($panels_layout)): ?>
+        <?php if (!empty($page['highlighted'])): ?>
+          <?php print render($page['highlighted']); ?>
         <?php endif; ?>
-        <?php if (!empty($messages)): ?>
-          <div class="container">
-            <div class="row">
-              <?php print render($messages); ?>
-            </div>
-          </div>
+        <a id="main-content"></a>
+        <?php print render($title_prefix); ?>
+        <?php if (!empty($title)): ?>
+          <h1 class="page-header" id="wb-cont"><?php print $title; ?></h1>
         <?php endif; ?>
-        <?php print render($page['content']); ?>
-      </section>
+        <?php print render($title_suffix); ?>
+        <?php if (!empty($tabs)): ?>
+          <?php print render($tabs); ?>
+        <?php endif; ?>
+        <?php if (!empty($page['help'])): ?>
+          <?php print render($page['help']); ?>
+        <?php endif; ?>
+        <?php if (!empty($action_links)): ?>
+          <ul class="action-links"><?php print render($action_links); ?></ul>
+        <?php endif; ?>
+      <?php endif; ?>
+      <?php if (!empty($messages)): ?>
+        <?php print render($messages); ?>
+      <?php endif; ?>
+      <?php print render($page['content']); ?>
+    </section>
   </div>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
