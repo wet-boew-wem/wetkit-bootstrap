@@ -269,6 +269,7 @@ p:last-child {
 }
 .admin-views-view .form-item .input-group-addon {
   width: inherit;
+  padding-left: inherit;
 }
 
 .table .checkbox input[type=checkbox] {
@@ -276,7 +277,9 @@ p:last-child {
   margin-left: 0px;
 }
 
-.home .blog .row h2 a, .home .blog .row h3 a, .home .blog .row h4 a {
+.home .blog .row h2 a,
+.home .blog .row h3 a,
+.home .blog .row h4 a {
   font-size: 29px;
 }
 
@@ -288,11 +291,13 @@ p:last-child {
 ul.action-links .glyphicon {
   min-height: inherit;
   min-width: inherit;
+  padding-left: inherit;
 }
 
 #edit-actions .glyphicon {
   min-height: inherit;
   min-width: inherit;
+  padding-left: inherit;
 }
 
 .wet-boew-gcweb .panel-primary > .panel-heading {

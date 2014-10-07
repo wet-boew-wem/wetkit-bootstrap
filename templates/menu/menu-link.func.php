@@ -86,6 +86,12 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
   $element = $variables['element'];
   $sub_menu = '';
 
+  // WxT Settings.
+  $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
+  $library_path = libraries_get_path($wxt_active, TRUE);
+  $wxt_active = str_replace('-', '_', $wxt_active);
+  $wxt_active = str_replace('wet_boew_', '', $wxt_active);
+
   if ($element['#below']) {
     if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
       $sub_menu = '<ul class="list-unstyled">' . drupal_render($element['#below']) . '</ul>';
@@ -99,16 +105,22 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
   }
 
   if ($element['#original_link']['depth'] == 1) {
-    $counter = $counter + 1;
-    $output = '<h3>' . (in_array($element['#href'], array('<nolink>')) ? $element['#title'] : l($element['#title'], $element['#href'], $element['#localized_options'])) . '</h3>';
-    if ($counter < 3) {
+    if ($wxt_active == 'gcweb') {
+      $counter = $counter + 1;
+      $output = '<h3>' . (in_array($element['#href'], array('<nolink>')) ? $element['#title'] : l($element['#title'], $element['#href'], $element['#localized_options'])) . '</h3>';
+      if ($counter < 3) {
+        return '<section class="col-sm-3">' . $output . $sub_menu . '</section>';
+      }
+      elseif ($counter % 2 != 0) {
+        return '<div class="col-sm-3 brdr-lft"><section>' . $output . $sub_menu . '</section>';
+      }
+      elseif ($counter % 2 == 0) {
+        return '<section>' . $output . $sub_menu . '</section></div>';
+      }
+    }
+    else {
+      $output = '<h3>' . l($element['#title'], $element['#href'], $element['#localized_options']) . '</h3>';
       return '<section class="col-sm-3">' . $output . $sub_menu . '</section>';
-    }
-    elseif ($counter % 2 != 0) {
-      return '<div class="col-sm-3 brdr-lft"><section>' . $output . $sub_menu . '</section>';
-    }
-    elseif ($counter % 2 == 0) {
-      return '<section>' . $output . $sub_menu . '</section></div>';
     }
   }
   else {

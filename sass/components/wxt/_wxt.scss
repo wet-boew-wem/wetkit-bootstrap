@@ -16,6 +16,7 @@
   }
   .form-item .input-group-addon {
     width: inherit;
+    padding-left: inherit;
   }
 }
 
@@ -24,8 +25,10 @@
   margin-left: 0px;
 }
 
-.home .blog .row h2 a, .home .blog  .row h3 a, .home .blog  .row h4 a {
-font-size: 29px;
+.home .blog .row h2 a,
+.home .blog .row h3 a,
+.home .blog .row h4 a {
+  font-size: 29px;
 }
 
 .form-autocomplete .glyphicon {
@@ -36,11 +39,13 @@ font-size: 29px;
 ul.action-links .glyphicon {
   min-height: inherit;
   min-width: inherit;
+  padding-left: inherit;
 }
 
 #edit-actions .glyphicon {
   min-height: inherit;
   min-width: inherit;
+  padding-left: inherit;
 }
 
 .wet-boew-gcweb .panel-primary > .panel-heading {
