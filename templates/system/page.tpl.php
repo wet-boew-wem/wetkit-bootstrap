@@ -74,135 +74,131 @@
  */
 ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
-    <div id="wb-bnr">
-      <div id="wb-bar">
-        <div class="container">
-          <div class="row">
-            <section id="wb-lng" class="visible-md visible-lg">
-              <?php print $menu_bar; ?>
-            </section>
-            <section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
-              <h2>Menu</h2>
-              <ul class="pnl-btn list-inline text-right">
-                <li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
-              </ul>
-              <div id="mb-pnl"></div>
-            </section>
-          </div>
-        </div>
-      </div>
+  <div id="wb-bnr">
+    <div id="wb-bar">
       <div class="container">
         <div class="row">
-          <div id="wb-sttl" class="col-md-8">
-            <?php if ($site_name || $site_slogan || $logo): ?>
-              <a href="<?php print $site_name_url; ?>">
-                <?php if ($logo && $logo_svg): ?>
-                  <object id="header-logo" data='<?php print $logo_svg; ?>' role="img" tabindex="-1" type="image/svg+xml">
-                    <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $logo; ?>"  />
-                  </object>
-                <?php elseif ($logo): ?>
-                  <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $logo; ?>"  />
-                <?php endif; ?>
-                <span <?php print $logo_class; ?>>
-                  <?php if ($site_name): ?>
-                    <?php print $site_name; ?>
-                  <?php endif; ?>
-                  <?php if ($site_slogan): ?>
-                    <small><?php print $site_slogan; ?></small>
-                  <?php endif; ?>
-                </span>
-              </a>
-            <?php endif; ?>
-          </div>
-          <section id="wb-srch" class="col-md-4 visible-md visible-lg">
-            <h2><?php print t('Search'); ?></h2>
-            <?php if ($search_box): ?>
-              <?php print $search_box; ?>
-            <?php endif; ?>
+          <section id="wb-lng" class="visible-md visible-lg">
+            <?php print $menu_bar; ?>
+          </section>
+          <section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
+            <h2><?php print t('Search and menus'); ?></h2>
+            <ul class="pnl-btn list-inline text-right">
+              <li>
+                <a href="#mb-pnl" title="<?php print t('Search and menus'); ?>" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button">
+                  <span class="glyphicon glyphicon-search">
+                    <span class="glyphicon glyphicon-th-list">
+                      <span class="wb-inv"><?php print t('Search and menus'); ?></span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <div id="mb-pnl"></div>
           </section>
         </div>
       </div>
     </div>
-    <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
-      <div class="pnl-strt container visible-md visible-lg nvbar">
-        <h2><?php print t('Topics menu'); ?></h2>
-        <div class="row">
-          <?php print render($page['mega_menu']); ?>
-          <?php print render($secondary_nav); ?>
+    <div class="container">
+      <div class="row">
+        <div id="wb-sttl" class="col-md-8">
+          <?php if ($site_name || $site_slogan || $logo): ?>
+            <a href="<?php print $site_name_url; ?>">
+              <?php if ($logo && $logo_svg): ?>
+                <object id="header-logo" data='<?php print $logo_svg; ?>' role="img" tabindex="-1" type="image/svg+xml">
+                  <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $logo; ?>"  />
+                </object>
+              <?php elseif ($logo): ?>
+                <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $logo; ?>"  />
+              <?php endif; ?>
+              <span <?php print $logo_class; ?>>
+                <?php if ($site_name): ?>
+                  <?php print $site_name; ?>
+                <?php endif; ?>
+                <?php if ($site_slogan): ?>
+                  <small><?php print $site_slogan; ?></small>
+                <?php endif; ?>
+              </span>
+            </a>
+          <?php endif; ?>
         </div>
+        <section id="wb-srch" class="col-md-4 visible-md visible-lg">
+          <h2><?php print t('Search'); ?></h2>
+          <?php if ($search_box): ?>
+            <?php print $search_box; ?>
+          <?php endif; ?>
+        </section>
       </div>
-    </nav>
-    <?php print render($page['header']); ?>
-    <nav role="navigation" id="wb-bc" property="breadcrumb">
-      <div class="container">
-        <div class="row">
-          <?php print render($page['breadcrumb']); ?>
-        </div>
+    </div>
+  </div>
+  <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
+    <div class="pnl-strt container visible-md visible-lg nvbar">
+      <h2><?php print t('Topics menu'); ?></h2>
+      <div class="row">
+        <?php print render($page['mega_menu']); ?>
+        <?php print render($secondary_nav); ?>
       </div>
-    </nav>
-  </header>
-
+    </div>
+  </nav>
+  <?php print render($page['header']); ?>
+  <nav role="navigation" id="wb-bc" property="breadcrumb">
+    <div class="container">
+      <div class="row">
+        <?php print render($breadcrumb); ?>
+      </div>
+    </div>
+  </nav>
+</header>
 <div class="main-container container">
-
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
       <p class="lead"><?php print $site_slogan; ?></p>
     <?php endif; ?>
-
     <?php print render($page['header']); ?>
   </header> <!-- /#page-header -->
-
-
   <?php if (!empty($page['sidebar_first'])): ?>
     <aside class="col-sm-3" role="complementary">
       <?php print render($page['sidebar_first']); ?>
     </aside>  <!-- /#sidebar-first -->
   <?php endif; ?>
-
-        <section<?php print $content_column_class; ?>>
-        <?php if (empty($panels_layout)): ?>
-            <?php if (!empty($page['highlighted'])): ?>
-              <?php print render($page['highlighted']); ?>
-            <?php endif; ?>
-            <a id="main-content"></a>
-            <?php print render($title_prefix); ?>
-            <?php if (!empty($title)): ?>
-              <h1 class="page-header"><?php print $title; ?></h1>
-            <?php endif; ?>
-            <?php print render($title_suffix); ?>
-            <?php if (!empty($tabs)): ?>
-              <?php print render($tabs); ?>
-            <?php endif; ?>
-            <?php if (!empty($page['help'])): ?>
-              <?php print render($page['help']); ?>
-            <?php endif; ?>
-            <?php if (!empty($action_links)): ?>
-              <ul class="action-links"><?php print render($action_links); ?></ul>
-            <?php endif; ?>
+  <section<?php print $content_column_class; ?>>
+    <?php if (empty($panels_layout)): ?>
+        <?php if (!empty($page['highlighted'])): ?>
+          <?php print render($page['highlighted']); ?>
         <?php endif; ?>
-        <?php if (!empty($messages)): ?>
-          <div class="container">
-            <div class="row">
-              <?php print render($messages); ?>
-            </div>
-          </div>
+        <a id="main-content"></a>
+        <?php print render($title_prefix); ?>
+        <?php if (!empty($title)): ?>
+          <h1 class="page-header" id="wb-cont"><?php print $title; ?></h1>
         <?php endif; ?>
-        <?php print render($page['content']); ?>
-        </section>
-
-    <?php if (!empty($page['sidebar_second'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_second']); ?>
-      </aside>  <!-- /#sidebar-second -->
-     <?php endif; ?>
-
+        <?php print render($title_suffix); ?>
+        <?php if (!empty($tabs)): ?>
+          <?php print render($tabs); ?>
+        <?php endif; ?>
+        <?php if (!empty($page['help'])): ?>
+          <?php print render($page['help']); ?>
+        <?php endif; ?>
+        <?php if (!empty($action_links)): ?>
+          <ul class="action-links"><?php print render($action_links); ?></ul>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php if (!empty($messages)): ?>
+      <?php print render($messages); ?>
+    <?php endif; ?>
+    <?php print render($page['content']); ?>
+  </section>
+  <?php if (!empty($page['sidebar_second'])): ?>
+    <aside class="col-sm-3" role="complementary">
+      <?php print render($page['sidebar_second']); ?>
+    </aside>  <!-- /#sidebar-second -->
+  <?php endif; ?>
 </div>
-
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
-    <div class="container">
-      <nav role="navigation" class="row">
-      <h2><?php print t('About this site'); ?></h2>
-      <?php print render($page['footer']); ?>
-      </nav>
-    </div>
+  <div class="container">
+    <nav role="navigation" class="row">
+    <h2><?php print t('About this site'); ?></h2>
+    <?php print render($page['footer']); ?>
+    </nav>
+  </div>
 </footer>
+
