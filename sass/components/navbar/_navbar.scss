@@ -2,10 +2,17 @@
    Navbar
    ========================================================================== */
 
-#navbar-administration .navbar-tray-horizontal .navbar-menu-add-content li {
-  border-left: 1px solid #DDD;
+#navbar-administration {
+  .navbar-tray-horizontal {
+    .navbar-menu-add-bean,
+    .navbar-menu-add-content {
+      li {
+        border-left: 1px solid #DDD;
+      }
+    }
+  }
 }
 
-#navbar-administration .navbar-tray-horizontal .navbar-menu-add-bean li {
-  border-left: 1px solid #DDD;
+body.navbar-tray-open.navbar-fixed.navbar-vertical #navbar-administration.navbar-oriented {
+  width: 0px;
 }
