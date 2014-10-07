@@ -16,7 +16,6 @@
   }
   .form-item .input-group-addon {
     width: inherit;
-    padding-left: inherit;
   }
 }
 
@@ -34,18 +33,25 @@
 .form-autocomplete .glyphicon {
   min-height: inherit;
   min-width: inherit;
+  padding-left: initial;
 }
 
 ul.action-links .glyphicon {
   min-height: inherit;
   min-width: inherit;
-  padding-left: inherit;
+  padding-left: initial;
 }
 
 #edit-actions .glyphicon {
   min-height: inherit;
   min-width: inherit;
-  padding-left: inherit;
+  padding-left: initial;
+}
+
+.btn {
+  .icon {
+    padding-left: initial;
+  }
 }
 
 .wet-boew-gcweb .panel-primary > .panel-heading {
