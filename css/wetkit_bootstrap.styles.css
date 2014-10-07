@@ -92,6 +92,10 @@ td.ctools-export-ui-operations .ctools-dropbutton {
   border-left: 1px solid #DDD;
 }
 
+#navbar-administration .navbar-tray-horizontal .navbar-menu-add-bean li {
+  border-left: 1px solid #DDD;
+}
+
 /* =============================================================================
    Panels
    ========================================================================== */
