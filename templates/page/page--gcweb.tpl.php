@@ -122,7 +122,7 @@
   </div>
   <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
     <div class="pnl-strt container nvbar">
-      <h2><?php print t('Topics menu'); ?></h2>
+      <h2 clas="wb-inv"><?php print t('Topics menu'); ?></h2>
       <div class="row">
         <?php print render($page['mega_menu']); ?>
       </div>
