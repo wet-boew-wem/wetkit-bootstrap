@@ -213,7 +213,7 @@
     <div class="container">
       <div class="row ">
         <div class="col-xs-6 visible-sm visible-xs tofpg">
-          <a href="#wb-cont"><?php print t('Top of Page'); ?> <span class="glyphicon glyphicon-chevron-up"></span></a>
+          <a href="#wb-cont"><?php print t('Top of Page'); ?><span class="glyphicon glyphicon-chevron-up"></span></a>
         </div>
         <div class="col-xs-6 col-md-12 text-right">
           <?php if ($logo && $logo_bottom_svg): ?>
