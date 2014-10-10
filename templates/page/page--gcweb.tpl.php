@@ -196,15 +196,15 @@
     <div class="col-sm-3 col-lg-3 brdr-lft">
       <section>
         <h3><?php print t('Feedback'); ?></h3>
-        <p><a href="http://www.canada.ca/en/contact/feedback.html" class="gl-footer"><img src="<?php print $library_path; ?>/assets/feedback.png" class="img-responsive" alt="Feedback about this Web site"></a></p>
+        <p><a href="http://www.canada.ca/en/contact/feedback.html" class="gl-footer"><img src="<?php print $library_path; ?>/assets/feedback.png" class="img-responsive" alt="<?php print t('Feedback about this Web site'); ?>"></a></p>
       </section>
       <section>
         <h3><?php print t('Social Media'); ?></h3>
-        <p><a href="http://www.canada.ca/en/social/index.html" class="gl-footer"><img src="<?php print $library_path; ?>/assets/social.png" alt="Social media" class="img-responsive"></a></p>
+        <p><a href="http://www.canada.ca/en/social/index.html" class="gl-footer"><img src="<?php print $library_path; ?>/assets/social.png" alt="<?php print t('Social Media'); ?>" class="img-responsive"></a></p>
       </section>
       <section>
         <h3><?php print t('Mobile Centre'); ?></h3>
-        <p><a href="http://www.canada.ca/en/mobile/index.html" class="gl-footer"><img src="<?php print $library_path; ?>/assets/mobile.png" alt="Mobile centre" class="img-responsive"></a></p>
+        <p><a href="http://www.canada.ca/en/mobile/index.html" class="gl-footer"><img src="<?php print $library_path; ?>/assets/mobile.png" alt="<?php print t('Mobile centre'); ?>" class="img-responsive"></a></p>
       </section>
     </div>
     </nav>
@@ -213,7 +213,7 @@
     <div class="container">
       <div class="row ">
         <div class="col-xs-6 visible-sm visible-xs tofpg">
-          <a href="#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a>
+          <a href="#wb-cont"><?php print t('Top of Page'); ?> <span class="glyphicon glyphicon-chevron-up"></span></a>
         </div>
         <div class="col-xs-6 col-md-12 text-right">
           <?php if ($logo && $logo_bottom_svg): ?>
