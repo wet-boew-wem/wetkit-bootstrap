@@ -47,7 +47,7 @@
 
   <div class="row margin-top-large">
     <p class="col-md-12 text-right learnmore">
-      <a href="http://www.canada.ca/en/services/index.html" class="btn btn-lg btn-primary">All services</a>
+      <a href="http://www.canada.ca/en/services/index.html" class="btn btn-lg btn-primary"><?php print t('All services'); ?></a>
     </p>
   </div>
 
