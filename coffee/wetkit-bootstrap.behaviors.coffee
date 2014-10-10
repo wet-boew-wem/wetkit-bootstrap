@@ -56,4 +56,19 @@
       # The anchor is then appended to the current element.
       $anchor.appendTo this
 
+
+  ###
+  Fix for youtube z-index issue.
+  ###
+
+  Drupal.behaviors.wetkitBootstrapYoutubeBehavior = attach: (context, settings) ->
+    $(document).ready ->
+        $("iframe").each ->
+          url = $(this).attr("src")
+          char = "?"
+          char = "&"  unless url.indexOf("?") is -1
+          $(this).attr "src", url + char + "wmode=transparent"
+          return
+        return
+
 ) jQuery

@@ -6,7 +6,7 @@
   know from 'phptemplate' (the default PHP templating engine used by most
   Drupal themes including Omega). JavaScript theme functions accept arguments
   and can be overriden by sub-themes.
-  
+
   In most cases, there is no good reason to NOT wrap your markup producing
   JavaScript in a theme function.
   */
@@ -21,14 +21,14 @@
   Opposed to the 'document.ready()' event which is only fired once when the
   page is initially loaded, behaviors get re-executed whenever something is
   added to the page through Ajax.
-  
+
   You can attach as many behaviors as you wish. In fact, instead of overloading
   a single behavior with multiple, completely unrelated tasks you should create
   a separate behavior for every separate task.
-  
+
   In most cases, there is no good reason to NOT wrap your JavaScript code in a
   behavior.
-  
+
   @param context
   The context for which the behavior is being executed. This is either the
   full page or a piece of HTML that was just added through Ajax.
@@ -44,6 +44,25 @@
         var $anchor;
         $anchor = Drupal.theme("wetkitBootstrapExampleButton", settings.myExampleLinkPath, settings.myExampleLinkTitle);
         return $anchor.appendTo(this);
+      });
+    }
+  };
+
+  /*
+  Fix for youtube z-index issue.
+   */
+  return Drupal.behaviors.wetkitBootstrapYoutubeBehavior = {
+    attach: function(context, settings) {
+      return $(document).ready(function() {
+        $("iframe").each(function() {
+          var char, url;
+          url = $(this).attr("src");
+          char = "?";
+          if (url.indexOf("?") !== -1) {
+            char = "&";
+          }
+          $(this).attr("src", url + char + "wmode=transparent");
+        });
       });
     }
   };
