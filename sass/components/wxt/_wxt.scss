@@ -54,6 +54,15 @@ ul.action-links .glyphicon {
   }
 }
 
+#slide-panel {
+  .btn {
+    .icon {
+      min-height: inherit;
+      min-width: inherit;
+    }
+  }
+}
+
 .wet-boew-gcweb .panel-primary > .panel-heading {
   background-color: #335075;
   border-color: #335075;

@@ -104,6 +104,7 @@
         <div id="wb-sttl" class="col-md-8">
           <?php if ($site_name || $site_slogan || $logo): ?>
             <a href="<?php print $site_name_url; ?>">
+              <img id="ogpl-logo" src="<?php print $library_path; ?>/assets/logo.png" alt="Open Government Platform (OGPL)">
               <span <?php print $logo_class; ?>>
                 <?php if ($site_name): ?>
                   <?php print $site_name; ?>
@@ -166,7 +167,9 @@
         <?php endif; ?>
       <?php endif; ?>
       <?php if (!empty($messages)): ?>
+      <div class="col-md-12">
         <?php print render($messages); ?>
+      </div>
       <?php endif; ?>
       <?php print render($page['content']); ?>
     </section>

@@ -177,7 +177,9 @@
       <?php endif; ?>
     <?php endif; ?>
     <?php if (!empty($messages)): ?>
-      <?php print render($messages); ?>
+      <div class="col-md-12">
+        <?php print render($messages); ?>
+      </div>
     <?php endif; ?>
     <?php print render($page['content']); ?>
   </section>
