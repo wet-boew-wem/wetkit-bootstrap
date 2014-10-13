@@ -26,7 +26,9 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   $wxt_active = str_replace('-', '_', $wxt_active);
   $wxt_active = str_replace('wet_boew_', '', $wxt_active);
 
+  // Extra variables to pass to templates.
   $variables['library_path'] = $library_path;
+  $variables['language'] = $language->language;
 
   // Site Name.
   if (!empty($variables['site_name'])) {
@@ -276,6 +278,24 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     'heading' => array(),
   ));
   $variables['page']['menu_footer_bar'] = $footer_bar_markup;
+
+  // Footer Navigation (gcweb).
+  if ($wxt_active == 'gcweb') {
+    $variables['gcweb'] = array(
+      'feedback' => array(
+        'en' => 'http://www.canada.ca/en/contact/feedback.html',
+        'fr' => 'http://www.canada.ca/fr/contact/retroaction.html',
+      ),
+      'social' => array(
+        'en' => 'http://www.canada.ca/en/social/index.html',
+        'fr' => 'http://www.canada.ca/fr/sociaux/index.html',
+      ),
+      'mobile' => array(
+        'en' => 'http://www.canada.ca/en/mobile/index.html',
+        'fr' => 'http://www.canada.ca/fr/mobile/index.html',
+      ),
+    );
+  }
 }
 
 /**
