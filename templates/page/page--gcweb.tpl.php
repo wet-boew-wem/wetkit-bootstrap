@@ -182,10 +182,8 @@
   <?php endif; ?>
 </div>
 <?php if (!empty($page['featured'])): ?>
-  <aside class="features">
-    <div class="container">
-      <?php print render($page['featured']); ?>
-    </div>
+  <aside class="gc-nttvs container">
+    <?php print render($page['featured']); ?>
   </aside>
 <?php endif; ?>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">

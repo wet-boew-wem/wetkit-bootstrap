@@ -28,11 +28,7 @@
  */
 ?>
 <?php print render($title_prefix); ?>
-  <div class="row">
-    <div class="col-md-12">
-      <h2><?php print t('Features'); ?></h2>
-    </div>
-  </div>
+<h2><?php print t('Features'); ?></h2>
 <?php if ($header): ?>
   <div class="view-header">
     <?php print $header; ?>
