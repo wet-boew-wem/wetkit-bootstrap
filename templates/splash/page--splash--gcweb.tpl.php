@@ -88,11 +88,11 @@
       <div class="row">
         <section class="col-xs-6 text-right">
           <h2 class="wb-inv"><?php print t('Government of Canada'); ?></h2>
-          <p><a href="/eng" class="btn btn-primary"><?php print t('English'); ?></a></p>
+          <p><a href="<?php print '/' . $language_prefix; ?>" class="btn btn-primary"><?php print t('English'); ?></a></p>
         </section>
         <section class="col-xs-6" lang="fr">
           <h2 class="wb-inv"><?php print t('Gouvernment du Canada'); ?></h2>
-          <p><a href="/fra" class="btn btn-primary"><?php print t('Francais'); ?></a></p>
+          <p><a href="<?php print '/' . $language_prefix_alt; ?>" class="btn btn-primary"><?php print t('Francais'); ?></a></p>
         </section>
       </div>
     </div>

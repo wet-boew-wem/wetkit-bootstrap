@@ -89,12 +89,12 @@
     <div class="col-md-12">
       <section class="col-md-6">
         <h2 class="h3 text-center"><?php print t('Web Experience Toolkit'); ?></h2>
-        <a class="btn btn-lg btn-primary btn-block" href="/en">English</a>
+        <a class="btn btn-lg btn-primary btn-block" href="<?php print '/' . $language_prefix; ?>">English</a>
         <a class="btn btn-lg btn-default btn-block" href="../../License-en.html" rel="license"><?php print t('Terms and conditions of use'); ?></a>
       </section>
       <section class="col-md-6" lang="fr">
         <h2 class="h3 text-center"><?php print t('Boîte à outils de l’expérience Web'); ?></h2>
-        <a class="btn btn-lg btn-primary btn-block" href="/fr"><?php print t('Français'); ?></a>
+        <a class="btn btn-lg btn-primary btn-block" href="<?php print '/' . $language_prefix_alt; ?>"><?php print t('Français'); ?></a>
         <a class="btn btn-lg btn-default btn-block" href="../../Licence-fr.html" rel="license"><?php print t('Conditions régissant l\'utilisation'); ?></a>
       </section>
     </div>

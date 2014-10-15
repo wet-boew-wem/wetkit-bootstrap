@@ -29,6 +29,8 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   // Extra variables to pass to templates.
   $variables['library_path'] = $library_path;
   $variables['language'] = $language->language;
+  $variables['language_prefix'] = $language->prefix;
+  $variables['language_prefix_alt'] = ($language->prefix == 'en') ? 'fr' : 'fra';
 
   // Site Name.
   if (!empty($variables['site_name'])) {
