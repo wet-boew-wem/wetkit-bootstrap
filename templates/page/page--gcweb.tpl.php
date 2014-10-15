@@ -137,7 +137,7 @@
     </div>
   </nav>
 </header>
-<div class="main-container container mrgn-tp-md mrgn-bttm-md">
+<div class="main-container container">
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
       <p class="lead"><?php print $site_slogan; ?></p>
