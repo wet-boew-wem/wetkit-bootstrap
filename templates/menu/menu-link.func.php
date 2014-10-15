@@ -108,11 +108,14 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
     if ($wxt_active == 'gcweb') {
       $counter = $counter + 1;
       $output = '<h3>' . (in_array($element['#href'], array('<nolink>')) ? $element['#title'] : l($element['#title'], $element['#href'], $element['#localized_options'])) . '</h3>';
-      if ($counter < 3) {
+      if ($counter == 3) {
         return '<section class="col-sm-3">' . $output . $sub_menu . '</section>';
       }
+      elseif ($counter >= 4) {
+        return '<section class="col-sm-3 brdr-lft">' . $output . $sub_menu . '</section>';
+      }
       elseif ($counter % 2 != 0) {
-        return '<div class="col-sm-3 brdr-lft"><section>' . $output . $sub_menu . '</section>';
+        return '<div class="col-sm-3"><section>' . $output . $sub_menu . '</section>';
       }
       elseif ($counter % 2 == 0) {
         return '<section>' . $output . $sub_menu . '</section></div>';
