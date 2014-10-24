@@ -89,10 +89,10 @@
             <a href="<?php print 'http://www.canada.ca/' . $language; ?>">
             <?php if ($logo && $logo_svg): ?>
               <object id="header-logo" data='<?php print $logo_svg; ?>' role="img" tabindex="-1" type="image/svg+xml">
-                <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $logo; ?>"  />
+                <img alt="<?php print t('Government of Canada'); ?>" src="<?php print $logo; ?>"  />
               </object>
             <?php elseif ($logo): ?>
-              <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $logo; ?>"  />
+              <img alt="<?php print t('Government of Canada'); ?>" src="<?php print $logo; ?>"  />
             <?php endif; ?>
           </a>
         <?php endif; ?>
