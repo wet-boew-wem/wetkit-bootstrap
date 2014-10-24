@@ -86,7 +86,7 @@
     <div class="row">
       <div class="brand col-xs-9 col-md-6">
           <?php if ($site_name || $site_slogan || $logo): ?>
-            <a href="<?php print $site_name_url; ?>">
+            <a href="<?php print 'http://www.canada.ca/' . $language; ?>">
             <?php if ($logo && $logo_svg): ?>
               <object id="header-logo" data='<?php print $logo_svg; ?>' role="img" tabindex="-1" type="image/svg+xml">
                 <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $logo; ?>"  />
