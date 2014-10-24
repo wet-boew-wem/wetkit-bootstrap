@@ -92,7 +92,7 @@
         </section>
         <section class="col-xs-6" lang="fr">
           <h2 class="wb-inv"><?php print t('Gouvernment du Canada'); ?></h2>
-          <p><a href="<?php print '/' . $language_prefix_alt; ?>" class="btn btn-primary"><?php print t('Francais'); ?></a></p>
+          <p><a href="<?php print '/' . $language_prefix_alt; ?>" class="btn btn-primary"><?php print t('Français'); ?></a></p>
         </section>
       </div>
     </div>
