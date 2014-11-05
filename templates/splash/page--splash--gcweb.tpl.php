@@ -79,7 +79,7 @@
 <main role="main">
   <div class="sp-hb">
     <div class="sp-bx col-xs-12">
-      <h1 property="name" class="wb-inv"><?php print t('Drupal WxT'); ?></h1>
+      <h1 property="name" class="wb-inv"><?php print t('Open Canada'); ?></h1>
       <div class="row">
         <div class="col-xs-11 col-md-8">
           <object type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcweb/assets/sig-spl.svg" aria-label="<?php print t('Government of Canada / Gouvernement du Canada'); ?>"></object>

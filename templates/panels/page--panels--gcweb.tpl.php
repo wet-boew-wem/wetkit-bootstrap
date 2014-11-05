@@ -84,7 +84,7 @@
       </div>
     </section>
     <div class="row">
-      <div class="brand col-xs-9 col-md-6">
+      <div class="brand col-xs-8 col-sm-9 col-md-6">
           <?php if ($site_name || $site_slogan || $logo): ?>
             <a href="<?php print $site_name_url; ?>">
             <?php if ($logo && $logo_svg): ?>
@@ -97,7 +97,7 @@
           </a>
         <?php endif; ?>
       </div>
-      <section class="wb-mb-links col-xs-3 visible-sm visible-xs" id="wb-glb-mn">
+      <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
         <h2><?php print t('Search and menus'); ?></h2>
         <ul class="list-inline text-right chvrn">
           <li>
@@ -138,7 +138,7 @@
   </nav>
 </header>
 <?php if (!$is_front): ?>
-<main role="main" class="container">
+<main role="main" class="container mrgn-tp-lg">
   <div class="row">
 <?php endif; ?>
     <section<?php print $content_column_class; ?>>
