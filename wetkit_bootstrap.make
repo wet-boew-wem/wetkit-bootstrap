@@ -8,3 +8,4 @@ api = 2
 projects[bootstrap][version] = 3.1-beta2
 projects[bootstrap][type] = theme
 projects[bootstrap][patch][2311463] = http://drupal.org/files/issues/patch_bootstrap_wetkit-2311463-05.patch
+projects[bootstrap][patch][2369235] = http://drupal.org/files/issues/bootstrap_password_policy-2369235-01.patch
