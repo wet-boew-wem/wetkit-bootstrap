@@ -260,6 +260,10 @@ p:last-child {
   margin-top: 1.5em;
 }
 
+ul.pagination > li > a.progress-disabled {
+  float: left;
+}
+
 /* =============================================================================
    WxT
    ========================================================================== */
@@ -319,7 +323,7 @@ ul.action-links .glyphicon {
   border-color: #335075;
 }
 
-.wet-boew-gcweb .panel-primary .panel-title a:visited {
+.wet-boew-gcweb .panel-primary a:visited {
   color: #FFF;
 }
 
@@ -330,4 +334,41 @@ ul.action-links .glyphicon {
 .wet-boew-gcweb .page-header {
   border-bottom: 1px solid #af3c43;
   margin-top: 0.5em;
+}
+
+.wb-srch-multi {
+  padding-top: 1em;
+}
+
+.wb-srch-multi button, .wb-srch-multi input {
+  border-radius: 0;
+}
+
+.wb-srch-multi button {
+  background-color: #335075;
+  border: 0;
+  border-color: #335075;
+  font-size: 17px;
+}
+
+.wb-srch-multi button:active, .wb-srch-multi button:focus, .wb-srch-multi button:hover {
+  background: #243850;
+}
+
+.wb-srch-multi .glyphicon {
+  top: auto;
+  vertical-align: middle;
+}
+
+.wb-srch-multi input {
+  background-color: #e0e0e0;
+  border-color: #e0e0e0;
+  border-right: 0;
+  border-style: solid;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #555;
+  margin-right: -4px;
+  min-width: 246px;
+  position: relative;
 }
