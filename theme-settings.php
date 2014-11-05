@@ -124,4 +124,10 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
     '#default_value' => theme_get_setting('wetkit_search_box'),
     '#description' => t("Specify pages to exclude by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are blog for the blog page and blog/* for every personal blog. <front> is the front page."),
   );
+  $form['wetkit_search']['canada_search'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Toggle Canada.ca Search'),
+    '#default_value' => theme_get_setting('canada_search'),
+    '#description' => t('If checked the GCWeb theme will use the Canada.ca search'),
+  );
 }

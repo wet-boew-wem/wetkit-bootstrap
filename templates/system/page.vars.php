@@ -178,7 +178,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   $nav_bar_markup = strip_tags($nav_bar_markup, '<h2><li><a>');
 
   if (module_exists('wetkit_language')) {
-    $language_link_markup = '<li class="curr" id="' . $theme_menu_prefix . '-lang">' . strip_tags($variables['menu_lang_bar'], '<a><span>') . '</li>';
+    $language_link_markup = '<li id="' . $theme_menu_prefix . '-lang">' . strip_tags($variables['menu_lang_bar'], '<a><span>') . '</li>';
     if ($wxt_active == 'gcweb') {
       $variables['menu_bar'] = '<ul class="list-inline margin-bottom-none">' . $language_link_markup . '</ul>';
     }
@@ -210,10 +210,54 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $variables['custom_search']['actions']['#theme_wrappers'] = NULL;
 
     if ($wxt_active == 'gcweb') {
+
       $variables['custom_search']['#attributes']['name'] = 'cse-search-box';
       $variables['custom_search']['actions']['submit']['#attributes']['name'] = 'wb-srch-sub';
       $variables['custom_search']['actions']['submit']['#value'] = '<span class="glyphicon-search glyphicon"></span><span class="wb-inv">' . t('Search') . '</span>';
       $variables['custom_search']['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Canada.ca');
+
+      $cdn_srch = theme_get_setting('canada_search');
+      if (isset($cdn_srch)) {
+        $variables['custom_search']['custom_search_blocks_form_1']['#name'] = 'q';
+        $variables['custom_search']['#action'] = 'http://recherche-search.gc.ca/rGs/s_r?#wb-land';
+        $variables['custom_search']['#method'] = 'get';
+        $variables['custom_search']['cdn'] = array(
+          '#name' => 'cdn',
+          '#value' => 'canada',
+          '#type' => 'hidden',
+          '#input' => 'TRUE',
+        );
+        $variables['custom_search']['st'] = array(
+          '#name' => 'st',
+          '#value' => 's',
+          '#type' => 'hidden',
+          '#input' => 'TRUE',
+        );
+        $variables['custom_search']['num'] = array(
+          '#name' => 'num',
+          '#value' => '10',
+          '#type' => 'hidden',
+          '#input' => 'TRUE',
+        );
+        $variables['custom_search']['langs'] = array(
+          '#name' => 'langs',
+          '#value' => 'eng',
+          '#type' => 'hidden',
+          '#input' => 'TRUE',
+        );
+        $variables['custom_search']['st1rt'] = array(
+          '#name' => 'st1rt',
+          '#value' => '0',
+          '#type' => 'hidden',
+          '#input' => 'TRUE',
+        );
+        $variables['custom_search']['s5bm3ts21rch'] = array(
+          '#name' => 's5bm3ts21rch',
+          '#value' => 'x',
+          '#type' => 'hidden',
+          '#input' => 'TRUE',
+        );
+      }
     }
 
     // Visibility settings.
