@@ -211,7 +211,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
     if ($wxt_active == 'gcweb') {
 
-      $variables['custom_search']['#attributes']['name'] = 'cse-search-box';
+      $variables['custom_search']['#attributes']['name'] = 'search-form';
       $variables['custom_search']['actions']['submit']['#attributes']['name'] = 'wb-srch-sub';
       $variables['custom_search']['actions']['submit']['#value'] = '<span class="glyphicon-search glyphicon"></span><span class="wb-inv">' . t('Search') . '</span>';
       $variables['custom_search']['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Canada.ca');
