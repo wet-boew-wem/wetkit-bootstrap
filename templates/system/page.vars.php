@@ -189,11 +189,11 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
       $variables['menu_bar'] = '<ul id="gc-bar" class="list-inline">' . $language_link_markup . '</ul>';
     }
     else {
-      $variables['menu_bar'] = '<ul class="text-right">' . $nav_bar_markup . $language_link_markup . '</ul>';
+      $variables['menu_bar'] = '<ul class="text-right">' . preg_replace("/<h([1-6]{1})>.*?<\/h\\1>/si", '', $nav_bar_markup) . $language_link_markup . '</ul>';
     }
   }
   else {
-    $variables['menu_bar'] = '<ul class="text-right">' . $nav_bar_markup . '</ul>';
+    $variables['menu_bar'] = '<ul class="text-right">' . preg_replace("/<h([1-6]{1})>.*?<\/h\\1>/si", '', $nav_bar_markup) . '</ul>';
   }
 
   // Custom Search Box.
