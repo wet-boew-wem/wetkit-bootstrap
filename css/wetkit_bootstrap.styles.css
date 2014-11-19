@@ -368,3 +368,7 @@ ul.action-links .glyphicon {
   min-width: 246px;
   position: relative;
 }
+
+.item-list .pagination > li:first-child > span {
+  padding: 10px 16px;
+}
