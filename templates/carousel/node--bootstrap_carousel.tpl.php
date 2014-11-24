@@ -34,7 +34,7 @@
         <ul role="tablist">
         <?php foreach ($carousel_items as $id => $carousel_slide) : ?>
           <li class="<?php ($id == '0') ? print 'active' : print ''; ?>">
-            <a href="#panel<?php print $id; ?>">
+            <a href="#panel<?php print $id; ?>" title="panel<?php print $id; ?>">
               <?php if(!empty($carousel_slide['carousel_image'])) : ?>
                 <?php $img_url = file_create_url(file_load($carousel_slide['carousel_image'])->uri); ?>
                 <img src="<?php print $img_url ?>" alt="<?php print $carousel_slide['image_alt_text'];?>"/>
