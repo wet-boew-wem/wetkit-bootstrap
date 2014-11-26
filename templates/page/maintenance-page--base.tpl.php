@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-base/css/theme.min.css"> <!--[if lt IE 9]>
 <link href="/profiles/wetkit/libraries/wet-boew-base/assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-base/css/ie8-wet-boew.min.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/profiles/wetkit/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js"></script>
 <script src="/profiles/wetkit/libraries/wet-boew-base/js/ie8-wet-boew.min.js"></script>
 <![endif]-->
 <noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-base/css/noscript.min.css" /></noscript>
