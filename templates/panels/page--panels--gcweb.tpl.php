@@ -184,15 +184,15 @@
     <div class="col-sm-3 col-lg-3 brdr-lft">
       <section>
         <h3><?php print t('Feedback'); ?></h3>
-        <p><a href="<?php print $gcweb['feedback'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/feedback.png" class="img-responsive" alt="<?php print t('Feedback about this Web site'); ?>"></a></p>
+        <p><a href="<?php print $gcweb['feedback'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/feedback.png" alt="<?php print t('Feedback about this Web site'); ?>"></a></p>
       </section>
       <section>
         <h3><?php print t('Social Media'); ?></h3>
-        <p><a href="<?php print $gcweb['social'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/social.png" alt="<?php print t('Social Media'); ?>" class="img-responsive"></a></p>
+        <p><a href="<?php print $gcweb['social'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/social.png" alt="<?php print t('Social Media'); ?>"></a></p>
       </section>
       <section>
         <h3><?php print t('Mobile Centre'); ?></h3>
-        <p><a href="<?php print $gcweb['mobile'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/mobile.png" alt="<?php print t('Mobile centre'); ?>" class="img-responsive"></a></p>
+        <p><a href="<?php print $gcweb['mobile'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/mobile.png" alt="<?php print t('Mobile centre'); ?>"></a></p>
       </section>
     </div>
     </nav>

@@ -36,8 +36,8 @@
 }
 
 .form-actions .btn .icon {
-  min-height: initial;
-  min-width: initial;
+  min-height: inherit;
+  min-width: inherit;
 }
 
 table.sticky-header {
@@ -240,6 +240,10 @@ body form#page-manager-list-pages-form, body form#ctools-export-ui-list-form {
   list-style: none;
 }
 
+.panels-layouts-checkboxes .radio + .radio {
+  margin-top: 10px;
+}
+
 /* =============================================================================
    System
    ========================================================================== */
@@ -267,6 +271,10 @@ ul.pagination > li > a.progress-disabled {
 /* =============================================================================
    WxT
    ========================================================================== */
+.icon {
+  font-size: inherit;
+}
+
 .page-node-edit.wet-boew-gcweb main.container {
   background-color: #FFF;
 }
@@ -294,23 +302,23 @@ ul.pagination > li > a.progress-disabled {
 .form-autocomplete .glyphicon {
   min-height: inherit;
   min-width: inherit;
-  padding-left: initial;
+  padding-left: inherit;
 }
 
 ul.action-links .glyphicon {
   min-height: inherit;
   min-width: inherit;
-  padding-left: initial;
+  padding-left: inherit;
 }
 
 #edit-actions .glyphicon {
   min-height: inherit;
   min-width: inherit;
-  padding-left: initial;
+  padding-left: inherit;
 }
 
 .btn .icon {
-  padding-left: initial;
+  padding-left: inherit;
 }
 
 #slide-panel .btn .icon {

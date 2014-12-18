@@ -2,6 +2,10 @@
    WxT
    ========================================================================== */
 
+.icon {
+  font-size: inherit;
+}
+
 .page-node-edit.wet-boew-gcweb {
   main.container {
   background-color: #FFF;
@@ -33,24 +37,24 @@
 .form-autocomplete .glyphicon {
   min-height: inherit;
   min-width: inherit;
-  padding-left: initial;
+  padding-left: inherit;
 }
 
 ul.action-links .glyphicon {
   min-height: inherit;
   min-width: inherit;
-  padding-left: initial;
+  padding-left: inherit;
 }
 
 #edit-actions .glyphicon {
   min-height: inherit;
   min-width: inherit;
-  padding-left: initial;
+  padding-left: inherit;
 }
 
 .btn {
   .icon {
-    padding-left: initial;
+    padding-left: inherit;
   }
 }
 
