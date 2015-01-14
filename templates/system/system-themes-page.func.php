@@ -38,7 +38,7 @@ function wetkit_bootstrap_system_themes_page($variables) {
       $notes = count($theme->notes) ? ' (' . join(', ', $theme->notes) . ')' : '';
       $theme->classes[] = 'theme-selector';
       $theme->classes[] = 'clearfix';
-			$output .= '<div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc;" class="row '. join(' ', $theme->classes) .'">' . '<div class="col-md-3">' . $screenshot . '</div><div class="theme-info col-md-9"><h3>' . $theme->info['name'] . ' ' . (isset($theme->info['version']) ? $theme->info['version'] : '') . $notes . '</h3><div class="theme-description">' . $description . '</div>';
+      $output .= '<div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc;" class="row '. join(' ', $theme->classes) .'">' . '<div class="col-md-3">' . $screenshot . '</div><div class="theme-info col-md-9"><h3>' . $theme->info['name'] . ' ' . (isset($theme->info['version']) ? $theme->info['version'] : '') . $notes . '</h3><div class="theme-description">' . $description . '</div>';
 
       // Make sure to provide feedback on compatibility.
       if (!empty($theme->incompatible_core)) {
