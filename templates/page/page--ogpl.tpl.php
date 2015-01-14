@@ -104,7 +104,7 @@
         <div id="wb-sttl" class="col-md-8">
           <?php if ($site_name || $site_slogan || $logo): ?>
             <a href="<?php print $site_name_url; ?>">
-              <img id="ogpl-logo" src="<?php print $library_path; ?>/assets/logo.png" alt="Open Government Platform (OGPL)">
+              <img id="ogpl-logo" src="<?php print $library_path; ?>/assets/logo.png" alt="<?php print t('Open Government Platform (OGPL)'); ?>">
               <span <?php print $logo_class; ?>>
                 <?php if ($site_name): ?>
                   <?php print $site_name; ?>

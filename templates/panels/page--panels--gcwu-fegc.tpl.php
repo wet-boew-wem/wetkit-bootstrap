@@ -78,7 +78,7 @@
     <div id="wb-bar">
       <div class="container">
         <div class="row">
-          <object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/sig-en.svg" aria-label="Government of Canada"></object>
+          <object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/sig-en.svg" aria-label="<?php print t('Government of Canada'); ?>"></object>
           <?php print $menu_bar; ?>
           <section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
             <h2><?php print t('Search and menus'); ?></h2>
@@ -111,7 +111,7 @@
             </a>
           <?php endif; ?>
         </div>
-        <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
+        <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/wmms.svg" aria-label="<?php print t('Symbol of the Government of Canada'); ?>"></object>
         <section id="wb-srch" class="visible-md visible-lg">
           <h2><?php print t('Search'); ?></h2>
           <?php if ($search_box): ?>
