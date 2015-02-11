@@ -143,50 +143,42 @@
     </div>
   </nav>
 </header>
-<div class="main-container container">
-  <header role="banner" id="page-header">
-    <?php if (!empty($site_slogan)): ?>
-      <p class="lead"><?php print $site_slogan; ?></p>
+<?php if (!empty($page['sidebar_first'])): ?>
+  <aside class="col-sm-3" role="complementary">
+    <?php print render($page['sidebar_first']); ?>
+  </aside>
+<?php endif; ?>
+<main role="main" property="mainContentOfPage" class="container">
+  <?php if (empty($panels_layout)): ?>
+    <?php if (!empty($page['highlighted'])): ?>
+      <?php print render($page['highlighted']); ?>
     <?php endif; ?>
-    <?php print render($page['header']); ?>
-  </header> <!-- /#page-header -->
-  <?php if (!empty($page['sidebar_first'])): ?>
-    <aside class="col-sm-3" role="complementary">
-      <?php print render($page['sidebar_first']); ?>
-    </aside>  <!-- /#sidebar-first -->
+    <a id="main-content"></a>
+    <?php print render($title_prefix); ?>
+    <?php if (!empty($title)): ?>
+      <h1 class="page-header" id="wb-cont"><?php print $title; ?></h1>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
+    <?php if (!empty($tabs)): ?>
+      <?php print render($tabs); ?>
+    <?php endif; ?>
+    <?php if (!empty($page['help'])): ?>
+      <?php print render($page['help']); ?>
+    <?php endif; ?>
+    <?php if (!empty($action_links)): ?>
+      <ul class="action-links"><?php print render($action_links); ?></ul>
+    <?php endif; ?>
   <?php endif; ?>
-  <section<?php print $content_column_class; ?>>
-    <?php if (empty($panels_layout)): ?>
-      <?php if (!empty($page['highlighted'])): ?>
-        <?php print render($page['highlighted']); ?>
-      <?php endif; ?>
-      <a id="main-content"></a>
-      <?php print render($title_prefix); ?>
-      <?php if (!empty($title)): ?>
-        <h1 class="page-header" id="wb-cont"><?php print $title; ?></h1>
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
-      <?php if (!empty($tabs)): ?>
-        <?php print render($tabs); ?>
-      <?php endif; ?>
-      <?php if (!empty($page['help'])): ?>
-        <?php print render($page['help']); ?>
-      <?php endif; ?>
-      <?php if (!empty($action_links)): ?>
-        <ul class="action-links"><?php print render($action_links); ?></ul>
-      <?php endif; ?>
-    <?php endif; ?>
-    <?php if (!empty($messages)): ?>
-      <?php print render($messages); ?>
-    <?php endif; ?>
-    <?php print render($page['content']); ?>
-  </section>
-  <?php if (!empty($page['sidebar_second'])): ?>
-    <aside class="col-sm-3" role="complementary">
-      <?php print render($page['sidebar_second']); ?>
-    </aside>  <!-- /#sidebar-second -->
+  <?php if (!empty($messages)): ?>
+    <?php print render($messages); ?>
   <?php endif; ?>
-</div>
+  <?php print render($page['content']); ?>
+</main>
+<?php if (!empty($page['sidebar_second'])): ?>
+  <aside class="col-sm-3" role="complementary">
+    <?php print render($page['sidebar_second']); ?>
+  </aside>
+<?php endif; ?>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
   <div class="container">
     <nav role="navigation" class="row">
