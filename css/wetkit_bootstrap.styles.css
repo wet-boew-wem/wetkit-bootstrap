@@ -85,6 +85,10 @@ td.ctools-export-ui-operations .ctools-dropbutton {
   margin-top: -25px;
 }
 
+.page-admin-dashboard .pane-content .categories-links {
+  float: right;
+}
+
 /* =============================================================================
    Navbar
    ========================================================================== */
