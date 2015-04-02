@@ -130,4 +130,17 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
     '#default_value' => theme_get_setting('canada_search'),
     '#description' => t('If checked the GCWeb theme will use the Canada.ca search'),
   );
+
+  // GCWeb.
+  $form['wetkit_gcweb'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('GCWeb'),
+    '#group' => 'wetkit_bootstrap',
+  );
+  $form['wetkit_gcweb']['gcweb_cdn'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Toggle CDN for MegaMenu + GoC Initiatives'),
+    '#default_value' => theme_get_setting('gcweb_cdn'),
+    '#description' => t('If checked the GCWeb theme will use the CDN for MegaMenu + GoC Initiatives'),
+  );
 }

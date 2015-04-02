@@ -258,6 +258,14 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
           '#input' => 'TRUE',
         );
       }
+
+      $gcweb_cdn = theme_get_setting('gcweb_cdn');
+      if (!empty($gcweb_cdn)) {
+        $variables['gcweb_cdn'] = TRUE;
+      }
+      else {
+        $variables['gcweb_cdn'] = FALSE;
+      }
     }
 
     // Visibility settings.

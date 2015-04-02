@@ -50,7 +50,7 @@
 <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1" name="viewport" >
+  <meta content="width=device-width,initial-scale=1" name="viewport" >
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <!-- jQuery needs to be loaded first for IE6-8 -->
@@ -58,10 +58,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <![endif]-->
   <?php print $styles; ?>
-  <!-- HTML5 element support for IE6-8 -->
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
   <?php print $scripts; ?>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>

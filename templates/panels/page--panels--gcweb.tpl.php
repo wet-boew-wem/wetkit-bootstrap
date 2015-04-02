@@ -120,14 +120,25 @@
         </section>
     </div>
   </div>
-  <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
-    <div class="pnl-strt container nvbar">
-      <h2 class="wb-inv"><?php print t('Topics menu'); ?></h2>
-      <div class="row">
-        <?php print render($page['mega_menu']); ?>
+  <?php if (!empty($gcweb_cdn)): ?>
+    <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="//cdn.canada.ca/gcweb-cdn-live/sitemenu/sitemenu-<?php print $language; ?>.html" typeof="SiteNavigationElement">
+      <div class="pnl-strt container nvbar">
+        <h2 class="wb-inv"><?php print t('Topics menu'); ?></h2>
+        <div class="row">
+          <?php print render($page['mega_menu']); ?>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  <?php else: ?>
+    <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
+      <div class="pnl-strt container nvbar">
+        <h2 class="wb-inv"><?php print t('Topics menu'); ?></h2>
+        <div class="row">
+          <?php print render($page['mega_menu']); ?>
+        </div>
+      </div>
+    </nav>
+  <?php endif; ?>
   <?php print render($page['header']); ?>
   <nav role="navigation" id="wb-bc" property="breadcrumb">
     <div class="container">
@@ -171,10 +182,21 @@
   </div>
 </main>
 <?php endif; ?>
-<?php if (!empty($page['featured'])): ?>
+<?php if (!empty($gcweb_cdn)): ?>
   <aside class="gc-nttvs container">
-    <?php print render($page['featured']); ?>
+    <h2><?php print t('Government of Canada activities and initiatives') ?></h2>
+    <div id="gcwb_prts" class="wb-eqht row" data-ajax-replace="//cdn.canada.ca/gcweb-cdn-live/features/features-<?php print $language; ?>.html">
+      <p class="mrgn-lft-md">
+        <a href="http://www.canada.ca/<?php ($language == 'en') ? 'activities' : 'activites' ?>.html"><?php print t('Access Government of Canada activities and initiatives') ?></a>
+     </p>
+    </div>
   </aside>
+<?php else: ?>
+  <?php if (!empty($page['featured'])): ?>
+    <aside class="gc-nttvs container">
+      <?php print render($page['featured']); ?>
+    </aside>
+  <?php endif; ?>
 <?php endif; ?>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
   <div class="container">
