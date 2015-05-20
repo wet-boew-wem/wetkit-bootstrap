@@ -20,6 +20,9 @@ function wetkit_bootstrap_button($variables) {
     elseif ($element['#icon_position'] === 'after') {
       $value .= ' ' . $element['#icon'];
     }
+    elseif ($element['#icon_position'] === 'icon-only') {
+      $value = $element['#icon'] . '<span class="wb-inv">' . $value . '</span>';
+    }
   }
 
   // This line break adds inherent margin between multiple buttons.

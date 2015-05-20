@@ -249,6 +249,31 @@ body form#page-manager-list-pages-form, body form#ctools-export-ui-list-form {
 }
 
 /* =============================================================================
+   Modules
+   ========================================================================== */
+.admin-disabled {
+  color: #800;
+}
+
+.admin-enabled {
+  color: #080;
+}
+
+.admin-missing {
+  color: #f00;
+}
+
+.incompatible {
+  font-weight: bold;
+}
+
+.admin-requirements,
+.admin-required {
+  font-size: 0.9em;
+  color: #444;
+}
+
+/* =============================================================================
    System
    ========================================================================== */
 p:last-child {
