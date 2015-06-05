@@ -122,7 +122,7 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
     '#type' => 'textarea',
     '#title' => t('Search box visibility'),
     '#default_value' => theme_get_setting('wetkit_search_box'),
-    '#description' => t("Specify pages to exclude by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are blog for the blog page and blog/* for every personal blog. <front> is the front page."),
+    '#description' => t("Specify pages to exclude by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are <strong>blog</strong> for the blog page and <strong>blog/*</strong> for every personal blog. &lt;front&gt; is the front page."),
   );
   $form['wetkit_search']['canada_search'] = array(
     '#type' => 'checkbox',
