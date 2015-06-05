@@ -83,9 +83,9 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
   );
   $form['wetkit_customization']['overrides'] ['wetkit_render_no_link'] = array(
     '#type'          => 'checkbox',
-    '#title'         => t('Disable rendering of menu items with <nolink> as path'),
+    '#title'         => t('Disable rendering of menu items with &lt;nolink&gt; as path'),
     '#default_value' => theme_get_setting('wetkit_render_no_link'),
-    '#description'   => t('Specify whether or not menu links with <nolink> as path should render an a href. (This can break certain versions of WET)'),
+    '#description'   => t('Specify whether or not menu links with <strong>&lt;nolink&gt;</strong> as path should render an a href. (This can break certain versions of WET)'),
   );
   $form['wetkit_customization']['overrides'] ['wetkit_sub_site'] = array(
     '#type' => 'textfield',
