@@ -276,6 +276,14 @@ body form#page-manager-list-pages-form, body form#ctools-export-ui-list-form {
 /* =============================================================================
    System
    ========================================================================== */
+fieldset:first-child {
+  border-top: 1px solid #e5e5e5;
+}
+
+fieldset.panel {
+  padding-top: 0px;
+}
+
 p:last-child {
   margin: 0 0 11.5px;
 }
