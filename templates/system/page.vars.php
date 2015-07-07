@@ -112,7 +112,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $data = array(
       '#pre_render' => array('_wetkit_menu_tree_build_prerender'),
       '#cache' => array(
-        'keys' => array('wetkit', 'menu', $menu_name),
+        'keys' => array('wetkit_bootstrap', 'menu', 'mega_menu', $menu_name),
         'expire' => CACHE_TEMPORARY,
         'granularity' => DRUPAL_CACHE_PER_ROLE
       ),
@@ -199,67 +199,21 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
   // Custom Search Box.
   if (module_exists('custom_search')) {
-    // Custom Search.
-    $variables['custom_search'] = drupal_get_form('custom_search_blocks_form_1');
-    $variables['custom_search']['#id'] = 'search-form';
-    $variables['custom_search']['custom_search_blocks_form_1']['#id'] = $theme_prefix . '-srch-q';
-    $variables['custom_search']['actions']['submit']['#id'] = 'wb-srch-sub';
-    $variables['custom_search']['actions']['submit']['#attributes']['data-icon'] = 'search';
-    $variables['custom_search']['actions']['submit']['#attributes']['value'] = t('search');
-    $variables['custom_search']['#attributes']['class'][] = 'form-inline';
-    $variables['custom_search']['#attributes']['role'] = 'search';
-    $variables['custom_search']['actions']['#theme_wrappers'] = NULL;
+    $custom_search_form_name = 'custom_search_blocks_form_1';
+    $custom_search = array(
+      '#pre_render' => array('_wetkit_custom_search_prerender'),
+      '#cache' => array(
+        'keys' => array('wetkit_bootstrap', 'custom_search', $custom_search_form_name),
+        'expire' => CACHE_TEMPORARY,
+        'granularity' => DRUPAL_CACHE_PER_ROLE
+      ),
+      '#custom_search_form_name' => $custom_search_form_name,
+      '#wxt_active' => $wxt_active,
+    );
+    $variables['custom_search'] = $custom_search;
 
+    // CDN Support.
     if ($wxt_active == 'gcweb') {
-
-      $variables['custom_search']['#attributes']['name'] = 'search-form';
-      $variables['custom_search']['actions']['submit']['#attributes']['name'] = 'wb-srch-sub';
-      $variables['custom_search']['actions']['submit']['#value'] = '<span class="glyphicon-search glyphicon"></span><span class="wb-inv">' . t('Search') . '</span>';
-      $variables['custom_search']['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Canada.ca');
-
-      $cdn_srch = theme_get_setting('canada_search');
-      if (isset($cdn_srch)) {
-        $variables['custom_search']['custom_search_blocks_form_1']['#name'] = 'q';
-        $variables['custom_search']['#action'] = 'http://recherche-search.gc.ca/rGs/s_r?#wb-land';
-        $variables['custom_search']['#method'] = 'get';
-        $variables['custom_search']['cdn'] = array(
-          '#name' => 'cdn',
-          '#value' => 'canada',
-          '#type' => 'hidden',
-          '#input' => 'TRUE',
-        );
-        $variables['custom_search']['st'] = array(
-          '#name' => 'st',
-          '#value' => 's',
-          '#type' => 'hidden',
-          '#input' => 'TRUE',
-        );
-        $variables['custom_search']['num'] = array(
-          '#name' => 'num',
-          '#value' => '10',
-          '#type' => 'hidden',
-          '#input' => 'TRUE',
-        );
-        $variables['custom_search']['langs'] = array(
-          '#name' => 'langs',
-          '#value' => 'eng',
-          '#type' => 'hidden',
-          '#input' => 'TRUE',
-        );
-        $variables['custom_search']['st1rt'] = array(
-          '#name' => 'st1rt',
-          '#value' => '0',
-          '#type' => 'hidden',
-          '#input' => 'TRUE',
-        );
-        $variables['custom_search']['s5bm3ts21rch'] = array(
-          '#name' => 's5bm3ts21rch',
-          '#value' => 'x',
-          '#type' => 'hidden',
-          '#input' => 'TRUE',
-        );
-      }
-
       $gcweb_cdn = theme_get_setting('gcweb_cdn');
       if (!empty($gcweb_cdn)) {
         $variables['gcweb_cdn'] = TRUE;
@@ -312,7 +266,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $data = array(
       '#pre_render' => array('_wetkit_menu_tree_build_prerender'),
       '#cache' => array(
-        'keys' => array('wetkit', 'menu', $menu_name),
+        'keys' => array('wetkit_bootstrap', 'menu', 'footer', $menu_name),
         'expire' => CACHE_TEMPORARY,
         'granularity' => DRUPAL_CACHE_PER_ROLE
       ),
@@ -374,5 +328,73 @@ function _wetkit_menu_tree_build_prerender($element) {
   $config = menu_block_get_config($element['#menu_name']);
   $data = menu_tree_build($config);
   $element['content'] = $data['content'];
+  return $element;
+}
+
+/**
+ * Pre Render handler for cache based menu block handling.
+ */
+function _wetkit_custom_search_prerender($element) {
+  $data = drupal_get_form($element['#custom_search_form_name']);
+  $data['#id'] = 'search-form';
+  $data['custom_search_blocks_form_1']['#id'] = 'wb-srch-q';
+  $data['actions']['submit']['#id'] = 'wb-srch-sub';
+  $data['actions']['submit']['#attributes']['data-icon'] = 'search';
+  $data['actions']['submit']['#attributes']['value'] = t('search');
+  $data['#attributes']['class'][] = 'form-inline';
+  $data['#attributes']['role'] = 'search';
+  $data['actions']['#theme_wrappers'] = NULL;
+
+  // Special handling for GCWeb Theme
+  if ($element['#wxt_active'] == 'gcweb') {
+    $data['#attributes']['name'] = 'search-form';
+    $data['actions']['submit']['#attributes']['name'] = 'wb-srch-sub';
+    $data['actions']['submit']['#value'] = '<span class="glyphicon-search glyphicon"></span><span class="wb-inv">' . t('Search') . '</span>';
+    $data['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Canada.ca');
+    $cdn_srch = theme_get_setting('canada_search');
+    if (isset($cdn_srch)) {
+      $data['custom_search_blocks_form_1']['#name'] = 'q';
+      $data['#action'] = 'http://recherche-search.gc.ca/rGs/s_r?#wb-land';
+      $data['#method'] = 'get';
+      $data['cdn'] = array(
+        '#name' => 'cdn',
+        '#value' => 'canada',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+      );
+      $data['st'] = array(
+        '#name' => 'st',
+        '#value' => 's',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+      );
+      $data['num'] = array(
+        '#name' => 'num',
+        '#value' => '10',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+      );
+      $data['langs'] = array(
+        '#name' => 'langs',
+        '#value' => 'eng',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+      );
+      $data['st1rt'] = array(
+        '#name' => 'st1rt',
+        '#value' => '0',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+      );
+      $data['s5bm3ts21rch'] = array(
+        '#name' => 's5bm3ts21rch',
+        '#value' => 'x',
+        '#type' => 'hidden',
+        '#input' => 'TRUE',
+      );
+    }
+  }
+
+  $element['content'] = $data;
   return $element;
 }
