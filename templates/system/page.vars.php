@@ -108,16 +108,17 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
   // Mega Menu Region.
   if (module_exists('menu_block') && empty($variables['mega_menu'])) {
-    $config = menu_block_get_config('main_menu');
-    $data = menu_tree_build($config);
-
-   /* $data['content']['#cache'] = array(
-      'keys' => array('wetkit_mega_menu_region_content'),
-      'expire' => CACHE_TEMPORARY,
-      'granularity' => DRUPAL_CACHE_PER_PAGE, // unset this to cache globally
-    );*/
-
-    $variables['page']['mega_menu'] = $data['content'];
+    $menu_name = 'main_menu';
+    $data = array(
+      '#pre_render' => array('_wetkit_menu_tree_build_prerender'),
+      '#cache' => array(
+        'keys' => array('wetkit', 'menu', $menu_name),
+        'expire' => CACHE_TEMPORARY,
+        'granularity' => DRUPAL_CACHE_PER_ROLE
+      ),
+      '#menu_name' => $menu_name,
+    );
+    $variables['page']['mega_menu'] = $data;
   }
 
   // Splash Page.
@@ -307,18 +308,21 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
   // Mid Footer Region.
   if (module_exists('menu_block')) {
-    $config = menu_block_get_config('mid_footer_menu');
-    $data = menu_tree_build($config);
-
-    /* data['content']['#cache'] = array(
-      'keys' => array('wetkit_mid_footer_region_content'),
-      'expire' => CACHE_TEMPORARY,
-      'granularity' => DRUPAL_CACHE_PER_PAGE, // unset this to cache globally
-    );*/
-
-    unset($variables['page']['footer']['system_powered-by']);
-    $variables['page']['footer']['minipanel'] = $data['content'];
+    $menu_name = 'mid_footer_menu';
+    $data = array(
+      '#pre_render' => array('_wetkit_menu_tree_build_prerender'),
+      '#cache' => array(
+        'keys' => array('wetkit', 'menu', $menu_name),
+        'expire' => CACHE_TEMPORARY,
+        'granularity' => DRUPAL_CACHE_PER_ROLE
+      ),
+      '#menu_name' => $menu_name,
+    );
+    $variables['page']['footer']['minipanel'] = $data;
   }
+
+  // Unset powered by block.
+  unset($variables['page']['footer']['system_powered-by']);
 
   // Footer Navigation.
   $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-footer') : menu_navigation_links('menu-wet-footer');
@@ -361,4 +365,14 @@ function wetkit_bootstrap_process_page(&$variables) {
   // Store the page variables in cache so it can be used in region
   // preprocessing.
   $variables['navbar_classes'] = implode(' ', $variables['navbar_classes_array']);
+}
+
+/**
+ * Pre Render handler for cache based menu block handling.
+ */
+function _wetkit_menu_tree_build_prerender($element) {
+  $config = menu_block_get_config($element['#menu_name']);
+  $data = menu_tree_build($config);
+  $element['content'] = $data['content'];
+  return $element;
 }
