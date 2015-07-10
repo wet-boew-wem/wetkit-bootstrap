@@ -11,6 +11,8 @@
  */
 function wetkit_bootstrap_preprocess_page(&$variables) {
 
+  global $base_url;
+
   // Internationalization Settings.
   global $language;
   $is_multilingual = 0;
@@ -41,31 +43,44 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   }
 
   // Logo settings.
+  $default_logo = theme_get_setting('default_logo');
+  $default_svg_logo = theme_get_setting('wetkit_theme_svg_default_logo');
+  $default_logo_path = $variables['logo'];
+  $default_svg_logo_path = theme_get_setting('wetkit_theme_svg_logo_path');
+  $toggle_logo = theme_get_setting('toggle_logo');
   $variables['logo_class'] = '';
   $variables['logo_svg'] = '';
-  $toggle_logo = theme_get_setting('toggle_logo', 'wetkit_bootstrap');
-  $default_logo = theme_get_setting('default_logo', 'wetkit_bootstrap');
-  $default_svg_logo = theme_get_setting('wetkit_theme_svg_default_logo', 'wetkit_bootstrap');
 
-  // Default Logo logic.
-  if (($default_logo == 0) && ($default_svg_logo == 1)) {
-    if ($wxt_active == 'gcweb') {
-      $variables['logo_svg'] = $library_path . '/assets/sig-blk-' . $language->language . '.svg';
-      $variables['logo'] = $library_path . '/assets/sig-blk-' . $language->language . '.png';
-      $variables['logo_bottom_svg'] = $library_path . '/assets/wmms-blk' . '.svg';
-      $variables['logo_bottom'] = $library_path . '/assets/wmms-blk' . '.png';
-    }
-    else {
-      $variables['logo_svg'] = $library_path . '/assets/logo.svg';
-      $variables['logo'] = $library_path . '/assets/logo.png';
-    }
-  }
-
-  // Toggle Logo.
+  // Toggle Logo off/on.
   if ($toggle_logo == 0) {
     $variables['logo'] = '';
     $variables['logo_svg'] = '';
     $variables['logo_class'] = drupal_attributes(array('class' => 'no-logo'));
+  }
+
+  // Default Logo.
+  if ($default_logo == 1) {
+    $variables['logo'] = $library_path . '/assets/logo.png';
+    $variables['logo_svg'] = $library_path . '/assets/logo.svg';
+
+    // GCWeb.
+    if ($wxt_active == 'gcweb') {
+      $variables['logo'] = $library_path . '/assets/sig-blk-' . $language->language . '.png';
+      $variables['logo_svg'] = $library_path . '/assets/sig-blk-' . $language->language . '.svg';
+    }
+  }
+
+  // Custom Logo.
+  if ($default_logo == 0) {
+    if ($default_svg_logo == 1) {
+      $variables['logo_svg'] = $base_url . '/' . $default_svg_logo_path;
+    }
+  }
+
+  // Default GCWeb misc.
+  if ($wxt_active == 'gcweb') {
+    $variables['logo_bottom'] = $library_path . '/assets/wmms-blk' . '.png';
+    $variables['logo_bottom_svg'] = $library_path . '/assets/wmms-blk' . '.svg';
   }
 
   // Add information about the number of sidebars.
