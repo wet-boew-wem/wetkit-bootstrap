@@ -63,10 +63,14 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $variables['logo'] = $library_path . '/assets/logo.png';
     $variables['logo_svg'] = $library_path . '/assets/logo.svg';
 
-    // GCWeb.
-    if ($wxt_active == 'gcweb') {
+    // GCWeb or GC Intranet.
+    if ($wxt_active == 'gcweb' || $wxt_active == 'gc_intranet' ) {
       $variables['logo'] = $library_path . '/assets/sig-blk-' . $language->language . '.png';
       $variables['logo_svg'] = $library_path . '/assets/sig-blk-' . $language->language . '.svg';
+    }
+    elseif ($wxt_active == 'gcwu_fegc') {
+      $variables['logo'] = $library_path . '/assets/sig-' . $language->language . '.png';
+      $variables['logo_svg'] = $library_path . '/assets/sig-' . $language->language . '.svg';
     }
   }
 
