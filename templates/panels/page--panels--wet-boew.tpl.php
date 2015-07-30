@@ -85,7 +85,7 @@
             <h2><?php print t('Search and menus'); ?></h2>
             <ul class="pnl-btn list-inline text-right">
               <li>
-                <a href="#mb-pnl" title="<?php print t('Search and menus'); ?>" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button">
+                <a href="#mb-pnl" title="<?php print t('Search and menus'); ?>" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button">
                   <span class="glyphicon glyphicon-search">
                     <span class="glyphicon glyphicon-th-list">
                       <span class="wb-inv"><?php print t('Search and menus'); ?></span>

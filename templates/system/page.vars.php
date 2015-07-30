@@ -224,7 +224,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
       '#cache' => array(
         'keys' => array('wetkit_bootstrap', 'custom_search', $custom_search_form_name),
         'expire' => CACHE_TEMPORARY,
-        'granularity' => DRUPAL_CACHE_PER_USER
+        'granularity' => DRUPAL_CACHE_PER_ROLE
       ),
       '#custom_search_form_name' => $custom_search_form_name,
       '#wxt_active' => $wxt_active,
