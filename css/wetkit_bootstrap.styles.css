@@ -410,6 +410,7 @@ ul.action-links .glyphicon {
 }
 
 .wb-srch-multi input {
+  float: left;
   background-color: #e0e0e0;
   border-color: #e0e0e0;
   border-right: 0;
@@ -420,6 +421,10 @@ ul.action-links .glyphicon {
   margin-right: -4px;
   min-width: 246px;
   position: relative;
+}
+
+.xxsmallview .wb-srch-multi input {
+  min-width: initial;
 }
 
 .item-list .pagination > li:first-child > span {
