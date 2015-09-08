@@ -43,12 +43,12 @@ function wetkit_bootstrap_menu_link(array $variables) {
 }
 
 /**
- * Overrides theme_menu_tree().
+ * Overrides theme_menu_link() for the mega menu.
  */
 function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
   $element = $variables['element'];
   $sub_menu = '';
-  $mb_mainlink = '<li class="slflnk">' . l($element['#title'] . ' - ' . t('More'), $element['#href'], $element['#localized_options']) . '</li>';
+  $mb_mainlink = (!in_array($element['#href'], array('<nolink>')) ? '<li class="slflnk">' . l($element['#title'] . ' - ' . t('More'), $element['#href'], $element['#localized_options']) . '</li>' : '' );
   $depth = $element['#original_link']['depth'];
 
   if ($element['#below']) {
@@ -67,17 +67,28 @@ function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
       $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
     }
   }
+
   // On primary navigation menu, class 'active' is not set on active menu item.
-  // @see https://drupal.org/node/1896674
+  // @see https://drupal.org/node/1896674.
   if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
     $element['#attributes']['class'][] = 'active';
   }
-  $output = (in_array($element['#href'], array('<nolink>')) ? $element['#title'] : l($element['#title'], $element['#href'], $element['#localized_options']));
+
+  // <nolink> handling for wxt.
+  if (in_array($element['#href'], array('<nolink>'))) {
+    $element['#href'] = '#';
+    $element['#localized_options'] = array(
+      'fragment' => 'wb-tphp',
+      'external' => TRUE,
+    );
+  }
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
 /**
- * Overrides theme_menu_tree().
+ * Overrides theme_menu_link() for the mid footer menu.
  */
 function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
   global $counter;
@@ -99,15 +110,24 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
   }
 
   // On primary navigation menu, class 'active' is not set on active menu item.
-  // @see https://drupal.org/node/1896674
+  // @see https://drupal.org/node/1896674.
   if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
     $element['#attributes']['class'][] = 'active';
+  }
+
+  // <nolink> handling for wxt.
+  if (in_array($element['#href'], array('<nolink>'))) {
+    $element['#href'] = '#';
+    $element['#localized_options'] = array(
+      'fragment' => 'wb-info',
+      'external' => TRUE,
+    );
   }
 
   if ($element['#original_link']['depth'] == 1) {
     if ($wxt_active == 'gcweb') {
       $counter = $counter + 1;
-      $output = '<h3>' . (in_array($element['#href'], array('<nolink>')) ? $element['#title'] : l($element['#title'], $element['#href'], $element['#localized_options'])) . '</h3>';
+      $output = '<h3>' . l($element['#title'], $element['#href'], $element['#localized_options']) . '</h3>';
       if ($counter == 3) {
         return '<section class="col-sm-3">' . $output . $sub_menu . '</section>';
       }
@@ -127,7 +147,7 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
     }
   }
   else {
-    $output = (in_array($element['#href'], array('<nolink>')) ? $element['#title'] : l($element['#title'], $element['#href'], $element['#localized_options']));
+    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
     return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
   }
 }
