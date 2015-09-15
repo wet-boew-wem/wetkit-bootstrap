@@ -444,7 +444,8 @@ ul.action-links .glyphicon {
   min-width: initial;
 }
 
-.item-list .pagination > li:first-child > span {
+.item-list .pagination > li:first-child > span,
+.item-list .pagination > li:last-child > span {
   padding: 10px 16px;
 }
 
