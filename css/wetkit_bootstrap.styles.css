@@ -1,4 +1,21 @@
 /* =============================================================================
+   Bean
+   ========================================================================== */
+.bean-type-list {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.bean-type-list li {
+  margin-bottom: 15px;
+}
+.bean-type-list li a {
+  font-weight: bold;
+}
+.bean-type-list li a .icon {
+  padding-left: 0px;
+}
+
+/* =============================================================================
    CTools
    ========================================================================== */
 .ctools-modal-dialog .modal-content {
