@@ -6,25 +6,25 @@
 <title><?php print $head_title; ?></title>
 <meta content="width=device-width,initial-scale=1" name="viewport"> <!-- Meta data -->
 <meta name="robots" content="noindex, nofollow, noarchive"> <!-- Meta data--> <!--[if gte IE 9 | !IE ]><!-->
-<link href="/profiles/wetkit/libraries/wet-boew-gc-intranet/assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-gc-intranet/css/wet-boew.min.css"> <!--<![endif]-->
-<link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-gc-intranet/css/theme-srv.min.css"> <!--[if lt IE 9]>
-<link href="/profiles/wetkit/libraries/wet-boew-gc-intranet/assets/favicon.ico" rel="shortcut icon" />
-<link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-gc-intranet/css/ie8-wet-boew.min.css" />
+<link href="/profiles/wetkit/libraries/theme-gc-intranet/assets/favicon.ico" rel="icon" type="image/x-icon">
+<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gc-intranet/css/wet-boew.min.css"> <!--<![endif]-->
+<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gc-intranet/css/theme-srv.min.css"> <!--[if lt IE 9]>
+<link href="/profiles/wetkit/libraries/theme-gc-intranet/assets/favicon.ico" rel="shortcut icon" />
+<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gc-intranet/css/ie8-wet-boew.min.css" />
 <script src="/profiles/wetkit/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js"></script>
-<script src="/profiles/wetkit/libraries/wet-boew-gc-intranet/js/ie8-wet-boew.min.js"></script>
+<script src="/profiles/wetkit/libraries/theme-gc-intranet/js/ie8-wet-boew.min.js"></script>
 <![endif]-->
-<noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-gc-intranet/css/noscript.min.css" /></noscript>
+<noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gc-intranet/css/noscript.min.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
 <header role="banner" id="wb-bnr">
 <div class="container">
 <div class="row">
 <div class="col-sm-6">
-<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gc-intranet/assets/sig-blk-en.svg" aria-label="Government of Canada"></object>
+<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gc-intranet/assets/sig-blk-en.svg" aria-label="Government of Canada"></object>
 </div>
 <div class="col-sm-6">
-<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gc-intranet/assets/wmms-intra.svg" aria-label="Symbol of the Government of Canada"></object>
+<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gc-intranet/assets/wmms-intra.svg" aria-label="Symbol of the Government of Canada"></object>
 </div>
 </div>
 </div>
@@ -59,9 +59,9 @@
 </div>
 </main> <!--[if gte IE 9 | !IE ]><!-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="/profiles/wetkit/libraries/wet-boew-gc-intranet/js/wet-boew.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
-<script src="/profiles/wetkit/libraries/wet-boew-gc-intranet/js/ie8-wet-boew2.min.js"></script>
+<script src="/profiles/wetkit/libraries/theme-gc-intranet/js/wet-boew.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
+<script src="/profiles/wetkit/libraries/theme-gc-intranet/js/ie8-wet-boew2.min.js"></script>
 <![endif]-->
-<script src="/profiles/wetkit/libraries/wet-boew-gc-intranet/js/theme.min.js"></script>
+<script src="/profiles/wetkit/libraries/theme-gc-intranet/js/theme.min.js"></script>
 </body>
 </html>

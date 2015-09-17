@@ -6,15 +6,15 @@
 <title><?php print $head_title; ?></title>
 <meta content="width=device-width,initial-scale=1" name="viewport"> <!-- Meta data -->
 <meta name="robots" content="noindex, nofollow, noarchive"> <!-- Meta data--> <!--[if gte IE 9 | !IE ]><!-->
-<link href="/profiles/wetkit/libraries/wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew/css/wet-boew.min.css"> <!--<![endif]-->
-<link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew/css/theme.min.css"> <!--[if lt IE 9]>
-<link href="/profiles/wetkit/libraries/wet-boew/assets/favicon.ico" rel="shortcut icon" />
-<link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew/css/ie8-wet-boew.min.css" />
+<link href="/profiles/wetkit/libraries/theme-wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon">
+<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-wet-boew/css/wet-boew.min.css"> <!--<![endif]-->
+<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-wet-boew/css/theme.min.css"> <!--[if lt IE 9]>
+<link href="/profiles/wetkit/libraries/theme-wet-boew/assets/favicon.ico" rel="shortcut icon" />
+<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-wet-boew/css/ie8-wet-boew.min.css" />
 <script src="/profiles/wetkit/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js"></script>
-<script src="/profiles/wetkit/libraries/wet-boew/js/ie8-wet-boew.min.js"></script>
+<script src="/profiles/wetkit/libraries/theme-wet-boew/js/ie8-wet-boew.min.js"></script>
 <![endif]-->
-<noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew/css/noscript.min.css" /></noscript>
+<noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/theme-wet-boew/css/noscript.min.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
 <main role="main" property="mainContentOfPage" class="container">

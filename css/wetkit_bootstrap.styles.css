@@ -52,11 +52,6 @@
   color: black;
 }
 
-.form-actions .btn .icon {
-  min-height: inherit;
-  min-width: inherit;
-}
-
 table.sticky-header {
   z-index: 10;
 }
@@ -329,11 +324,7 @@ ul.pagination > li > a.progress-disabled {
 /* =============================================================================
    WxT
    ========================================================================== */
-.icon {
-  font-size: inherit;
-}
-
-.page-node-edit.wet-boew-gcweb main.container {
+.page-node-edit.theme-gcweb main.container {
   background-color: #FFF;
 }
 
@@ -357,34 +348,11 @@ ul.pagination > li > a.progress-disabled {
   font-size: 29px;
 }
 
-.form-autocomplete .glyphicon {
-  min-height: inherit;
-  min-width: inherit;
-  padding-left: 0px;
-}
-
-ul.action-links .glyphicon {
-  min-height: inherit;
-  min-width: inherit;
-  padding-left: 0px;
-}
-
-#edit-actions .glyphicon {
-  min-height: inherit;
-  min-width: inherit;
-  padding-left: 0px;
-}
-
 .btn .icon {
   padding-left: 0px;
 }
 
-#slide-panel .btn .icon {
-  min-height: inherit;
-  min-width: inherit;
-}
-
-.wet-boew-gcweb .panel-primary > .panel-heading {
+.theme-gcweb .panel-primary > .panel-heading {
   background-color: #335075;
   border-color: #335075;
 }
@@ -393,7 +361,7 @@ ul.action-links .glyphicon {
   color: #FFF;
 }
 
-.wet-boew-gcweb .page-header {
+.theme-gcweb .page-header {
   border-bottom: 1px solid #af3c43;
   margin-top: 0.5em;
 }

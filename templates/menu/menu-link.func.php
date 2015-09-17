@@ -101,7 +101,7 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
   $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
   $library_path = libraries_get_path($wxt_active, TRUE);
   $wxt_active = str_replace('-', '_', $wxt_active);
-  $wxt_active = str_replace('wet_boew_', '', $wxt_active);
+  $wxt_active = str_replace('theme_', '', $wxt_active);
 
   if ($element['#below']) {
     if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {

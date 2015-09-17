@@ -17,7 +17,7 @@ function wetkit_bootstrap_preprocess_maintenance_page(&$variables) {
   $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
   $library_path = libraries_get_path($wxt_active, TRUE);
   $wxt_active = str_replace('-', '_', $wxt_active);
-  $wxt_active = str_replace('wet_boew_', '', $wxt_active);
+  $wxt_active = str_replace('theme_', '', $wxt_active);
 
   // Dead databases will show error messages so supplying this template will
   // allow themers to override the page and the content completely

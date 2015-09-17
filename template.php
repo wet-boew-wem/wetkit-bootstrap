@@ -18,7 +18,7 @@ function wetkit_bootstrap_bootstrap_colorize_text_alter(&$texts) {
   // Replace default class for search.
   $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
   $wxt_active = str_replace('-', '_', $wxt_active);
-  $wxt_active = str_replace('wet_boew_', '', $wxt_active);
+  $wxt_active = str_replace('theme_', '', $wxt_active);
 
   if ($wxt_active == 'gcweb') {
     $texts['contains'][t('Search')] = 'primary btn-small';

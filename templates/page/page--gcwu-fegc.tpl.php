@@ -119,7 +119,7 @@
             </a>
           <?php endif; ?>
         </div>
-        <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/wmms.svg" aria-label="<?php print t('Symbol of the Government of Canada'); ?>"></object>
+        <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gcwu-fegc/assets/wmms.svg" aria-label="<?php print t('Symbol of the Government of Canada'); ?>"></object>
         <section id="wb-srch" class="visible-md visible-lg">
           <h2><?php print t('Search'); ?></h2>
           <?php if ($search_box): ?>

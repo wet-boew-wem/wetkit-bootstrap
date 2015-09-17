@@ -78,7 +78,7 @@
     <div class="container">
       <div class="row mrgn-tp-lg mrgn-bttm-lg">
         <section class="col-md-8 col-md-offset-2">
-          <object type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gc-intranet/assets/logo.svg" aria-label="<?php print t('Web Experience Toolkit'); ?>"></object>
+          <object type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gc-intranet/assets/logo.svg" aria-label="<?php print t('Web Experience Toolkit'); ?>"></object>
         </section>
       </div>
     </div>

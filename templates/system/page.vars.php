@@ -26,7 +26,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
   $library_path = libraries_get_path($wxt_active, TRUE);
   $wxt_active = str_replace('-', '_', $wxt_active);
-  $wxt_active = str_replace('wet_boew_', '', $wxt_active);
+  $wxt_active = str_replace('theme_', '', $wxt_active);
 
   // Extra variables to pass to templates.
   $variables['library_path'] = $library_path;
@@ -150,14 +150,16 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
   // Panels Integration.
   if (module_exists('page_manager')) {
+    $panels_wxt_active = str_replace('theme_','', $wxt_active);
+
     // Page template suggestions for Panels pages.
     $panel_page = page_manager_get_current_page();
     if (!empty($panel_page)) {
       // Add the active WxT theme machine name to the template suggestions.
-      $suggestions[] = 'page__panels__' . $wxt_active;
+      $suggestions[] = 'page__panels__' . $panels_wxt_active;
 
       if (drupal_is_front_page()) {
-        $suggestions[] = 'page__panels__' . $wxt_active . '__front';
+        $suggestions[] = 'page__panels__' . $panels_wxt_active . '__front';
       }
 
       // Add the panel page machine name to the template suggestions.
@@ -169,11 +171,11 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     }
     // Page template suggestions for normal pages.
     else {
-      $suggestions[] = 'page__' . $wxt_active;
+      $suggestions[] = 'page__' . $panels_wxt_active;
 
       // Splash Page.
       if (current_path() == 'splashify-splash') {
-        $suggestions[] = 'page__splash__' . $wxt_active;
+        $suggestions[] = 'page__splash__' . $panels_wxt_active;
       }
 
       // Merge the suggestions in to the existing suggestions (as more specific

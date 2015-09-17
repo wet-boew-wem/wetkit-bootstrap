@@ -78,7 +78,7 @@
     <div class="container">
       <div class="row mrgn-tp-lg mrgn-bttm-lg">
         <section class="col-md-8 col-md-offset-2">
-          <object type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-ogpl/assets/logo.svg" aria-label="<?php print t('Open Government Platform (OGPL)'); ?>"></object>
+          <object type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-ogpl/assets/logo.svg" aria-label="<?php print t('Open Government Platform (OGPL)'); ?>"></object>
         </section>
       </div>
     </div>

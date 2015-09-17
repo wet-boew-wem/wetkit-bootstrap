@@ -6,25 +6,25 @@
 <title><?php print $head_title; ?></title>
 <meta content="width=device-width,initial-scale=1" name="viewport"> <!-- Meta data -->
 <meta name="robots" content="noindex, nofollow, noarchive"> <!-- Meta data--> <!--[if gte IE 9 | !IE ]><!-->
-<link href="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/css/wet-boew.min.css"> <!--<![endif]-->
-<link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/css/theme-srv.min.css"> <!--[if lt IE 9]>
-<link href="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/favicon.ico" rel="shortcut icon" />
-<link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/css/ie8-wet-boew.min.css" />
+<link href="/profiles/wetkit/libraries/theme-gcwu-fegc/assets/favicon.ico" rel="icon" type="image/x-icon">
+<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gcwu-fegc/css/wet-boew.min.css"> <!--<![endif]-->
+<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gcwu-fegc/css/theme-srv.min.css"> <!--[if lt IE 9]>
+<link href="/profiles/wetkit/libraries/theme-gcwu-fegc/assets/favicon.ico" rel="shortcut icon" />
+<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gcwu-fegc/css/ie8-wet-boew.min.css" />
 <script src="/profiles/wetkit/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js"></script>
-<script src="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/js/ie8-wet-boew.min.js"></script>
+<script src="/profiles/wetkit/libraries/theme-gcwu-fegc/js/ie8-wet-boew.min.js"></script>
 <![endif]-->
-<noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/css/noscript.min.css" /></noscript>
+<noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gcwu-fegc/css/noscript.min.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
 <header role="banner" class="container">
 <div id="wb-bnr" class="row">
 <div class="row">
 <div class="col-sm-6">
-<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/sig-alt-en.svg" aria-label="Government of Canada"></object>
+<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gcwu-fegc/assets/sig-alt-en.svg" aria-label="Government of Canada"></object>
 </div>
 <div class="col-sm-6">
-<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/assets/wmms-alt.svg" aria-label="Symbol of the Government of Canada"></object>
+<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gcwu-fegc/assets/wmms-alt.svg" aria-label="Symbol of the Government of Canada"></object>
 </div>
 </div>
 </div>
@@ -59,8 +59,8 @@
 </div>
 </main> <!--[if gte IE 9 | !IE ]><!-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/js/wet-boew.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
-<script src="/profiles/wetkit/libraries/wet-boew-gcwu-fegc/js/ie8-wet-boew2.min.js"></script>
+<script src="/profiles/wetkit/libraries/theme-gcwu-fegc/js/wet-boew.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
+<script src="/profiles/wetkit/libraries/theme-gcwu-fegc/js/ie8-wet-boew2.min.js"></script>
 <![endif]-->
 </body>
 </html>
