@@ -104,3 +104,16 @@
 .legendColorBox {
   width: 30px;
 }
+
+.theme-gcweb {
+  .icon {
+    font-size: inherit;
+    min-height: 0px;
+    min-width: 0px;
+  }
+  .action-links {
+    .btn {
+      min-height: 0px;
+    }
+  }
+}
