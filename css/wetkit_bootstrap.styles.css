@@ -421,11 +421,12 @@ ul.pagination > li > a.progress-disabled {
   width: 30px;
 }
 
-.theme-gcweb .icon {
+.icon {
   font-size: inherit;
   min-height: 0px;
   min-width: 0px;
 }
-.theme-gcweb .action-links .btn {
+
+.action-links .btn {
   min-height: 0px;
 }
