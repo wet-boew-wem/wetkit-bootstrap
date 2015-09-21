@@ -23,7 +23,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   // WxT Settings.
   $theme_prefix = 'wb';
   $theme_menu_prefix = 'wet-fullhd';
-  $wxt_active = variable_get('wetkit_wetboew_theme', 'wet-boew');
+  $wxt_active = variable_get('wetkit_wetboew_theme', 'theme-wet-boew');
   $library_path = libraries_get_path($wxt_active, TRUE);
   $wxt_active = str_replace('-', '_', $wxt_active);
   $wxt_active = str_replace('theme_', '', $wxt_active);
