@@ -143,4 +143,10 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
     '#default_value' => theme_get_setting('gcweb_cdn'),
     '#description' => t('If checked the GCWeb theme will use the CDN for MegaMenu + GoC Initiatives'),
   );
+  $form['wetkit_gcweb']['gcweb_election'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Toggle Election mode'),
+    '#default_value' => theme_get_setting('gcweb_election'),
+    '#description' => t('If checked the GCWeb theme will disable the GCWeb Features section'),
+  );
 }

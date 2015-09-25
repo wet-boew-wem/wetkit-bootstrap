@@ -184,7 +184,7 @@
     <?php print render($page['sidebar_second']); ?>
   </aside>
 <?php endif; ?>
-<?php if (!empty($gcweb_cdn)): ?>
+<?php if (!empty($gcweb_cdn) && empty($gcweb_election)): ?>
   <aside class="gc-nttvs container">
     <h2><?php print t('Government of Canada activities and initiatives') ?></h2>
     <div id="gcwb_prts" class="wb-eqht row" data-ajax-replace="//cdn.canada.ca/gcweb-cdn-live/features/features-<?php print $language; ?>.html">
