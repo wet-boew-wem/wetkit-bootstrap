@@ -144,7 +144,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   if (current_path() == 'splashify-splash') {
     // GCWeb Theme.
     if ($wxt_active == 'gcweb') {
-      $variables['background'] = $library_path . '/img/splash/sp-bg-2.jpg';
+      $variables['background'] = base_path() . drupal_get_path('theme', 'wetkit_bootstrap') . '/images/sp-bg-2.jpg';
     }
   }
 
