@@ -84,14 +84,18 @@
       <span lang="fr">Bienvenue</span>
     </h1>
     <section class="col-md-6">
-      <h2><?php print t('Web Experience Toolkit'); ?></h2>
-      <a class="btn btn-lg btn-primary btn-block" href="<?php print '/' . $language_prefix; ?>"><?php print t('English'); ?></a>
-      <a class="btn btn-lg btn-default btn-block" href="../../License-en.html" rel="license"><?php print t('Terms and conditions of use'); ?></a>
+      <h2 class="h3 text-center"><?php print t('Web Experience Toolkit'); ?></h2>
+      <ul class="list-unstyled">
+      <li><a class="btn btn-lg btn-primary btn-block" href="<?php print '/' . $language_prefix; ?>"><?php print t('English'); ?></a></li>
+      <li><a class="btn btn-lg btn-default btn-block" href="../../License-en.html" rel="license"><?php print t('Terms and conditions of use'); ?></a></li>
+      </ul>
     </section>
     <section class="col-md-6" lang="fr">
-      <h2><?php print t('Boîte à outils de l’expérience Web'); ?></h2>
-      <a class="btn btn-lg btn-primary btn-block" href="<?php print '/' . $language_prefix_alt; ?>"><?php print t('Français'); ?></a>
-      <a class="btn btn-lg btn-default btn-block" href="../../Licence-fr.html" rel="license"><?php print t('Conditions régissant l\'utilisation'); ?></a>
+      <h2 class="h3 text-center"><?php print t('Boîte à outils de l’expérience Web'); ?></h2>
+      <ul class="list-unstyled">
+      <li><a class="btn btn-lg btn-primary btn-block" href="<?php print '/' . $language_prefix_alt; ?>"><?php print t('Français'); ?></a></li>
+      <li><a class="btn btn-lg btn-default btn-block" href="../../Licence-fr.html" rel="license"><?php print t('Conditions régissant l\'utilisation'); ?></a></li>
+      </ul>
     </section>
   </div>
 </main>

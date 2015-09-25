@@ -10,9 +10,9 @@
 <link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gcweb/css/wet-boew.min.css"> <!--<![endif]-->
 <link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gcweb/css/theme-srv.min.css"> <!--[if lt IE 9]>
 <link href="./assets/favicon.ico" rel="shortcut icon" />
-<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gcweb/css/ie8-wet-boew.min.css" />
+<link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gcweb/css/ie8-theme-srv.min.css" />
 <script src="/profiles/wetkit/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js"></script>
-<script src="/profiles/wetkit/libraries/theme-gcweb/js/ie8-wet-boew.min.js"></script>
+<script src="/profiles/wetkit/libraries/wet-boew/js/ie8-wet-boew.min.js"></script>
 <![endif]-->
 <noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gcweb/css/noscript.min.css" /></noscript>
 </head>

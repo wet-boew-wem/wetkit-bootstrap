@@ -12,7 +12,7 @@
 <link href="/profiles/wetkit/libraries/theme-wet-boew/assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="/profiles/wetkit/libraries/theme-wet-boew/css/ie8-wet-boew.min.css" />
 <script src="/profiles/wetkit/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js"></script>
-<script src="/profiles/wetkit/libraries/theme-wet-boew/js/ie8-wet-boew.min.js"></script>
+<script src="/profiles/wetkit/libraries/wet-boew/js/ie8-wet-boew.min.js"></script>
 <![endif]-->
 <noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/theme-wet-boew/css/noscript.min.css" /></noscript>
 </head>
