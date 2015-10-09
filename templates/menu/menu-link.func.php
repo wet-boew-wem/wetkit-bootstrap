@@ -81,6 +81,7 @@ function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
       'fragment' => 'wb-tphp',
       'external' => TRUE,
     );
+    $element['#localized_options']['attributes']['class'][] = 'item';
   }
 
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
