@@ -56,8 +56,9 @@
 </div>
 </main> <!--[if gte IE 9 | !IE ]><!-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="/profiles/wetkit/libraries/theme-ogpl/js/wet-boew.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
-<script src="/profiles/wetkit/libraries/theme-ogpl/js/ie8-wet-boew2.min.js"></script>
+<script src="/profiles/wetkit/libraries/wet-boew/js/wet-boew.min.js"></script> <!--<![endif]-->
+<!--[if lt IE 9]>
+<script src="/profiles/wetkit/libraries/wet-boew/js/ie8-wet-boew2.min.js"></script>
 <![endif]-->
 </body>
 </html>
