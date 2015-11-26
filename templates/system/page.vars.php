@@ -378,9 +378,10 @@ function _wetkit_custom_search_prerender($element) {
     $data['#attributes']['name'] = 'search-form';
     $data['actions']['submit']['#attributes']['name'] = 'wb-srch-sub';
     $data['actions']['submit']['#value'] = '<span class="glyphicon-search glyphicon"></span><span class="wb-inv">' . t('Search') . '</span>';
-    $data['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Canada.ca');
+    $data['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Website');
     $cdn_srch = theme_get_setting('canada_search');
-    if (isset($cdn_srch)) {
+    if (!empty($cdn_srch)) {
+      $data['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Canada.ca');
       $data['custom_search_blocks_form_1']['#name'] = 'q';
       $data['#action'] = 'http://recherche-search.gc.ca/rGs/s_r?#wb-land';
       $data['#method'] = 'get';
