@@ -22,6 +22,14 @@
   background-color: #fff;
 }
 
+#modal-content .entity-translation-field-translatable {
+  padding: 0px;
+}
+#modal-content .panel-heading .panel-title {
+  color: black;
+  margin: 0px;
+}
+
 /* =============================================================================
    Deploy
    ========================================================================== */
@@ -332,7 +340,7 @@ ul.pagination > li > a.progress-disabled {
 }
 
 /* =============================================================================
-   Bean
+   Webform
    ========================================================================== */
 .webform-container-inline .form-control {
   display: inline;
