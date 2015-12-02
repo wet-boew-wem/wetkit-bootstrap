@@ -200,24 +200,26 @@
     </aside>
   <?php endif; ?>
 <?php endif; ?>
-<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
+<footer role="contentinfo" id="wb-info">
   <div class="container">
-    <nav role="navigation" class="row">
+    <nav role="navigation" class="visible-sm visible-md visible-lg wb-navcurr">
     <h2><?php print t('About this site'); ?></h2>
-    <?php print render($page['footer']); ?>
-    <div class="col-sm-3 col-lg-3 brdr-lft">
-      <section>
-        <h3><?php print t('Feedback'); ?></h3>
-        <p><a href="<?php print $gcweb['feedback'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/feedback.png" alt="<?php print t('Feedback about this Web site'); ?>"></a></p>
-      </section>
-      <section>
-        <h3><?php print t('Social Media'); ?></h3>
-        <p><a href="<?php print $gcweb['social'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/social.png" alt="<?php print t('Social Media'); ?>"></a></p>
-      </section>
-      <section>
-        <h3><?php print t('Mobile Centre'); ?></h3>
-        <p><a href="<?php print $gcweb['mobile'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/mobile.png" alt="<?php print t('Mobile centre'); ?>"></a></p>
-      </section>
+    <div class="row">
+      <?php print render($page['footer']); ?>
+      <div class="col-sm-3 col-lg-3 brdr-lft">
+        <section>
+          <h3><?php print t('Feedback'); ?></h3>
+          <p><a href="<?php print $gcweb['feedback'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/feedback.png" alt="<?php print t('Feedback about this Web site'); ?>"></a></p>
+        </section>
+        <section>
+          <h3><?php print t('Social Media'); ?></h3>
+          <p><a href="<?php print $gcweb['social'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/social.png" alt="<?php print t('Social Media'); ?>"></a></p>
+        </section>
+        <section>
+          <h3><?php print t('Mobile Centre'); ?></h3>
+          <p><a href="<?php print $gcweb['mobile'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/mobile.png" alt="<?php print t('Mobile centre'); ?>"></a></p>
+        </section>
+      </div>
     </div>
     </nav>
   </div>
