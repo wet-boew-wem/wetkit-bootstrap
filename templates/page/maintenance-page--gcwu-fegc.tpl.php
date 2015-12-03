@@ -14,7 +14,7 @@
 <script src="/profiles/wetkit/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js"></script>
 <script src="/profiles/wetkit/libraries/wet-boew/js/ie8-wet-boew.min.js"></script>
 <![endif]-->
-<noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/theme-gcwu-fegc/css/noscript.min.css" /></noscript>
+<noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew/css/noscript.min.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
 <header role="banner" class="container">
