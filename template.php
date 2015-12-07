@@ -4,6 +4,14 @@
  * template.php
  */
 
+/*
+ * Implements hook_html_head_alter().
+ */
+function wetkit_bootstrap_html_head_alter(&$head_elements) {
+  // Fix for validation error with duplicate charset.
+  unset($head_elements['system_meta_content_type']);
+}
+
 /**
  * Allows sub-themes to alter the array used for colorizing text.
  *
