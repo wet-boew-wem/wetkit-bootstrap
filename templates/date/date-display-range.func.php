@@ -26,7 +26,7 @@ function wetkit_bootstrap_date_display_range($variables) {
   }
 
   // Wrap the result with the attributes.
-  $output = '<span class="date-display-range">' . t('!start-date to !end-date', array(
+  $output = '<span class="clearfix date-display-range">' . t('!start-date to !end-date', array(
     '!start-date' => $start_date,
     '!end-date' => $end_date,
   )) . '</span>';
