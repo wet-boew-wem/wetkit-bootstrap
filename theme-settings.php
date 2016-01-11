@@ -56,7 +56,7 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
   $form['wetkit_accessibility']['skip_nav']['wetkit_skip_link_text_2'] = array(
     '#type'          => 'textfield',
     '#title'         => t('Text for secondary “skip link”'),
-    '#default_value' => t('Skip to site information'),
+    '#default_value' => t('Skip to "About this site"'),
     '#description'   => t('For example: <em>Jump to navigation</em>, <em>Skip to content</em>'),
   );
   $form['wetkit_accessibility']['skip_nav']['wetkit_skip_link_id_2'] = array(
