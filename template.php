@@ -68,13 +68,14 @@ function wetkit_bootstrap_block_view_alter(&$data, $block) {
  */
 function wetkit_bootstrap_css_alter(&$css) {
   $theme_path = drupal_get_path('theme', 'bootstrap');
-  $wxt_loaded = TRUE;
-  if ($wxt_loaded) {
 
-    // Add overrides.
-    $override = $theme_path . '/css/overrides.css';
-    $css[$override] = array(
-      'data' => $override,
+  // Exclude specified CSS files from theme.
+  $excludes = bootstrap_get_theme_info(NULL, 'exclude][css');
+
+  $overrides = "$theme_path/css/3.3.5/overrides.min.css";
+  if (file_exists($overrides)) {
+    $css[$overrides] = array(
+      'data' => $overrides,
       'type' => 'file',
       'every_page' => TRUE,
       'media' => 'all',
@@ -83,5 +84,9 @@ function wetkit_bootstrap_css_alter(&$css) {
       'browsers' => array('IE' => TRUE, '!IE' => TRUE),
       'weight' => -1,
     );
+  }
+
+  if (!empty($excludes)) {
+    $css = array_diff_key($css, drupal_map_assoc($excludes));
   }
 }

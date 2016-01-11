@@ -1,14 +1,19 @@
 <?php
 /**
  * @file
- * region.vars.php
+ * Stub file for "region" theme hook [pre]process functions.
  */
 
 /**
- * Implements hook_preprocess_region().
+ * Pre-processes variables for the "region" theme hook.
+ *
+ * See template for list of available variables.
+ *
+ * @see region.tpl.php
+ *
+ * @ingroup theme_preprocess
  */
 function wetkit_bootstrap_preprocess_region(&$variables) {
-
   global $theme;
 
   $region = $variables['region'];
@@ -19,10 +24,8 @@ function wetkit_bootstrap_preprocess_region(&$variables) {
     // @todo is this actually used properly?
     $variables['theme_hook_suggestions'][] = 'region__no_wrapper';
   }
-
   // Help region.
   elseif ($region === 'help' && !empty($variables['content'])) {
-    //$variables['content'] = _bootstrap_icon('question-sign') . $variables['content'];
     $variables['content'] = str_replace('<span class="icon glyphicon glyphicon-question-sign" aria-hidden="true"></span>', '', $variables['content']);
     $classes[] = 'alert';
     $classes[] = 'alert-info';
@@ -34,7 +37,7 @@ function wetkit_bootstrap_preprocess_region(&$variables) {
   static $wells;
   if (!isset($wells)) {
     foreach (system_region_list($theme) as $name => $title) {
-      $wells[$name] = theme_get_setting('bootstrap_region_well-' . $name);
+      $wells[$name] = bootstrap_setting('region_well-' . $name);
     }
   }
   if (!empty($wells[$region])) {

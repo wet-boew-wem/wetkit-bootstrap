@@ -1,11 +1,24 @@
 <?php
 /**
  * @file
- * textfield.func.php
+ * Stub file for bootstrap_textfield().
  */
 
 /**
- * Overrides theme_textfield().
+ * Returns HTML for a textfield form element.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - element: An associative array containing the properties of the element.
+ *     Properties used: #title, #value, #description, #size, #maxlength,
+ *     #required, #attributes, #autocomplete_path.
+ *
+ * @return string
+ *   The constructed HTML.
+ *
+ * @see theme_textfield()
+ *
+ * @ingroup theme_functions
  */
 function wetkit_bootstrap_textfield($variables) {
   $element = $variables['element'];
@@ -22,14 +35,14 @@ function wetkit_bootstrap_textfield($variables) {
   $output = '<input' . drupal_attributes($element['#attributes']) . ' />';
 
   $extra = '';
-  if ($element['#autocomplete_path'] && drupal_valid_path($element['#autocomplete_path'])) {
+  if ($element['#autocomplete_path'] && !empty($element['#autocomplete_input'])) {
     drupal_add_library('system', 'drupal.autocomplete');
     $element['#attributes']['class'][] = 'form-autocomplete';
 
     $attributes = array();
     $attributes['type'] = 'hidden';
-    $attributes['id'] = $element['#attributes']['id'] . '-autocomplete';
-    $attributes['value'] = url($element['#autocomplete_path'], array('absolute' => TRUE));
+    $attributes['id'] = $element['#autocomplete_input']['#id'];
+    $attributes['value'] = $element['#autocomplete_input']['#url_value'];
     $attributes['disabled'] = 'disabled';
     $attributes['class'][] = 'autocomplete';
     // Uses icon for autocomplete "throbber".

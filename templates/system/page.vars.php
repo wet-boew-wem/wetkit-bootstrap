@@ -1,13 +1,17 @@
 <?php
 /**
  * @file
- * page.vars.php
+ * Stub file for "page" theme hook [pre]process functions.
  */
 
 /**
- * Implements hook_preprocess_page().
+ * Pre-processes variables for the "page" theme hook.
+ *
+ * See template for list of available variables.
  *
  * @see page.tpl.php
+ *
+ * @ingroup theme_preprocess
  */
 function wetkit_bootstrap_preprocess_page(&$variables) {
 
@@ -98,6 +102,14 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $variables['content_column_class'] = '';
   }
 
+  // Fluid container.
+  if(bootstrap_setting('fluid_container') == 1) {
+    $variables['container_class'] = 'container-fluid';
+  }
+  else {
+    $variables['container_class'] = 'container';
+  }
+
   // Primary menu.
   $variables['primary_nav'] = FALSE;
   if ($variables['main_menu']) {
@@ -117,13 +129,26 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   }
 
   // Navbar.
-  $variables['navbar_classes_array'] = array('');
-  if (theme_get_setting('bootstrap_navbar_position') !== '') {
-    $variables['navbar_classes_array'][] = 'navbar-' . theme_get_setting('bootstrap_navbar_position');
+  $variables['navbar_classes_array'] = array('navbar');
+
+  if (bootstrap_setting('navbar_position') !== '') {
+    $variables['navbar_classes_array'][] = 'navbar-' . bootstrap_setting('navbar_position');
+  }
+  elseif(bootstrap_setting('fluid_container') == 1) {
+    $variables['navbar_classes_array'][] = 'container-fluid';
   }
   else {
-    $variables['navbar_classes_array'][] = '';
+    $variables['navbar_classes_array'][] = 'container';
   }
+  if (bootstrap_setting('navbar_inverse')) {
+    $variables['navbar_classes_array'][] = 'navbar-inverse';
+  }
+  else {
+    $variables['navbar_classes_array'][] = 'navbar-default';
+  }
+
+  // Navbar override.
+  $variables['navbar_classes_array'] = array('');
 
   // Mega Menu Region.
   if (module_exists('menu_block') && empty($variables['mega_menu'])) {
@@ -339,9 +364,13 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_process_page().
+ * Processes variables for the "page" theme hook.
+ *
+ * See template for list of available variables.
  *
  * @see page.tpl.php
+ *
+ * @ingroup theme_process
  */
 function wetkit_bootstrap_process_page(&$variables) {
   // Store the page variables in cache so it can be used in region

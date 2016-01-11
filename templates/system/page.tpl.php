@@ -70,13 +70,13 @@
  * @see template_process()
  * @see html.tpl.php
  *
- * @ingroup themeable
+ * @ingroup templates
  */
 ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div id="wb-bnr">
     <div id="wb-bar">
-      <div class="container">
+      <div class="<?php print $container_class; ?>">
         <div class="row">
           <section id="wb-lng" class="visible-md visible-lg">
             <?php print $menu_bar; ?>
@@ -149,7 +149,7 @@
     </div>
   </nav>
 </header>
-<div class="main-container container">
+<div class="main-container <?php print $container_class; ?>">
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
       <p class="lead"><?php print $site_slogan; ?></p>
@@ -193,6 +193,7 @@
     </aside>  <!-- /#sidebar-second -->
   <?php endif; ?>
 </div>
+<?php if (!empty($page['footer'])): ?>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
   <div class="container">
     <nav role="navigation" class="row">
@@ -201,4 +202,4 @@
     </nav>
   </div>
 </footer>
-
+<?php endif; ?>

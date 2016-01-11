@@ -1,15 +1,23 @@
 <?php
 /**
  * @file
- * html.vars.php
- *
- * @see html.tpl.php
+ * Stub file for "html" theme hook [pre]process functions.
  */
 
 /**
- * Implements hook_preprocess_html().
+ * Pre-processes variables for the "html" theme hook.
+ *
+ * See template for list of available variables.
+ *
+ * @see html.tpl.php
+ *
+ * @ingroup theme_preprocess
  */
 function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
+  // Backport from Drupal 8 RDFa/HTML5 implementation.
+  // @see https://www.drupal.org/node/1077566
+  // @see https://www.drupal.org/node/1164926
+
   global $theme_key;
   global $language;
 
@@ -24,22 +32,45 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
     return;
   }
 
-  // Initializes attributes which are specific to the html and body elements.
-  $variables['html_attributes_array'] = array();
-  $variables['body_attributes_array'] = array();
+  // HTML element attributes.
+  $variables['html_attributes_array'] = array(
+    'lang' => $variables['language']->language,
+    'dir' => $variables['language']->dir,
+  );
 
-  // Serialize RDF Namespaces into an RDFa 1.1 prefix attribute.
-  if ($variables['rdf_namespaces']) {
-    $prefixes = array();
-    foreach (explode("\n  ", ltrim($variables['rdf_namespaces'])) as $namespace) {
-      // Remove xlmns: and ending quote and fix prefix formatting.
-      $prefixes[] = str_replace('="', ': ', substr($namespace, 6, -1));
+  // Override existing RDF namespaces to use RDFa 1.1 namespace prefix bindings.
+  if (function_exists('rdf_get_namespaces')) {
+    $rdf = array('prefix' => array());
+    foreach (rdf_get_namespaces() as $prefix => $uri) {
+      $rdf['prefix'][] = $prefix . ': ' . $uri;
     }
-    $variables['rdf_namespaces'] = ' prefix="' . implode(' ', $prefixes) . '"';
+    if (!$rdf['prefix']) {
+      $rdf = array();
+    }
+    $variables['rdf_namespaces'] = drupal_attributes($rdf);
   }
 
-  // Modify html attributes.
-  $variables['html_attributes_array']['lang'][] = $language->language;
+  // BODY element attributes.
+  $variables['body_attributes_array'] = array(
+    'role'  => 'document',
+    'class' => &$variables['classes_array'],
+  );
+  $variables['body_attributes_array'] += $variables['attributes_array'];
+
+  // Navbar position.
+  switch (bootstrap_setting('navbar_position')) {
+    case 'fixed-top':
+      $variables['body_attributes_array']['class'][] = 'navbar-is-fixed-top';
+      break;
+
+    case 'fixed-bottom':
+      $variables['body_attributes_array']['class'][] = 'navbar-is-fixed-bottom';
+      break;
+
+    case 'static-top':
+      $variables['body_attributes_array']['class'][] = 'navbar-is-static-top';
+      break;
+  }
 
   // Add the default body id needed
   // WetKit Layouts may have already set this variable.
@@ -59,21 +90,6 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
   $variables['wetkit_skip_link_id_2'] = theme_get_setting('wetkit_skip_link_id_2');
   $variables['wetkit_skip_link_text_2'] = t('Skip to footer');
 
-  // Default Bootstrap configuration.
-  switch (theme_get_setting('bootstrap_navbar_position')) {
-    case 'fixed-top':
-      $variables['classes_array'][] = 'navbar-is-fixed-top';
-      break;
-
-    case 'fixed-bottom':
-      $variables['classes_array'][] = 'navbar-is-fixed-bottom';
-      break;
-
-    case 'static-top':
-      $variables['classes_array'][] = 'navbar-is-static-top';
-      break;
-  }
-
   // Splash Page.
   if (current_path() == 'splashify-splash') {
     if ($wxt_active == 'gcweb') {
@@ -89,9 +105,15 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
 }
 
 /**
- * Implements hook_process_html().
+ * Processes variables for the "html" theme hook.
+ *
+ * See template for list of available variables.
+ *
+ * @see html.tpl.php
+ *
+ * @ingroup theme_process
  */
 function wetkit_bootstrap_process_html(&$variables) {
-  // Flatten attributes arrays.
-  $variables['html_attributes'] = empty($variables['html_attributes_array']) ? '' : drupal_attributes($variables['html_attributes_array']);
+  $variables['html_attributes'] = drupal_attributes($variables['html_attributes_array']);
+  $variables['body_attributes'] = drupal_attributes($variables['body_attributes_array']);
 }
