@@ -37,7 +37,6 @@ function wetkit_bootstrap_admin_page($variables) {
 
   $output = '<div class="admin clearfix">';
   $output .= theme('system_compact_link');
-
   $output .= '<div class="row">';
   foreach ($container as $id => $data) {
     $output .= '<div class="col-md-6 ' . $id . ' clearfix">';
@@ -46,5 +45,6 @@ function wetkit_bootstrap_admin_page($variables) {
   }
   $output .= '</div>';
   $output .= '</div>';
+
   return $output;
 }
