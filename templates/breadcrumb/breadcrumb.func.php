@@ -145,10 +145,18 @@ function wetkit_bootstrap_breadcrumb($variables) {
 
     // Show contextual link if it is Path Breadcrumbs variant.
     $prefix = '';
+    $path_breadcrumbs_data = path_breadcrumbs_load_variant(current_path());
+    if (user_access('administer path breadcrumbs') && $path_breadcrumbs_data && isset($path_breadcrumbs_data->variant)) {
+      $contextual_links = array(
+        '#type' => 'contextual_links',
+        '#contextual_links' => array('path_breadcrumbs' => array('admin/structure/path-breadcrumbs/edit', array($path_breadcrumbs_data->variant->machine_name))),
+      );
+      $prefix = drupal_render($contextual_links);
+    }
 
     // Build final version of breadcrumb's HTML output.
     $delimiter = '';
-    $output = '<ol class="' . implode(' ', $classes) . '"' . $root_property . '>' . $prefix . implode(" $delimiter ", $breadcrumbs) . '</ol>';
+    $output = '<div class="contextual-links-region">' . $prefix . '<ol class="' . implode(' ', $classes) . '"' . $root_property . '>' . implode(" $delimiter ", $breadcrumbs) . '</ol></div>';
 
     return $output;
   }
