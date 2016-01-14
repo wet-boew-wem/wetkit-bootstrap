@@ -2,6 +2,14 @@
    WxT
    ========================================================================== */
 
+.form-item {
+  .input-group-addon {
+    .icon {
+      padding-left: 0px;
+    }
+  }
+}
+
 .page-node-edit.theme-gcweb {
   main.container {
   background-color: #FFF;
