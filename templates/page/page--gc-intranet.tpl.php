@@ -76,7 +76,7 @@
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div id="wb-bnr">
     <div id="wb-bar">
-      <div class="container">
+      <div class="<?php print $container_class; ?>">
         <div class="row">
           <?php if ($site_name || $site_slogan || $logo): ?>
             <?php if ($logo && $logo_svg): ?>
@@ -109,7 +109,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="<?php print $container_class; ?>">
       <div class="row">
         <div id="wb-sttl" class="col-md-5">
           <?php if ($site_name || $site_slogan || $logo): ?>
@@ -133,7 +133,7 @@
     </div>
   </div>
   <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
-    <div class="container nvbar">
+    <div class="<?php print $container_class; ?> nvbar">
       <h2><?php print t('Topics menu'); ?></h2>
       <div class="row">
         <?php print render($page['mega_menu']); ?>
@@ -143,7 +143,7 @@
   </nav>
   <?php print render($page['header']); ?>
   <nav role="navigation" id="wb-bc" property="breadcrumb">
-    <div class="container">
+    <div class="<?php print $container_class; ?>">
       <div class="row">
         <?php print render($breadcrumb); ?>
       </div>
@@ -155,7 +155,7 @@
     <?php print render($page['sidebar_first']); ?>
   </aside>
 <?php endif; ?>
-<main role="main" property="mainContentOfPage" class="container">
+<main role="main" property="mainContentOfPage" class="<?php print $container_class; ?>">
   <?php if (empty($panels_layout)): ?>
     <?php if (!empty($page['highlighted'])): ?>
       <?php print render($page['highlighted']); ?>
@@ -187,7 +187,7 @@
   </aside>
 <?php endif; ?>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
-  <div class="container">
+  <div class="<?php print $container_class; ?>">
     <nav role="navigation">
       <h2><?php print t('About this site'); ?></h2>
       <div class="row">

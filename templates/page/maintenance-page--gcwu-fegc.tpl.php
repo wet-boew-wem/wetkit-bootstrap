@@ -17,7 +17,7 @@
 <noscript><link rel="stylesheet" href="/profiles/wetkit/libraries/wet-boew/css/noscript.min.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
-<header role="banner" class="container">
+<header role="banner" class="<?php print $container_class; ?>">
 <div id="wb-bnr" class="row">
 <div class="row">
 <div class="col-sm-6">
@@ -29,7 +29,7 @@
 </div>
 </div>
 </header>
-<main role="main" property="mainContentOfPage" class="container">
+<main role="main" property="mainContentOfPage" class="<?php print $container_class; ?>">
 <div class="row mrgn-tp-lg">
 <h1 class="wb-inv"><?php print $site_name; ?></h1>
 <!-- MainContentStart -->

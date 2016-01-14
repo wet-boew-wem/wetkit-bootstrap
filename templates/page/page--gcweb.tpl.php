@@ -74,7 +74,7 @@
  */
 ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
-  <div id="wb-bnr" class="container">
+  <div id="wb-bnr" class="<?php print $container_class; ?>">
     <section id="wb-lng" class="visible-md visible-lg text-right">
       <h2 class="wb-inv"><?php print t('Language selection'); ?></h2>
       <div class="row">
@@ -122,7 +122,7 @@
   </div>
   <?php if (!empty($gcweb_cdn)): ?>
     <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="//cdn.canada.ca/gcweb-cdn-live/sitemenu/sitemenu-<?php print $language; ?>.html" typeof="SiteNavigationElement">
-      <div class="pnl-strt container nvbar">
+      <div class="pnl-strt <?php print $container_class; ?> nvbar">
         <h2 class="wb-inv"><?php print t('Topics menu'); ?></h2>
         <div class="row">
           <?php print render($page['mega_menu']); ?>
@@ -131,7 +131,7 @@
     </nav>
   <?php else: ?>
     <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
-      <div class="pnl-strt container nvbar">
+      <div class="pnl-strt <?php print $container_class; ?> nvbar">
         <h2 class="wb-inv"><?php print t('Topics menu'); ?></h2>
         <div class="row">
           <?php print render($page['mega_menu']); ?>
@@ -141,7 +141,7 @@
   <?php endif; ?>
   <?php print render($page['header']); ?>
   <nav role="navigation" id="wb-bc" property="breadcrumb">
-    <div class="container">
+    <div class="<?php print $container_class; ?>">
       <div class="row">
         <?php print render($breadcrumb); ?>
       </div>
@@ -153,7 +153,7 @@
     <?php print render($page['sidebar_first']); ?>
   </aside>
 <?php endif; ?>
-<main role="main" property="mainContentOfPage" class="container">
+<main role="main" property="mainContentOfPage" class="<?php print $container_class; ?>">
   <?php if (empty($panels_layout)): ?>
     <?php if (!empty($page['highlighted'])): ?>
       <?php print render($page['highlighted']); ?>
@@ -185,7 +185,7 @@
   </aside>
 <?php endif; ?>
 <?php if (!empty($gcweb_cdn) && empty($gcweb_election)): ?>
-  <aside class="gc-nttvs container">
+  <aside class="gc-nttvs <?php print $container_class; ?>">
     <h2><?php print t('Government of Canada activities and initiatives') ?></h2>
     <div id="gcwb_prts" class="wb-eqht row" data-ajax-replace="//cdn.canada.ca/gcweb-cdn-live/features/features-<?php print $language; ?>.html">
       <p class="mrgn-lft-md">
@@ -195,13 +195,13 @@
   </aside>
 <?php else: ?>
   <?php if (!empty($page['featured'])): ?>
-    <aside class="gc-nttvs container">
+    <aside class="gc-nttvs <?php print $container_class; ?>">
       <?php print render($page['featured']); ?>
     </aside>
   <?php endif; ?>
 <?php endif; ?>
 <footer role="contentinfo" id="wb-info">
-  <div class="container">
+  <div class="<?php print $container_class; ?>">
     <nav role="navigation" class="visible-sm visible-md visible-lg wb-navcurr">
     <h2><?php print t('About this site'); ?></h2>
     <div class="row">
@@ -224,7 +224,7 @@
     </nav>
   </div>
   <div class="brand">
-    <div class="container">
+    <div class="<?php print $container_class; ?>">
       <div class="row ">
         <div class="col-xs-6 visible-sm visible-xs tofpg">
           <a href="#wb-cont"><?php print t('Top of Page'); ?><span class="glyphicon glyphicon-chevron-up"></span></a>

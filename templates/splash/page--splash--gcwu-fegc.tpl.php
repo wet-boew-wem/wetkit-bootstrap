@@ -74,11 +74,11 @@
  */
 ?>
 <header role="banner">
-  <div id="wb-bnr" class="container">
+  <div id="wb-bnr" class="<?php print $container_class; ?>">
     <object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gcwu-fegc/assets/sig-alt-en.svg" aria-label="<?php print t('Government of Canada'); ?>"></object>
   </div>
 </header>
-<main role="main" property="mainContentOfPage" class="container">
+<main role="main" property="mainContentOfPage" class="<?php print $container_class; ?>">
   <div class="col-md-12">
     <h1>Welcome /
       <span lang="fr">Bienvenue</span>
@@ -99,6 +99,6 @@
     </section>
   </div>
 </main>
-<footer role="contentinfo" class="container">
+<footer role="contentinfo" class="<?php print $container_class; ?>">
     <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gcwu-fegc/assets/wmms-alt.svg" aria-label="<?php print t('Symbol of the Government of Canada'); ?>"></object>
 </footer>

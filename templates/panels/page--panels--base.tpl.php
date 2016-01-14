@@ -76,7 +76,7 @@
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div id="wb-bnr">
     <div id="wb-bar">
-      <div class="container">
+      <div class="<?php print $container_class; ?>">
         <div class="row">
           <section id="wb-lng" class="visible-md visible-lg">
             <?php print $menu_bar; ?>
@@ -99,7 +99,7 @@
           </div>
         </div>
       </div>
-      <div class="container">
+      <div class="<?php print $container_class; ?>">
         <div class="row">
           <div id="wb-sttl" class="col-md-8">
             <?php if ($site_name || $site_slogan || $logo): ?>
@@ -125,7 +125,7 @@
       </div>
     </div>
     <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
-      <div class="pnl-strt container visible-md visible-lg nvbar">
+      <div class="pnl-strt <?php print $container_class; ?> visible-md visible-lg nvbar">
         <h2><?php print t('Topics menu'); ?></h2>
         <div class="row">
           <?php print render($page['mega_menu']); ?>
@@ -135,7 +135,7 @@
     </nav>
     <?php print render($page['header']); ?>
     <nav role="navigation" id="wb-bc" property="breadcrumb">
-      <div class="container">
+      <div class="<?php print $container_class; ?>">
         <div class="row">
           <?php print render($breadcrumb); ?>
         </div>
@@ -143,7 +143,7 @@
     </nav>
   </div>
 </header>
-<main role="main" class="container">
+<main role="main" class="<?php print $container_class; ?>">
   <div class="row">
     <section<?php print $content_column_class; ?>>
       <?php if (empty($panels_layout)): ?>
@@ -174,7 +174,7 @@
   </div>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
-    <div class="container">
+    <div class="<?php print $container_class; ?>">
       <nav role="navigation" class="row">
       <h2><?php print t('About this site'); ?></h2>
       <?php print render($page['footer']); ?>
