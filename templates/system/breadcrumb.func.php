@@ -21,7 +21,7 @@
 function wetkit_bootstrap_breadcrumb($variables) {
   // Use the Path Breadcrumbs theme function if it should be used instead.
   if (_bootstrap_use_path_breadcrumbs()) {
-    return path_breadcrumbs_breadcrumb($variables);
+    return wetkit_breadcrumbs_breadcrumb($variables);
   }
 
   $output = '';
