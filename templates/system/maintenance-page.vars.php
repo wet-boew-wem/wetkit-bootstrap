@@ -19,6 +19,14 @@ function wetkit_bootstrap_preprocess_maintenance_page(&$variables) {
   $wxt_active = str_replace('-', '_', $wxt_active);
   $wxt_active = str_replace('theme_', '', $wxt_active);
 
+  // Fluid container.
+  if(bootstrap_setting('fluid_container') == 1) {
+    $variables['container_class'] = 'container-fluid';
+  }
+  else {
+    $variables['container_class'] = 'container';
+  }
+
   // Dead databases will show error messages so supplying this template will
   // allow themers to override the page and the content completely
   // also aware db_is_active is deprecated but still used in theme.inc for D7.
