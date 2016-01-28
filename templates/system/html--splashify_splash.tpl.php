@@ -41,26 +41,27 @@
  * @see template_preprocess_html()
  * @see template_process()
  *
- * @ingroup themeable
+ * @ingroup templates
  */
 ?><!DOCTYPE html>
 <!--[if lt IE 9]><html<?php print $html_attributes; ?> class="no-js lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!-->
-<html<?php print $html_attributes . $rdf_namespaces; ?>>
+<html<?php print $html_attributes;?><?php print $rdf_namespaces;?>>
 <!--<![endif]-->
 <head>
+  <link rel="profile" href="<?php print $grddl_profile; ?>" />
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1" name="viewport" >
+  <meta content="width=device-width,initial-scale=1" name="viewport" >
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
-  <?php print $styles; ?>
-  <!-- HTML5 element support for IE6-8 -->
+  <!-- jQuery needs to be loaded first for IE6-8 -->
   <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <![endif]-->
+  <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>
-<body class="<?php print $classes; ?>" <?php print $attributes;?>>
+<body<?php print $body_attributes; ?>>
   <ul id="wb-tphp">
     <?php if ($wetkit_skip_link_id_1 && $wetkit_skip_link_text_1): ?>
       <li class="wb-slc">
