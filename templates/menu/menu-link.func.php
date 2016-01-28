@@ -66,7 +66,12 @@ function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
     if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
       // Add our own wrapper.
       unset($element['#below']['#theme_wrappers']);
-      $sub_menu = '<ul class="sm list-unstyled" role="menu">' . drupal_render($element['#below']) . $mb_mainlink . '</ul>';
+      if (!theme_get_setting('wetkit_render_mb_main_link')) {
+        $sub_menu = '<ul class="sm list-unstyled" role="menu">' . drupal_render($element['#below']) . $mb_mainlink . '</ul>';
+      }
+      else {
+        $sub_menu = '<ul class="sm list-unstyled" role="menu">' . drupal_render($element['#below']) . '</ul>';
+      }
       // Generate as standard dropdown.
       $element['#attributes']['class'][] = 'dropdown';
       $element['#localized_options']['html'] = TRUE;
