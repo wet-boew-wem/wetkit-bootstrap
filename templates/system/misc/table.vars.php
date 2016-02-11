@@ -23,9 +23,6 @@ function wetkit_bootstrap_preprocess_table(&$variables) {
   elseif (isset($variables['attributes']['class']) && is_string($variables['attributes']['class'])) {
     $variables['attributes']['class'] = explode(' ', $variables['attributes']['class']);
   }
-
-  // Add the necessary classes to the table.
-  _wetkit_bootstrap_table_add_classes($variables['attributes']['class'], $variables);
 }
 
 /**
