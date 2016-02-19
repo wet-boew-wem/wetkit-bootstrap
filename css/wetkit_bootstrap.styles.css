@@ -119,6 +119,10 @@ td.ctools-export-ui-operations .ctools-dropbutton {
   float: right;
 }
 
+#ui-datepicker-div {
+  z-index: 2 !important;
+}
+
 /* =============================================================================
    Navbar
    ========================================================================== */

@@ -60,3 +60,7 @@ td.ctools-export-ui-operations .ctools-dropbutton {
 .page-admin-dashboard .pane-content .categories-links {
   float: right;
 }
+
+#ui-datepicker-div {
+  z-index: 2 !important;
+}
