@@ -31,6 +31,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   $library_path = libraries_get_path($wxt_active, TRUE);
   $wxt_active = str_replace('-', '_', $wxt_active);
   $wxt_active = str_replace('theme_', '', $wxt_active);
+  $wxt_role_main = 'main';
 
   // Extra variables to pass to templates.
   $variables['library_path'] = $library_path;
@@ -175,10 +176,19 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
   // Panels Integration.
   if (module_exists('page_manager')) {
-    $panels_wxt_active = str_replace('theme_','', $wxt_active);
+    $panels_wxt_active = str_replace('theme_', '', $wxt_active);
 
     // Page template suggestions for Panels pages.
     $panel_page = page_manager_get_current_page();
+
+    $panel_page_display = panels_get_current_page_display();
+    if (isset($panel_page_display)) {
+      $panel_page_display_renderer = panels_get_renderer_handler($panel_page_display->renderer, $panel_page_display);
+      if (isset($panel_page_display_renderer->plugins['layout']['main']) && $panel_page_display_renderer->plugins['layout']['main'] == TRUE) {
+        $wxt_role_main = '';
+      }
+    }
+
     if (!empty($panel_page)) {
       // Add the active WxT theme machine name to the template suggestions.
       $suggestions[] = 'page__panels__' . $panels_wxt_active;
@@ -208,6 +218,9 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
       $variables['theme_hook_suggestions'] = array_merge($variables['theme_hook_suggestions'], $suggestions);
     }
   }
+
+  // Fix for role main use in panels
+  $variables['wxt_role_main'] = $wxt_role_main;
 
   // Header Navigation + Language Switcher.
   $menu = ($is_multilingual) ? i18n_menu_navigation_links('menu-wet-header') : menu_navigation_links('menu-wet-header');
