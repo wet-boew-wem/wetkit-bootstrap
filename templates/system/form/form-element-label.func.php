@@ -88,6 +88,25 @@ function wetkit_bootstrap_form_element_label(&$variables) {
     $output .= $title;
   }
 
+  // Accessibility fix
+  // See: https://www.drupal.org/node/2279111
+  // and https://www.drupal.org/node/504962
+  // - Removes 'for' attribute from known drupal-specific un-labelable elements.
+  // - Transform the group label into a div element.
+  // - Adds IDs to labels for aria-labelledby usage.
+  $label_type = 'label';
+  if (!empty($element['#id'])) {
+    if ($type == 'radios' || $type == 'checkboxes' || $type == 'date') {
+      // label this element as a composite form
+      $variables['#composite'] = TRUE;
+      $label_type = 'div';
+      $attributes['class'][] = 'composite-form-label';
+      unset($attributes['for']);
+    }
+    // labelable element: add an id to allow the use of aria-labelledby
+    $attributes['id'] = $element['#id'] . '-label';
+  }
+
   // The leading whitespace helps visually separate fields from inline labels.
-  return ' <label' . drupal_attributes($attributes) . '>' . $output . "</label>\n";
+  return " <$label_type" . drupal_attributes($attributes) . '>' . $output . "</$label_type>\n";
 }
