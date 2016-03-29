@@ -14,16 +14,16 @@ function wetkit_bootstrap_links__menu_menu_wet_header($variables) {
   $output = '';
 
   // Custom Logic Based on Theme Selection (Internet, Intranet or Base).
-  if (variable_get('wetkit_wetboew_theme', 0) == 1) {
+  if (variable_get('wetkit_wetboew_theme', 'theme-wet-boew') == 'theme-gcwu-fegc') {
     $theme_prefix = 'gcwu-gcnb';
   }
-  elseif (variable_get('wetkit_wetboew_theme', 0) == 2) {
+  elseif (variable_get('wetkit_wetboew_theme', 'theme-wet-boew') == 'theme-gc-intranet') {
     $theme_prefix = 'gcwu-gcnb';
   }
-  elseif (variable_get('wetkit_wetboew_theme', 0) == 3) {
+  elseif (variable_get('wetkit_wetboew_theme', 'theme-wet-boew') == 'theme-base') {
     $theme_prefix = 'base-gcnb';
   }
-  elseif (variable_get('wetkit_wetboew_theme', 0) == 4) {
+  elseif (variable_get('wetkit_wetboew_theme', 'theme-wet-boew') == 'theme-ogpl') {
     $theme_prefix = 'ogpl-fullhd-lang-';
   }
   else {

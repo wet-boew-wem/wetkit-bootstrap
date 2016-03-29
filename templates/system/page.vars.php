@@ -26,7 +26,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
   // WxT Settings.
   $theme_prefix = 'wb';
-  $theme_menu_prefix = 'wet-fullhd';
+  $theme_menu_prefix = 'wet-fullhd-lang';
   $wxt_active = variable_get('wetkit_wetboew_theme', 'theme-wet-boew');
   $library_path = libraries_get_path($wxt_active, TRUE);
   $wxt_active = str_replace('-', '_', $wxt_active);
@@ -238,7 +238,13 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   $nav_bar_markup = strip_tags($nav_bar_markup, '<h2><li><a>');
 
   if (module_exists('wetkit_language')) {
-    $language_link_markup = '<li id="' . $theme_menu_prefix . '-lang">' . strip_tags($variables['menu_lang_bar'], '<a><span>') . '</li>';
+    if ($wxt_active == 'gcwu_fegc') {
+      $language_link_markup = '<li id="wb-lng"><ul class="list-inline"><li>' . strip_tags($variables['menu_lang_bar'], '<a><span>') . '</li></ul></li>';
+    }
+    else {
+      $language_link_markup = '<li id="' . $theme_menu_prefix . '">' . strip_tags($variables['menu_lang_bar'], '<a><span>') . '</li>';
+    }
+
     if ($wxt_active == 'gcweb') {
       $variables['menu_bar'] = '<ul class="list-inline margin-bottom-none">' . $language_link_markup . '</ul>';
     }

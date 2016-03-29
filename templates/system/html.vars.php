@@ -22,7 +22,7 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
   global $language;
 
   // WxT Settings.
-  $wxt_active_orig = variable_get('wetkit_wetboew_theme', 'wet-boew');
+  $wxt_active_orig = variable_get('wetkit_wetboew_theme', 'theme-wet-boew');
   $library_path = libraries_get_path($wxt_active_orig, TRUE);
   $wxt_active = str_replace('-', '_', $wxt_active_orig);
   $wxt_active = str_replace('theme_', '', $wxt_active);
