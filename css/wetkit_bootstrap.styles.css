@@ -468,6 +468,6 @@ ul.pagination > li > a.progress-disabled {
 /* =============================================================================
    WxT Mobile Menu
    ========================================================================== */
-#mb-pnl ul li.no-sect {
+#sec-pnl ul li.no-sect {
   display: none;
 }
