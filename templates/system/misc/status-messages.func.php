@@ -48,8 +48,8 @@ function wetkit_bootstrap_status_messages($variables) {
 
   foreach (drupal_get_messages($display) as $type => $messages) {
     $class = (isset($status_class[$type])) ? ' alert-' . $status_class[$type] : '';
-    $output .= "<div class=\"alert alert-block$class messages $type\">\n";
-    $output .= "  <a class=\"close\" data-dismiss=\"alert\" href=\"#\">&times;</a>\n";
+    $output .= "<section class=\"alert alert-block$class messages $type\">\n";
+    $output .= "  <a class=\"close\" data-dismiss=\"alert\" href=\"#\" aria-hidden=\"true\">&times;</a>\n";
 
     if (!empty($status_heading[$type])) {
       $output .= '<h4 class="element-invisible">' . $status_heading[$type] . "</h4>\n";
@@ -66,7 +66,7 @@ function wetkit_bootstrap_status_messages($variables) {
       $output .= $messages[0];
     }
 
-    $output .= "</div>\n";
+    $output .= "</section>\n";
   }
   return $output;
 }
