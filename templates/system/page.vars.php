@@ -431,6 +431,7 @@ function _wetkit_custom_search_prerender($element) {
     if (!empty($cdn_srch)) {
       $data['custom_search_blocks_form_1']['#attributes']['placeholder'] = t('Search Canada.ca');
       $data['custom_search_blocks_form_1']['#name'] = 'q';
+      $data['custom_search_blocks_form_1']['#size'] = '27';
       $data['#action'] = 'http://recherche-search.gc.ca/rGs/s_r?#wb-land';
       $data['#method'] = 'get';
       $data['cdn'] = array(
