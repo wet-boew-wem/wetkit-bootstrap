@@ -13,7 +13,7 @@
  *
  * @ingroup theme_preprocess
  */
-function wetkit_bootstrap_process_book_navigation(&$variables) {
+function wetkit_bootstrap__preprocess_book_navigation(&$variables) {
   $variables['tree'] = _wetkit_bootstrap_book_children($variables['book_link']);
 }
 

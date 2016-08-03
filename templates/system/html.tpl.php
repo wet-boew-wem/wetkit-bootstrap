@@ -54,8 +54,9 @@
   <meta content="width=device-width,initial-scale=1" name="viewport" >
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
-  <!-- jQuery needs to be loaded first for IE6-8 -->
+  <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <![endif]-->
   <?php print $styles; ?>
