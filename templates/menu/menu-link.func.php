@@ -120,12 +120,6 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
   $wxt_active = str_replace('-', '_', $wxt_active);
   $wxt_active = str_replace('theme_', '', $wxt_active);
 
-  if ($element['#below']) {
-    if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
-      $sub_menu = '<ul class="list-unstyled">' . drupal_render($element['#below']) . '</ul>';
-    }
-  }
-
   // On primary navigation menu, class 'active' is not set on active menu item.
   // @see https://drupal.org/node/1896674.
   if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
@@ -141,31 +135,32 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
     );
   }
 
-  if ($element['#original_link']['depth'] == 1) {
-    if ($wxt_active == 'gcweb') {
-      $counter = $counter + 1;
-      $output = '<h3>' . l($element['#title'], $element['#href'], $element['#localized_options']) . '</h3>';
-      if ($counter == 3) {
-        return '<section class="col-sm-3">' . $output . $sub_menu . '</section>';
-      }
-      elseif ($counter >= 4) {
-        return '<section class="col-sm-3 brdr-lft">' . $output . $sub_menu . '</section>';
-      }
-      elseif ($counter % 2 != 0) {
-        return '<div class="col-sm-3"><section>' . $output . $sub_menu . '</section>';
-      }
-      elseif ($counter % 2 == 0) {
-        return '<section>' . $output . $sub_menu . '</section></div>';
+  if ($wxt_active != 'gcweb') {
+    if ($element['#below']) {
+      if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
+        $sub_menu = '<ul class="list-unstyled">' . drupal_render($element['#below']) . '</ul>';
       }
     }
-    else {
+    if ($element['#original_link']['depth'] == 1) {
       $output = '<h3>' . l($element['#title'], $element['#href'], $element['#localized_options']) . '</h3>';
       return '<section class="col-sm-3">' . $output . $sub_menu . '</section>';
     }
+    else {
+      $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+      return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+    }
   }
   else {
+    if ($element['#below']) {
+      if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
+        // Add our own wrapper.
+        unset($element['#below']['#theme_wrappers']);
+        $sub_menu = drupal_render($element['#below']);
+      }
+    }
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
     return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+
   }
 }
 

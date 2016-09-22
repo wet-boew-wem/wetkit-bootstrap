@@ -199,35 +199,23 @@
   <?php endif; ?>
 <?php endif; ?>
 <footer role="contentinfo" id="wb-info">
-  <div class="<?php print $container_class; ?>">
-    <nav role="navigation" class="visible-sm visible-md visible-lg wb-navcurr">
-    <h2><?php print t('About this site'); ?></h2>
-    <div class="row">
-      <?php print render($page['footer']); ?>
-      <div class="col-sm-3 col-lg-3 brdr-lft">
-        <section>
-          <h3><?php print t('Feedback'); ?></h3>
-          <p><a href="<?php print $gcweb['feedback'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/feedback.png" alt="<?php print t('Feedback about this Web site'); ?>"></a></p>
-        </section>
-        <section>
-          <h3><?php print t('Social media'); ?></h3>
-          <p><a href="<?php print $gcweb['social'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/social.png" alt="<?php print t('Social media'); ?>"></a></p>
-        </section>
-        <section>
-          <h3><?php print t('Mobile centre'); ?></h3>
-          <p><a href="<?php print $gcweb['mobile'][$language]; ?>" class="gl-footer"><img src="<?php print $library_path; ?>/assets/mobile.png" alt="<?php print t('Mobile centre'); ?>"></a></p>
-        </section>
-      </div>
-    </div>
-    </nav>
-  </div>
+  <nav role="navigation" class="<?php print $container_class; ?> wb-navcurr">
+    <h2 class="wb-inv"><?php print t('About government'); ?></h2>
+      <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+        <?php print render($page['footer']); ?>
+      </ul>
+  </nav>
   <div class="brand">
     <div class="<?php print $container_class; ?>">
       <div class="row ">
+        <nav class="col-md-10 ftr-urlt-lnk">
+          <h2 class="wb-inv"><?php print t('About this site'); ?></h2>
+          <?php print $page['menu_terms_bar']; ?>
+        </nav>
         <div class="col-xs-6 visible-sm visible-xs tofpg">
           <a href="#wb-cont"><?php print t('Top of Page'); ?><span class="glyphicon glyphicon-chevron-up"></span></a>
         </div>
-        <div class="col-xs-6 col-md-12 text-right">
+        <div class="col-xs-6 col-md-2 text-right">
           <?php if ($logo && $logo_bottom_svg): ?>
             <object data='<?php print $logo_bottom_svg; ?>' role="img" tabindex="-1" type="image/svg+xml">
               <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $logo_bottom_svg; ?>"  />
