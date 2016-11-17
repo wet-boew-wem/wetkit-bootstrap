@@ -60,18 +60,18 @@ function wetkit_bootstrap_status_messages($variables) {
     $output .= "  <a class=\"close\" data-dismiss=\"alert\" href=\"#\">&times;</a>\n";
 
     if (!empty($status_heading[$type])) {
-      $output .= '<h4 class="element-invisible">' . $status_heading[$type] . "</h4>\n";
+      $output .= '<h4 class="element-invisible">' . _bootstrap_filter_xss($status_heading[$type]) . "</h4>\n";
     }
 
     if (count($messages) > 1) {
       $output .= " <ul>\n";
       foreach ($messages as $message) {
-        $output .= '  <li>' . $message . "</li>\n";
+        $output .= '  <li>' . _bootstrap_filter_xss($message) . "</li>\n";
       }
       $output .= " </ul>\n";
     }
     else {
-      $output .= $messages[0];
+      $output .= _bootstrap_filter_xss($messages[0]);
     }
 
     $output .= "</section>\n";

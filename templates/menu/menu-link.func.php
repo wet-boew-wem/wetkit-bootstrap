@@ -22,6 +22,11 @@ function wetkit_bootstrap_menu_link(array $variables) {
   $element = $variables['element'];
   $sub_menu = '';
 
+  $title = $element['#title'];
+  $href = $element['#href'];
+  $options = !empty($element['#localized_options']) ? $element['#localized_options'] : array();
+  $attributes = !empty($element['#attributes']) ? $element['#attributes'] : array();
+
   if ($element['#below']) {
     // Prevent dropdown functions from being added to management menu so it
     // does not affect the navbar module.
@@ -32,25 +37,28 @@ function wetkit_bootstrap_menu_link(array $variables) {
       // Add our own wrapper.
       unset($element['#below']['#theme_wrappers']);
       $sub_menu = '<ul class="dropdown-menu">' . drupal_render($element['#below']) . '</ul>';
+
       // Generate as standard dropdown.
-      $element['#title'] .= ' <span class="caret"></span>';
-      $element['#attributes']['class'][] = 'dropdown';
-      $element['#localized_options']['html'] = TRUE;
+      $title .= ' <span class="caret"></span>';
+      $attributes['class'][] = 'dropdown';
+
+      $options['html'] = TRUE;
 
       // Set dropdown trigger element to # to prevent inadvertant page loading
       // when a submenu link is clicked.
-      $element['#localized_options']['attributes']['data-target'] = '#';
-      $element['#localized_options']['attributes']['class'][] = 'dropdown-toggle';
-      $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
+      $options['attributes']['data-target'] = '#';
+      $options['attributes']['class'][] = 'dropdown-toggle';
+      $options['attributes']['data-toggle'] = 'dropdown';
     }
   }
-  // On primary navigation menu, class 'active' is not set on active menu item.
-  // @see https://drupal.org/node/1896674
-  if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
-    $element['#attributes']['class'][] = 'active';
+
+  // Filter the title if the "html" is set, otherwise l() will automatically
+  // sanitize using check_plain(), so no need to call that here.
+  if (!empty($options['html'])) {
+    $title = _bootstrap_filter_xss($title);
   }
-  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+
+  return '<li' . drupal_attributes($attributes) . '>' . l($title, $href, $options) . $sub_menu . "</li>\n";
 }
 
 /**
@@ -84,12 +92,6 @@ function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
     }
   }
 
-  // On primary navigation menu, class 'active' is not set on active menu item.
-  // @see https://drupal.org/node/1896674.
-  if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
-    $element['#attributes']['class'][] = 'active';
-  }
-
   // <nolink> handling for wxt.
   if (in_array($element['#href'], array('<nolink>'))) {
     $element['#href'] = '#';
@@ -119,12 +121,6 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
   $library_path = libraries_get_path($wxt_active, TRUE);
   $wxt_active = str_replace('-', '_', $wxt_active);
   $wxt_active = str_replace('theme_', '', $wxt_active);
-
-  // On primary navigation menu, class 'active' is not set on active menu item.
-  // @see https://drupal.org/node/1896674.
-  if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
-    $element['#attributes']['class'][] = 'active';
-  }
 
   // <nolink> handling for wxt.
   if (in_array($element['#href'], array('<nolink>'))) {
@@ -170,21 +166,39 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
 function wetkit_bootstrap_menu_link__book_toc(array $variables) {
   $element = $variables['element'];
   $sub_menu = drupal_render($element['#below']);
-  $element['#attributes']['role'] = 'presentation';
+
+  $title = $element['#title'];
+  $href = $element['#href'];
+  $options = !empty($element['#localized_options']) ? $element['#localized_options'] : array();
+  $attributes = !empty($element['#attributes']) ? $element['#attributes'] : array();
+  $attributes['role'] = 'presentation';
+
+  // Header.
   $link = TRUE;
-  if ($element['#title'] && $element['#href'] === FALSE) {
-    $element['#attributes']['class'][] = 'dropdown-header';
+  if ($title && $href === FALSE) {
+    $attributes['class'][] = 'dropdown-header';
     $link = FALSE;
   }
-  elseif ($element['#title'] === FALSE && $element['#href'] === FALSE) {
-    $element['#attributes']['class'][] = 'divider';
+  // Divider.
+  elseif ($title === FALSE && $href === FALSE) {
+    $attributes['class'][] = 'divider';
     $link = FALSE;
   }
-  elseif (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
-    $element['#attributes']['class'][] = 'active';
+  // Active.
+  elseif (($href == $_GET['q'] || ($href == '<front>' && drupal_is_front_page())) && (empty($options['language']))) {
+    $attributes['class'][] = 'active';
   }
+
+  // Filter the title if the "html" is set, otherwise l() will automatically
+  // sanitize using check_plain(), so no need to call that here.
+  if (!empty($options['html'])) {
+    $title = _bootstrap_filter_xss($title);
+  }
+
+  // Convert to a link.
   if ($link) {
-    $element['#title'] = l($element['#title'], $element['#href'], $element['#localized_options']);
+    $title = l($title, $href, $options);
   }
-  return '<li' . drupal_attributes($element['#attributes']) . '>' . $element['#title'] . $sub_menu . "</li>\n";
+
+  return '<li' . drupal_attributes($attributes) . '>' . $title . $sub_menu . "</li>\n";
 }

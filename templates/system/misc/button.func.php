@@ -38,5 +38,5 @@ function wetkit_bootstrap_button($variables) {
   }
 
   // This line break adds inherent margin between multiple buttons.
-  return '<button' . drupal_attributes($element['#attributes']) . '>' . $value . "</button>\n";
+  return '<button' . drupal_attributes($element['#attributes']) . '>' . _bootstrap_filter_xss($value) . "</button>\n";
 }
