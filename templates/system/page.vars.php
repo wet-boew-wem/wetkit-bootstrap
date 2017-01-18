@@ -416,6 +416,7 @@ function _wetkit_menu_tree_build_prerender($element) {
  * Pre Render handler for cache based menu block handling.
  */
 function _wetkit_custom_search_prerender($element) {
+  global $language;
   $data = drupal_get_form($element['#custom_search_form_name']);
   $data['#id'] = 'search-form';
   $data['custom_search_blocks_form_1']['#id'] = 'wb-srch-q';
@@ -459,7 +460,7 @@ function _wetkit_custom_search_prerender($element) {
       );
       $data['langs'] = array(
         '#name' => 'langs',
-        '#value' => 'eng',
+        '#value' => ($language->language == 'fr') ? 'fra' : 'eng',
         '#type' => 'hidden',
         '#input' => 'TRUE',
       );
