@@ -324,17 +324,21 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   $class = ($wxt_active == 'gcwu_fegc' || $wxt_active == 'gc_intranet') ? array('list-inline') : array('links', 'clearfix');
   $terms_class = 'gc-tctr';
   if ($wxt_active == 'gcweb') {
-    $terms_class = '';
-    $class = '';
+    $terms_bar_markup = theme('links__menu_menu_wet_terms', array(
+      'links' => $menu,
+      'heading' => array(),
+    ));
   }
-  $terms_bar_markup = theme('links__menu_menu_wet_terms', array(
-    'links' => $menu,
-    'attributes' => array(
-      'id' => $terms_class,
-      'class' => $class,
-    ),
-    'heading' => array(),
-  ));
+  else {
+    $terms_bar_markup = theme('links__menu_menu_wet_terms', array(
+      'links' => $menu,
+      'attributes' => array(
+        'id' => $terms_class,
+        'class' => $class,
+      ),
+      'heading' => array(),
+    ));
+  }
   $variables['page']['menu_terms_bar'] = $terms_bar_markup;
 
   // Mid Footer Region.
