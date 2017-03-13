@@ -221,10 +221,10 @@
         <div class="col-xs-6 col-md-2 text-right">
           <?php if ($logo && $logo_bottom_svg): ?>
             <object data='<?php print $logo_bottom_svg; ?>' role="img" tabindex="-1" type="image/svg+xml">
-              <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $logo_bottom_svg; ?>"  />
+              <img alt="<?php print t('Symbol of the Government of Canada'); ?>" src="<?php print $logo_bottom_svg; ?>"  />
             </object>
           <?php elseif ($logo): ?>
-            <img alt="<?php print t('WxT Logo'); ?>" src="<?php print $logo_bottom; ?>"  />
+            <img alt="<?php print t('Symbol of the Government of Canada'); ?>" src="<?php print $logo_bottom; ?>"  />
           <?php endif; ?>
         </div>
       </div>
