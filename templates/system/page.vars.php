@@ -279,20 +279,28 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
     // CDN Support.
     if ($wxt_active == 'gcweb') {
+      // Setup the CDN variables.
+      // Support the legacy configurations.
       $gcweb_cdn = theme_get_setting('gcweb_cdn');
       if (!empty($gcweb_cdn)) {
-        $variables['gcweb_cdn'] = TRUE;
+        $variables['gcweb_cdn_megamenu'] = TRUE;
+        $variables['gcweb_cdn_megamenu_url'] = '//cdn.canada.ca/gcweb-cdn-live/sitemenu/sitemenu-';
+        $variables['gcweb_cdn_goc_initiatives'] = TRUE;
       }
+      // Otherwise use the new configurations.
       else {
-        $variables['gcweb_cdn'] = FALSE;
+        $gcweb_cdn_megamenu = theme_get_setting('gcweb_cdn_megamenu');
+        $variables['gcweb_cdn_megamenu'] = !empty($gcweb_cdn_megamenu) ? TRUE : FALSE;
+
+        $gcweb_cdn_megamenu_url = theme_get_setting('gcweb_cdn_megamenu_url');
+        $variables['gcweb_cdn_megamenu_url'] = !empty($gcweb_cdn_megamenu_url)? $gcweb_cdn_megamenu_url : '//cdn.canada.ca/gcweb-cdn-live/sitemenu/sitemenu-';
+
+        $gcweb_cdn_goc_initiatives = theme_get_setting('gcweb_cdn_goc_initiatives');
+        $variables['gcweb_cdn_goc_initiatives'] = !empty($gcweb_cdn_goc_initiatives) ? TRUE : FALSE;
       }
+
       $gcweb_election = theme_get_setting('gcweb_election');
-      if (!empty($gcweb_election)) {
-        $variables['gcweb_election'] = TRUE;
-      }
-      else {
-        $variables['gcweb_election'] = FALSE;
-      }
+      $variables['gcweb_election'] = (!empty($gcweb_election)) ? TRUE : FALSE;
     }
 
     // Visibility settings.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default theme implementation to display a single Drupal page.
@@ -94,8 +95,8 @@
             <?php elseif ($logo): ?>
               <img alt="<?php print t('Government of Canada'); ?>" src="<?php print $logo; ?>"  />
             <?php endif; ?>
-          </a>
-        <?php endif; ?>
+            </a>
+          <?php endif; ?>
       </div>
       <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
         <h2><?php print t('Search and menus'); ?></h2>
@@ -120,8 +121,8 @@
         </section>
     </div>
   </div>
-  <?php if (!empty($gcweb_cdn)): ?>
-    <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="//cdn.canada.ca/gcweb-cdn-live/sitemenu/sitemenu-<?php print $language; ?>.html" typeof="SiteNavigationElement">
+  <?php if (!empty($gcweb_cdn_megamenu) && !empty($gcweb_cdn_megamenu_url)): ?>
+    <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="<?php print $gcweb_cdn_megamenu_url . $language; ?>.html" typeof="SiteNavigationElement">
       <div class="pnl-strt <?php print $container_class; ?> nvbar">
         <h2 class="wb-inv"><?php print t('Topics menu'); ?></h2>
         <div class="row">
@@ -182,7 +183,7 @@
   </div>
 </main>
 <?php endif; ?>
-<?php if (!empty($gcweb_cdn) && empty($gcweb_election)): ?>
+<?php if (!empty($gcweb_cdn_goc_initiatives) && empty($gcweb_election)): ?>
   <aside class="gc-nttvs <?php print $container_class; ?>">
     <h2><?php print t('Government of Canada activities and initiatives') ?></h2>
     <div id="gcwb_prts" class="wb-eqht row" data-ajax-replace="//cdn.canada.ca/gcweb-cdn-live/features/features-<?php print $language; ?>.html">

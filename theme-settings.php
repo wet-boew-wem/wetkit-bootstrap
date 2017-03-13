@@ -66,7 +66,6 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
     '#description'   => t('Specify the HTML ID of the element that the accessible-but-hidden “skip link” should link to. (<a href="!link">Read more about skip links</a>.)', array('!link' => 'http://drupal.org/node/467976')),
   );
 
-
   // Customization.
   $form['wetkit_customization'] = array(
     '#type' => 'fieldset',
@@ -144,16 +143,54 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
   );
 
   // GCWeb.
+  // Support the legacy configurations.
+  $gcweb_cdn = theme_get_setting('gcweb_cdn');
+  if (!empty($gcweb_cdn)) {
+    $gcweb_cdn_megamenu = TRUE;
+    $gcweb_cdn_megamenu_url = '//cdn.canada.ca/gcweb-cdn-live/sitemenu/sitemenu-';
+    $gcweb_cdn_goc_initiatives = TRUE;
+  }
+  // Otherwise use the new configurations.
+  else {
+    $gcweb_cdn_megamenu = theme_get_setting('gcweb_cdn_megamenu');
+    $gcweb_cdn_megamenu = !empty($gcweb_cdn_megamenu) ? TRUE : FALSE;
+
+    $gcweb_cdn_megamenu_url = theme_get_setting('gcweb_cdn_megamenu_url');
+    $gcweb_cdn_megamenu_url = !empty($gcweb_cdn_megamenu_url) ? $gcweb_cdn_megamenu_url : '//cdn.canada.ca/gcweb-cdn-live/sitemenu/sitemenu-';
+
+    $gcweb_cdn_goc_initiatives = theme_get_setting('gcweb_cdn_goc_initiatives');
+    $gcweb_cdn_goc_initiatives = !empty($gcweb_cdn_goc_initiatives) ? TRUE : FALSE;
+  }
+
   $form['wetkit_gcweb'] = array(
     '#type' => 'fieldset',
     '#title' => t('GCWeb'),
     '#group' => 'wetkit_bootstrap',
   );
-  $form['wetkit_gcweb']['gcweb_cdn'] = array(
+  $form['wetkit_gcweb']['gcweb_cdn_megamenu'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Toggle CDN for MegaMenu + GoC Initiatives'),
-    '#default_value' => theme_get_setting('gcweb_cdn'),
-    '#description' => t('If checked the GCWeb theme will use the CDN for MegaMenu + GoC Initiatives'),
+    '#title' => t('Toggle CDN for MegaMenu'),
+    '#default_value' => $gcweb_cdn_megamenu,
+    '#description' => t('If checked the GCWeb theme will use the CDN for the MegaMenu'),
+  );
+  $form['wetkit_gcweb']['gcweb_cdn_megamenu_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CDN for MegaMenu'),
+    '#prefix' => '<div id="gcweb_cdn_megamenu_url">',
+    '#suffix' => '</div>',
+    '#default_value' => $gcweb_cdn_megamenu_url,
+    '#description' => t('The CDN to use for the MegaMenu. Will be appended with the language and .html (i.e.: en.html or fr.html)'),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="gcweb_cdn_megamenu"]' => array('checked' => TRUE),
+      ),
+    ),
+  );
+  $form['wetkit_gcweb']['gcweb_cdn_goc_initiatives'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Toggle CDN for GoC Initiatives'),
+    '#default_value' => $gcweb_cdn_goc_initiatives,
+    '#description' => t('If checked the GCWeb theme will use the CDN for GoC Initiatives'),
   );
   $form['wetkit_gcweb']['gcweb_election'] = array(
     '#type' => 'checkbox',
