@@ -5,7 +5,7 @@ api = 2
 
 ; Theme(s)
 
-projects[bootstrap][version] = 3.10
+projects[bootstrap][version] = 3.12
 projects[bootstrap][type] = theme
 projects[bootstrap][patch][2311463] = http://drupal.org/files/issues/patch_bootstrap_wetkit-2311463-05.patch
 projects[bootstrap][patch][2469635] = http://drupal.org/files/issues/bootstrap-no_responsive_on_multi_val_form_elements-2469635-1.patch
