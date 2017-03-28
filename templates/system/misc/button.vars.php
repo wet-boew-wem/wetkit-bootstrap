@@ -35,6 +35,9 @@ function wetkit_bootstrap_preprocess_button(&$vars) {
   // Colorize button.
   _bootstrap_colorize_button($element);
 
+  // Iconize button.
+  _bootstrap_iconize_button($element);
+
   // Add in the button type class.
   $element['#attributes']['class'][] = 'form-' . $element['#button_type'];
 
