@@ -63,7 +63,7 @@ function wetkit_bootstrap_process_link(&$variables) {
 
     // Hide the link text, if necessary.
     if ($variables['icon_position'] === 'icon_only') {
-      $variables['text'] = '<span class="sr-only">' . $variables['text'] . '</span>';
+      $variables['text'] = '<span class="wb-inv">' . $variables['text'] . '</span>';
     }
     if ($variables['icon_position'] === 'after') {
       $variables['text'] .= $icon;

@@ -26,7 +26,7 @@ function wetkit_bootstrap_button($variables) {
   // Allow button text to be appear hidden.
   // @see https://www.drupal.org/node/2327437
   if (!empty($element['#hide_text']) || $element['#icon_position'] === 'icon_only') {
-    $text = '<span class="sr-only">' . $text . '</span>';
+    $text = '<span class="wb-inv">' . $text . '</span>';
   }
 
   // Add icons before or after the value.
