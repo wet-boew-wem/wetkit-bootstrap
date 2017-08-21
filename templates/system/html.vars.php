@@ -32,7 +32,9 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
     return;
   }
 
-  // HTML element attributes.
+  // Create a dedicated attributes array for the HTML element.
+  // By default, core does not provide a way to target the HTML element.
+  // The only arrays currently available technically belong to the BODY element.
   $variables['html_attributes_array'] = array(
     'lang' => $variables['language']->language,
     'dir' => $variables['language']->dir,
@@ -50,11 +52,15 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
     $variables['rdf_namespaces'] = drupal_attributes($rdf);
   }
 
-  // BODY element attributes.
-  $variables['body_attributes_array'] = array(
-    'class' => $variables['classes_array'],
-  );
-  $variables['body_attributes_array'] += $variables['attributes_array'];
+  // Create a dedicated attributes array for the BODY element.
+  if (!isset($variables['body_attributes_array'])) {
+    $variables['body_attributes_array'] = array();
+  }
+
+  // Ensure there is at least a class array.
+  if (!isset($variables['body_attributes_array']['class'])) {
+    $variables['body_attributes_array']['class'] = array();
+  }
 
   // Navbar position.
   switch (bootstrap_setting('navbar_position')) {
@@ -101,18 +107,4 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
   if ($wxt_active == 'gcweb' && drupal_is_front_page()) {
     $variables['body_attributes_array']['class'][] = 'home';
   }
-}
-
-/**
- * Processes variables for the "html" theme hook.
- *
- * See template for list of available variables.
- *
- * @see html.tpl.php
- *
- * @ingroup theme_process
- */
-function wetkit_bootstrap_process_html(&$variables) {
-  $variables['html_attributes'] = drupal_attributes($variables['html_attributes_array']);
-  $variables['body_attributes'] = drupal_attributes($variables['body_attributes_array']);
 }
