@@ -56,7 +56,7 @@ function wetkit_bootstrap_status_messages($variables) {
 
   foreach ($message_list as $type => $messages) {
     $class = (isset($status_class[$type])) ? ' alert-' . $status_class[$type] : '';
-    $output .= "<section class=\"alert alert-block$class messages $type\">\n";
+    $output .= "<section class=\"alert alert-block alert-dismissible$class messages $type\">\n";
     $output .= "  <a class=\"close\" data-dismiss=\"alert\" href=\"#\">&times;</a>\n";
 
     if (!empty($status_heading[$type])) {
@@ -71,7 +71,7 @@ function wetkit_bootstrap_status_messages($variables) {
       $output .= " </ul>\n";
     }
     else {
-      $output .= filter_xss_admin($messages[0]);
+      $output .= filter_xss_admin(reset($messages));
     }
 
     $output .= "</section>\n";
