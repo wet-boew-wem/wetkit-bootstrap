@@ -73,7 +73,7 @@
  * @ingroup themeable
  */
 ?>
-<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
+<header id="navbar" class="<?php print $navbar_classes; ?>">
   <div id="wb-bnr">
     <div id="wb-bar">
       <div class="<?php print $container_class; ?>">
@@ -132,7 +132,7 @@
       </div>
     </div>
   </div>
-  <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
+  <nav id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
     <div class="<?php print $container_class; ?> nvbar">
       <h2><?php print t('Topics menu'); ?></h2>
       <div class="row">
@@ -142,7 +142,7 @@
     </div>
   </nav>
   <?php print render($page['header']); ?>
-  <nav role="navigation" id="wb-bc" property="breadcrumb">
+  <nav id="wb-bc" property="breadcrumb">
     <div class="<?php print $container_class; ?>">
       <div class="row">
         <?php print render($breadcrumb); ?>
@@ -182,7 +182,7 @@
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
   <div class="<?php print $container_class; ?>">
-    <nav role="navigation">
+    <nav>
       <h2><?php print t('About this site'); ?></h2>
       <div class="row">
       <?php print render($page['footer']); ?>
