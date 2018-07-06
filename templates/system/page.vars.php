@@ -31,7 +31,7 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
   $library_path = libraries_get_path($wxt_active, TRUE);
   $wxt_active = str_replace('-', '_', $wxt_active);
   $wxt_active = str_replace('theme_', '', $wxt_active);
-  $wxt_role_main = 'main';
+  $wxt_role_main = 'role="main"';
 
   // Extra variables to pass to templates.
   $variables['library_path'] = $library_path;

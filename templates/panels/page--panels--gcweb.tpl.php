@@ -150,7 +150,7 @@
   </nav>
 </header>
 <?php if (!$is_front): ?>
-<main role="<?php print $wxt_role_main; ?>" class="<?php print $container_class; ?>">
+<main <?php print $wxt_role_main; ?> class="<?php print $container_class; ?>">
   <div class="row">
 <?php endif; ?>
     <section<?php print $content_column_class; ?>>

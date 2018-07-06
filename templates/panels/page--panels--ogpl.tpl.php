@@ -143,7 +143,7 @@
     </div>
   </nav>
 </header>
-<main role="<?php print $wxt_role_main; ?>" class="<?php print $container_class; ?>">
+<main <?php print $wxt_role_main; ?> class="<?php print $container_class; ?>">
   <div class="row">
     <section<?php print $content_column_class; ?>>
       <?php if (empty($panels_layout)): ?>
