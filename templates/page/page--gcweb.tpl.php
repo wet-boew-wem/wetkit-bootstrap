@@ -122,7 +122,7 @@
     </div>
   </div>
   <?php if (!empty($gcweb_cdn_megamenu) && !empty($gcweb_cdn_megamenu_url)): ?>
-    <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="<?php print $gcweb_cdn_megamenu_url . $language; ?>.html" typeof="SiteNavigationElement">
+    <nav id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="<?php print $gcweb_cdn_megamenu_url . $language; ?>.html" typeof="SiteNavigationElement">
       <div class="pnl-strt <?php print $container_class; ?> nvbar">
         <h2 class="wb-inv"><?php print t('Topics menu'); ?></h2>
         <div class="row">
@@ -131,7 +131,7 @@
       </div>
     </nav>
   <?php else: ?>
-    <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
+    <nav id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl">
       <div class="pnl-strt <?php print $container_class; ?> nvbar">
         <h2 class="wb-inv"><?php print t('Topics menu'); ?></h2>
         <div class="row">
@@ -141,7 +141,7 @@
     </nav>
   <?php endif; ?>
   <?php print render($page['header']); ?>
-  <nav role="navigation" id="wb-bc" property="breadcrumb">
+  <nav id="wb-bc" property="breadcrumb">
     <div class="<?php print $container_class; ?>">
       <div class="row">
         <?php print render($breadcrumb); ?>
@@ -202,7 +202,7 @@
   <?php endif; ?>
 <?php endif; ?>
 <footer role="contentinfo" id="wb-info">
-  <nav role="navigation" class="<?php print $container_class; ?> wb-navcurr">
+  <nav class="<?php print $container_class; ?> wb-navcurr">
     <h2 class="wb-inv"><?php print t('About government'); ?></h2>
       <ul class="list-unstyled colcount-sm-2 colcount-md-3">
         <?php print render($page['footer']); ?>
