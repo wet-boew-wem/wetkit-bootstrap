@@ -24,7 +24,7 @@ function wetkit_bootstrap_file_managed_file($variables) {
 
   $attributes = array();
   if (isset($element['#id'])) {
-    $attributes['id'] = $element['#id'];
+    $attributes['id'] = 'wetkit-' . $element['#id'];
   }
   if (!empty($element['#attributes']['class'])) {
     $attributes['class'] = (array) $element['#attributes']['class'];
