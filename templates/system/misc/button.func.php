@@ -43,6 +43,12 @@ function wetkit_bootstrap_button($variables) {
     }
   }
 
+  // Remove name attribute if empty for W3C validation, needed until fixed in core
+  // @see https://www.drupal.org/project/drupal/issues/2637680
+  if (isset($element['#attributes']['name']) && $element['#attributes']['name'] === '') {
+    unset($element['#attributes']['name']);
+  }
+
   // This line break adds inherent margin between multiple buttons.
   return '<button' . drupal_attributes($element['#attributes']) . '>' . filter_xss_admin($text) . "</button>\n";
 }
