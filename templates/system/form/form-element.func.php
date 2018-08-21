@@ -161,6 +161,7 @@ function wetkit_bootstrap_form_element(&$variables) {
       '#type' => 'container',
       '#attributes' => array(
         'class' => array('help-block'),
+        'id' => array($element['#id'] . '--description'),
       ),
       '#weight' => isset($element['#description_display']) && $element['#description_display'] === 'before' ? 0 : 20,
       0 => array('#markup' => filter_xss_admin($element['#description'])),
