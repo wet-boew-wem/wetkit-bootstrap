@@ -80,9 +80,7 @@
         <div class="row">
           <?php if ($site_name || $site_slogan || $logo): ?>
             <?php if ($logo && $logo_svg): ?>
-              <object id="gcwu-sig" data='<?php print $logo_svg; ?>' role="img" tabindex="-1" type="image/svg+xml">
-                <img alt="<?php print t('Government of Canada'); ?>" src="<?php print $logo; ?>"  />
-              </object>
+              <img id="gcwu-sig" src='<?php print $logo_svg; ?>' alt="<?php print t('Government of Canada'); ?>" />
             <?php elseif ($logo): ?>
               <img alt="<?php print t('Government of Canada'); ?>" src="<?php print $logo; ?>"  />
             <?php endif; ?>
@@ -119,7 +117,7 @@
             </a>
           <?php endif; ?>
         </div>
-        <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gcwu-fegc/assets/wmms.svg" aria-label="<?php print t('Symbol of the Government of Canada'); ?>"></object>
+        <img id="wmms" src="/profiles/wetkit/libraries/theme-gcwu-fegc/assets/wmms.svg" alt="<?php print t('Symbol of the Government of Canada'); ?>" />
         <section id="wb-srch" class="visible-md visible-lg">
           <h2><?php print t('Search'); ?></h2>
           <?php if ($search_box): ?>

@@ -82,7 +82,7 @@
       <h1 property="name" class="wb-inv"><?php print t('Open Government'); ?></h1>
       <div class="row">
         <div class="col-xs-11 col-md-8">
-          <object type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gcweb/assets/sig-spl.svg" aria-label="<?php print t('Government of Canada / Gouvernement du Canada'); ?>"></object>
+          <img src="/profiles/wetkit/libraries/theme-gcweb/assets/sig-spl.svg" alt="<?php print t('Government of Canada / Gouvernement du Canada'); ?>" />
         </div>
       </div>
       <div class="row">
@@ -104,7 +104,7 @@
           <a href="http://www.canada.ca/fr/transparence/avis.html" class="sp-lk" lang="fr"><?php print t('Avis'); ?></a>
         </div>
         <div class="col-xs-5 col-md-4 text-right mrgn-bttm-md">
-          <object type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gcweb/assets/wmms-spl.svg" aria-label="<?php print t('Symbol of the Government of Canada / Symbole du gouvernement du Canada'); ?>"></object>
+          <img src="/profiles/wetkit/libraries/theme-gcweb/assets/wmms-spl.svg" alt="<?php print t('Symbol of the Government of Canada / Symbole du gouvernement du Canada'); ?>" />
         </div>
       </div>
     </div>

@@ -20,10 +20,10 @@
 <header role="banner" id="wb-bnr" class="<?php print $container_class; ?>">
 <div class="row">
 <div class="col-sm-6">
-<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gcweb/assets/sig-blk-en.svg" aria-label="Government of Canada"></object>
+<img id="gcwu-sig" src="/profiles/wetkit/libraries/theme-gcweb/assets/sig-blk-en.svg" alt="Government of Canada" />
 </div>
 <div class="col-sm-6">
-<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="/profiles/wetkit/libraries/theme-gcweb/assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
+<img id="wmms" src="/profiles/wetkit/libraries/theme-gcweb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 </div>
 </div>
 </header>

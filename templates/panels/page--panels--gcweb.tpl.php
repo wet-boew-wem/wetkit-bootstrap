@@ -89,9 +89,7 @@
           <?php if ($site_name || $site_slogan || $logo): ?>
             <a href="<?php print 'http://www.canada.ca/' . $language; ?>">
             <?php if ($logo && $logo_svg): ?>
-              <object id="header-logo" data='<?php print $logo_svg; ?>' role="img" tabindex="-1" type="image/svg+xml">
-                <img alt="<?php print t('Government of Canada'); ?>" src="<?php print $logo; ?>"  />
-              </object>
+              <img id="header-logo" src='<?php print $logo_svg; ?>' alt="<?php print t('Government of Canada'); ?>" />
             <?php elseif ($logo): ?>
               <img alt="<?php print t('Government of Canada'); ?>" src="<?php print $logo; ?>"  />
             <?php endif; ?>
@@ -218,9 +216,7 @@
         </div>
         <div class="col-xs-6 col-md-2 text-right">
           <?php if ($logo && $logo_bottom_svg): ?>
-            <object data='<?php print $logo_bottom_svg; ?>' role="img" tabindex="-1" type="image/svg+xml">
-              <img alt="<?php print t('Symbol of the Government of Canada'); ?>" src="<?php print $logo_bottom_svg; ?>"  />
-            </object>
+            <img alt="<?php print t('Symbol of the Government of Canada'); ?>" src="<?php print $logo_bottom_svg; ?>"  />
           <?php elseif ($logo): ?>
             <img alt="<?php print t('Symbol of the Government of Canada'); ?>" src="<?php print $logo_bottom; ?>"  />
           <?php endif; ?>
