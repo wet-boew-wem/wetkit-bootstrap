@@ -28,7 +28,7 @@ function wetkit_bootstrap_preprocess_link(&$variables) {
   // attributes array.
   if (!empty($variables['attributes'])) {
     $variables['options']['attributes'] = drupal_array_merge_deep($variables['options']['attributes'], $variables['attributes']);
-    if (is_array($variables['options']['attributes']['class'])) {
+    if (isset($variables['options']['attributes']['class']) && is_array($variables['options']['attributes']['class'])) {
       $variables['options']['attributes']['class'] = array_unique($variables['options']['attributes']['class']);
     }
   }
