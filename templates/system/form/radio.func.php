@@ -23,11 +23,6 @@ function wetkit_bootstrap_radio($variables) {
   $element['#attributes']['type'] = 'radio';
   element_set_attributes($element, array('id', 'name', '#return_value' => 'value'));
 
-// Add aria-labelledby for better accessibility
-  if (!empty($variables['element']['#parents'])) {
-    $element['#attributes']['aria-labelledby'] = "edit-" . strtr(implode('-', $variables['element']['#parents']), '_', '-') . "-label " . $element['#attributes']['id'] . "-label";
-  }
-
   if (isset($element['#return_value']) && $element['#value'] !== FALSE && $element['#value'] == $element['#return_value']) {
     $element['#attributes']['checked'] = 'checked';
   }

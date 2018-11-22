@@ -62,6 +62,7 @@ function wetkit_bootstrap_form_element(&$variables) {
   $wrapper = isset($element['#form_element_wrapper']) ? !!$element['#form_element_wrapper'] : TRUE;
   $form_group = isset($element['#form_group']) ? !!$element['#form_group'] : $wrapper && $type && $type !== 'hidden';
   $checkbox = $type && $type === 'checkbox';
+  $checkboxes = $type && $type === 'checkboxes';
   $radio = $type && $type === 'radio';
 
   // Create an attributes array for the wrapping container.
@@ -153,6 +154,19 @@ function wetkit_bootstrap_form_element(&$variables) {
       '#suffix' => !empty($suffix) ? $suffix : NULL,
       '#weight' => 1,
     );
+
+    if ($checkboxes) {
+      $build['element']['#prefix'] = '<div role="group" aria-labelledby="' . $element['#id'] . '-legend-label"><ul class="checkbox-ul">';
+      $build['element']['#suffix'] = '</ul></div>';
+    }
+  }
+  elseif ($checkbox && empty($element['#on_value']) && !empty($element['#parents'][0])) {
+    $parent = field_info_field($element['#parents'][0]);
+
+    if (!empty($parent['type'])) {
+      $build['#prefix'] = '<li>';
+      $build['#suffix'] = '</li>';
+    }
   }
 
   // Construct the element's description markup.

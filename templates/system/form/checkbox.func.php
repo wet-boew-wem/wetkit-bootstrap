@@ -17,11 +17,12 @@
 function wetkit_bootstrap_checkbox($variables) {
   $element = $variables['element'];
   $element['#attributes']['type'] = 'checkbox';
+
   element_set_attributes($element, array('id', 'name', '#return_value' => 'value'));
 
   // Add aria-labelledby for better accessibility
   if (!empty($variables['element']['#parents'])) {
-    $element['#attributes']['aria-labelledby'] = "edit-" . strtr(implode('-', $variables['element']['#parents']), '_', '-') . "-label " . $element['#attributes']['id'] . "-label";
+    $element['#attributes']['aria-labelledby'] = $element['#attributes']['id'] . "-label";
   }
   // Unchecked checkbox has #value of integer 0.
   if (!empty($element['#checked'])) {
