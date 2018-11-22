@@ -57,10 +57,9 @@ function wetkit_bootstrap_status_messages($variables) {
   foreach ($message_list as $type => $messages) {
     $class = (isset($status_class[$type])) ? ' alert-' . $status_class[$type] : '';
     $output .= "<section class=\"alert alert-block alert-dismissible$class messages $type\">\n";
-    $output .= "  <a class=\"close\" data-dismiss=\"alert\" href=\"#\">&times;</a>\n";
 
     if (!empty($status_heading[$type])) {
-      $output .= '<h4 class="element-invisible">' . filter_xss_admin($status_heading[$type]) . "</h4>\n";
+      $output .= '<h2 class="element-invisible">' . filter_xss_admin($status_heading[$type]) . "</h2>\n";
     }
 
     if (count($messages) > 1) {
@@ -71,9 +70,10 @@ function wetkit_bootstrap_status_messages($variables) {
       $output .= " </ul>\n";
     }
     else {
-      $output .= filter_xss_admin(reset($messages));
+      $output .= "<p>" . filter_xss_admin(reset($messages)) . "</p>";
     }
 
+    $output .= "  <a class=\"close\" data-dismiss=\"alert\" href=\"#\"><span aria-label='" . t('Close this message box') . "'></span><span aria-hidden='true'>&times;</span></a>\n";
     $output .= "</section>\n";
   }
   return $output;
