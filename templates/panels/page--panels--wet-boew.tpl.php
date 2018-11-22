@@ -151,6 +151,7 @@
 <main <?php print $wxt_role_main; ?> class="<?php print $container_class; ?>">
   <div class="row">
     <section<?php print $content_column_class; ?>>
+      <h2 class="wb-inv"><?php print t('Main page content'); ?></h2>
       <?php if (empty($panels_layout)): ?>
         <?php if (!empty($page['highlighted'])): ?>
           <?php print render($page['highlighted']); ?>
