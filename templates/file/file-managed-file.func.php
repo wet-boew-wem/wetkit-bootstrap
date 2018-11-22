@@ -23,7 +23,8 @@ function wetkit_bootstrap_file_managed_file($variables) {
   $element = $variables['element'];
 
   $attributes = array();
-  if (isset($element['#id'])) {
+  // For Webform use, do not add the id to the wrapper.
+  if (isset($element['#id']) && empty($element['#webform_component'])) {
     $attributes['id'] = 'wetkit-' . $element['#id'];
   }
   if (!empty($element['#attributes']['class'])) {
