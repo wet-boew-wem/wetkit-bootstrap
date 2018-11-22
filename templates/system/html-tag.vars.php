@@ -54,4 +54,14 @@ function wetkit_bootstrap_process_html_tag(&$variables) {
       unset($element['#attributes']['media']);
     }
   }
+  elseif ($tag === 'meta') {
+    if (strpos($element['#name'], 'dcterms') !== FALSE) {
+      // Replace name with property attribute for dcterms.
+      if (empty($element['#attributes']['name'])) {
+        $element['#attributes']['name'] = $element['#name'];
+      }
+      $variables['element']['#attributes'] = array('property' => $element['#attributes']['name']) + $variables['element']['#attributes'];
+      unset($element['#attributes']['name']);
+    }
+  }
 }
