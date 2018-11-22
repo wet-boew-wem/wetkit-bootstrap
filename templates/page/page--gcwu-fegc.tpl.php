@@ -138,6 +138,7 @@
   </nav>
   <?php print render($page['header']); ?>
   <nav id="wb-bc" property="breadcrumb">
+    <h2 class="wb-inv"><?php print t('You are here:'); ?></h2>
     <div class="<?php print $container_class; ?>">
       <div class="row">
         <?php print render($breadcrumb); ?>
