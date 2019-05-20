@@ -18,6 +18,10 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
     return;
   }
 
+  $wxt_active = variable_get('wetkit_wetboew_theme', 'theme-wet-boew');
+  $library_path = libraries_get_path($wxt_active, TRUE);
+  $wxt_active = str_replace('-', '_', $wxt_active);
+
   $form['wetkit_bootstrap'] = array(
     '#type' => 'vertical_tabs',
     '#attached' => array(
@@ -160,6 +164,26 @@ function wetkit_bootstrap_form_system_theme_settings_alter(&$form, $form_state, 
 
     $gcweb_cdn_goc_initiatives = theme_get_setting('gcweb_cdn_goc_initiatives');
     $gcweb_cdn_goc_initiatives = !empty($gcweb_cdn_goc_initiatives) ? TRUE : FALSE;
+  }
+
+  if ($wxt_active == 'gcweb_v5') {
+    $gcweb_cdn = theme_get_setting('gcweb_cdn');
+    if (!empty($gcweb_cdn)) {
+      $gcweb_cdn_megamenu = TRUE;
+      $gcweb_cdn_megamenu_url = 'https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-';
+      $gcweb_cdn_goc_initiatives = TRUE;
+    }
+    // Otherwise use the new configurations.
+    else {
+      $gcweb_cdn_megamenu = theme_get_setting('gcweb_cdn_megamenu');
+      $gcweb_cdn_megamenu = !empty($gcweb_cdn_megamenu) ? TRUE : FALSE;
+
+      $gcweb_cdn_megamenu_url = theme_get_setting('gcweb_cdn_megamenu_url');
+      $gcweb_cdn_megamenu_url = !empty($gcweb_cdn_megamenu_url) ? $gcweb_cdn_megamenu_url : 'https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-';
+
+      $gcweb_cdn_goc_initiatives = theme_get_setting('gcweb_cdn_goc_initiatives');
+      $gcweb_cdn_goc_initiatives = !empty($gcweb_cdn_goc_initiatives) ? TRUE : FALSE;
+    }
   }
 
   $form['wetkit_gcweb'] = array(

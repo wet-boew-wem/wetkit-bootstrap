@@ -65,27 +65,54 @@ function wetkit_bootstrap_menu_link__menu_block__main_menu(&$variables) {
   $sub_menu = '';
   $mb_mainlink = (!in_array($element['#href'], array('<nolink>')) ? '<li class="slflnk">' . l($element['#title'] . ' - ' . t('More'), $element['#href'], $element['#localized_options']) . '</li>' : '' );
   $depth = $element['#original_link']['depth'];
+  $wxt_active = variable_get('wetkit_wetboew_theme', 'theme-wet-boew');
+  $library_path = libraries_get_path($wxt_active, TRUE);
+  $wxt_active = str_replace('-', '_', $wxt_active);
+  $wxt_active = str_replace('theme_', '', $wxt_active);
 
   if ($element['#below']) {
     if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
       // Add our own wrapper.
       unset($element['#below']['#theme_wrappers']);
-      if (!theme_get_setting('wetkit_render_mb_main_link')) {
+      if (!theme_get_setting('wetkit_render_mb_main_link') && $wxt_active != 'gcweb_v5') {
         $sub_menu = '<ul class="sm list-unstyled" role="menu">' . drupal_render($element['#below']) . $mb_mainlink . '</ul>';
       }
       else {
-        $sub_menu = '<ul class="sm list-unstyled" role="menu">' . drupal_render($element['#below']) . '</ul>';
+        if ($wxt_active == 'gcweb_v5') {
+          $sub_menu = '<ul role="menu">' . drupal_render($element['#below']) . '</ul>';
+        }
+        else {
+          $sub_menu = '<ul class="sm list-unstyled" role="menu">' . drupal_render($element['#below']) . '</ul>';
+        }
       }
-      // Generate as standard dropdown.
-      $element['#attributes']['class'][] = 'dropdown';
-      $element['#localized_options']['html'] = TRUE;
 
-      // Set dropdown trigger element to # to prevent inadvertant page loading
-      // when a submenu link is clicked.
-      $element['#localized_options']['attributes']['data-target'] = '#';
-      $element['#localized_options']['attributes']['class'][] = 'item';
-      $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
+      if ($wxt_active != 'gcweb_v5') {
+        // Generate as standard dropdown.
+        $element['#attributes']['class'][] = 'dropdown';
+        $element['#localized_options']['html'] = TRUE;
+
+        // Set dropdown trigger element to # to prevent inadvertant page loading
+        // when a submenu link is clicked.
+        $element['#localized_options']['attributes']['data-target'] = '#';
+        $element['#localized_options']['attributes']['class'][] = 'item';
+        $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
+      }
     }
+  }
+
+  // GCWeb v5.
+  if ($wxt_active == 'gcweb_v5') {
+    if ($element['#below']) {
+      $element['#localized_options']['html'] = TRUE;
+      $element['#localized_options']['attributes']['role'] = 'menuitem';
+      $element['#localized_options']['attributes']['aria-haspopup'] = 'true';
+      $element['#localized_options']['attributes']['aria-expanded'] = 'false';
+      $element['#localized_options']['attributes']['aria-controls'] = 'menu-rand-' . rand();
+    }
+
+    $element['#attributes']['role'] = 'presentation';
+    $element['#localized_options']['html'] = TRUE;
+    $element['#localized_options']['attributes']['role'] = 'menuitem';
   }
 
   // <nolink> handling for wxt.
@@ -127,7 +154,7 @@ function wetkit_bootstrap_menu_link__menu_block__mid_footer_menu(&$variables) {
     );
   }
 
-  if ($wxt_active != 'gcweb') {
+  if ($wxt_active != 'gcweb' && $wxt_active != 'gcweb_v5') {
     if ($element['#below']) {
       if ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
         $sub_menu = '<ul class="list-unstyled">' . drupal_render($element['#below']) . '</ul>';

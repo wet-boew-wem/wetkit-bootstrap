@@ -86,6 +86,11 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
   // Add a body class for the active theme name.
   $variables['body_attributes_array']['class'][] = drupal_html_class($theme_key);
 
+  // Add legacy WxT class for v5 spec.
+  if ($wxt_active == "gcweb_v5") {
+    $variables['body_attributes_array']['class'][] = 'theme-gcweb';
+  }
+
   // Add the active WxT theme into body class.
   $variables['body_attributes_array']['class'][] = drupal_html_class($wxt_active_orig);
 
@@ -97,14 +102,14 @@ function wetkit_bootstrap_preprocess_html(&$variables, $hook) {
 
   // Splash Page.
   if (current_path() == 'splashify-splash') {
-    if ($wxt_active == 'gcweb') {
+    if ($wxt_active == 'gcweb' || $wxt_active == 'gcweb_v5') {
       $variables['body_attributes_array']['class'][] = 'splash';
     }
     else {
       $variables['body_attributes_array']['class'][] = 'wb-sppe';
     }
   }
-  if ($wxt_active == 'gcweb' && drupal_is_front_page()) {
+  if (($wxt_active == 'gcweb' || $wxt_active == 'gcweb_v5') && drupal_is_front_page()) {
     $variables['body_attributes_array']['class'][] = 'home';
   }
 }

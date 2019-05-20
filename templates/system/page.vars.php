@@ -69,7 +69,11 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     $variables['logo_svg'] = $library_path . '/assets/logo.svg';
 
     // GCWeb or GC Intranet.
-    if ($wxt_active == 'gcweb' || $wxt_active == 'gc_intranet' ) {
+    if ($wxt_active == 'gcweb' || $wxt_active == 'gc_intranet') {
+      $variables['logo'] = $library_path . '/assets/sig-blk-' . $language->language . '.png';
+      $variables['logo_svg'] = $library_path . '/assets/sig-blk-' . $language->language . '.svg';
+    }
+    if ($wxt_active == 'gcweb_v5') {
       $variables['logo'] = $library_path . '/assets/sig-blk-' . $language->language . '.png';
       $variables['logo_svg'] = $library_path . '/assets/sig-blk-' . $language->language . '.svg';
     }
@@ -88,6 +92,12 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
   // Default GCWeb misc.
   if ($wxt_active == 'gcweb') {
+    $variables['logo_bottom'] = $library_path . '/assets/wmms-blk' . '.png';
+    $variables['logo_bottom_svg'] = $library_path . '/assets/wmms-blk' . '.svg';
+  }
+
+  // Default GCWeb v5 misc.
+  if ($wxt_active == 'gcweb_v5') {
     $variables['logo_bottom'] = $library_path . '/assets/wmms-blk' . '.png';
     $variables['logo_bottom_svg'] = $library_path . '/assets/wmms-blk' . '.svg';
   }
@@ -268,6 +278,9 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
     if ($wxt_active == 'gcweb') {
       $variables['menu_bar'] = '<ul class="list-inline margin-bottom-none">' . $language_link_markup . '</ul>';
     }
+    else if ($wxt_active == 'gcweb_v5') {
+      $variables['menu_bar'] = '<ul class="links list-inline mrgn-bttm-none">' . $language_link_markup . '</ul>';
+    }
     else if ($wxt_active == 'gcwu_fegc') {
       $variables['menu_bar'] = '<ul id="gc-bar" class="list-inline">' . preg_replace("/<h([1-6]{1})>.*?<\/h\\1>/si", '', $nav_bar_markup) . $language_link_markup . '</ul>';
     }
@@ -314,6 +327,31 @@ function wetkit_bootstrap_preprocess_page(&$variables) {
 
         $gcweb_cdn_megamenu_url = theme_get_setting('gcweb_cdn_megamenu_url');
         $variables['gcweb_cdn_megamenu_url'] = !empty($gcweb_cdn_megamenu_url)? $gcweb_cdn_megamenu_url : '//cdn.canada.ca/gcweb-cdn-live/sitemenu/sitemenu-';
+
+        $gcweb_cdn_goc_initiatives = theme_get_setting('gcweb_cdn_goc_initiatives');
+        $variables['gcweb_cdn_goc_initiatives'] = !empty($gcweb_cdn_goc_initiatives) ? TRUE : FALSE;
+      }
+
+      $gcweb_election = theme_get_setting('gcweb_election');
+      $variables['gcweb_election'] = (!empty($gcweb_election)) ? TRUE : FALSE;
+    }
+
+    if ($wxt_active == 'gcweb_v5') {
+      // Setup the CDN variables.
+      // Support the legacy configurations.
+      $gcweb_cdn = theme_get_setting('gcweb_cdn');
+      if (!empty($gcweb_cdn)) {
+        $variables['gcweb_cdn_megamenu'] = TRUE;
+        $variables['gcweb_cdn_megamenu_url'] = 'https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-';
+        $variables['gcweb_cdn_goc_initiatives'] = TRUE;
+      }
+      // Otherwise use the new configurations.
+      else {
+        $gcweb_cdn_megamenu = theme_get_setting('gcweb_cdn_megamenu');
+        $variables['gcweb_cdn_megamenu'] = !empty($gcweb_cdn_megamenu) ? TRUE : FALSE;
+
+        $gcweb_cdn_megamenu_url = theme_get_setting('gcweb_cdn_megamenu_url');
+        $variables['gcweb_cdn_megamenu_url'] = !empty($gcweb_cdn_megamenu_url)? $gcweb_cdn_megamenu_url : 'https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-';
 
         $gcweb_cdn_goc_initiatives = theme_get_setting('gcweb_cdn_goc_initiatives');
         $variables['gcweb_cdn_goc_initiatives'] = !empty($gcweb_cdn_goc_initiatives) ? TRUE : FALSE;

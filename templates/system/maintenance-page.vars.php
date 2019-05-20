@@ -66,6 +66,9 @@ function wetkit_bootstrap_preprocess_maintenance_page(&$variables) {
     elseif ($wxt_active == 'gcweb') {
       $variables['theme_hook_suggestion'] = 'maintenance_page__' . $wxt_active;
     }
+    elseif ($wxt_active == 'gcweb_v5') {
+      $variables['theme_hook_suggestion'] = 'maintenance_page__' . $wxt_active;
+    }
     elseif ($wxt_active == 'gcwu_fegc') {
       $variables['theme_hook_suggestion'] = 'maintenance_page__' . $wxt_active;
     }

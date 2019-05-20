@@ -27,7 +27,16 @@ function wetkit_bootstrap_menu_tree(&$variables) {
  * Overrides theme_menu_tree().
  */
 function wetkit_bootstrap_menu_tree__menu_block__main_menu(&$variables) {
-  return '<ul class="list-inline menu" role="menubar">' . $variables['tree'] . '</ul>';
+  $wxt_active = variable_get('wetkit_wetboew_theme', 'theme-wet-boew');
+  $library_path = libraries_get_path($wxt_active, TRUE);
+  $wxt_active = str_replace('-', '_', $wxt_active);
+  $wxt_active = str_replace('theme_', '', $wxt_active);
+  if ($wxt_active == 'gcweb_v5') {
+    return '<ul role="menu" aria-orientation="vertical" data-ajax-replace="">' . $variables['tree'] . '</ul>';
+  }
+  else {
+    return '<ul class="list-inline menu" role="menubar">' . $variables['tree'] . '</ul>';
+  }
 }
 
 /**

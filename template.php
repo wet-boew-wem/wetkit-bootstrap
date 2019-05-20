@@ -28,7 +28,7 @@ function wetkit_bootstrap_bootstrap_colorize_text_alter(&$texts) {
   $wxt_active = str_replace('-', '_', $wxt_active);
   $wxt_active = str_replace('theme_', '', $wxt_active);
 
-  if ($wxt_active == 'gcweb') {
+  if ($wxt_active == 'gcweb' || $wxt_active == 'gcweb_v5') {
     $texts['contains'][t('Search')] = 'primary btn-small';
   }
   else {
